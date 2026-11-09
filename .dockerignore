@@ -1,0 +1,11 @@
+**
+!policy/
+!policy/**
+!container/
+!container/**
+!vendor/
+!vendor/builder-kit/
+!vendor/builder-kit/ros2/
+!vendor/builder-kit/ros2/**
+policy/models/*.onnx
+**/__pycache__/
