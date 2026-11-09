@@ -1,0 +1,642 @@
+{
+  "revision": "e93c49267a7b6b905c6666c8c70668f8ee7ac397",
+  "purpose": "Public builder interface and simulation only. Explicit file allowlist; no repository access, hardware launcher, robot motor transport, session data or credentials.",
+  "files": [
+    {
+      "source": "containers/sim/Dockerfile",
+      "path": "containers/sim/Dockerfile",
+      "sha256": "431f7123ed936e98370bcf6ede628e9b5ecbc15755352eb617281906e3f18ac7",
+      "bytes": 1086
+    },
+    {
+      "source": "containers/sim/bridge.py",
+      "path": "containers/sim/bridge.py",
+      "sha256": "9ed51ae12e4f4559609c3076a63e0e2bdf27e29539ce685f7a7fd3d13245e533",
+      "bytes": 17948
+    },
+    {
+      "source": "containers/sim/compose.sh",
+      "path": "containers/sim/compose.sh",
+      "sha256": "0d75e853efb2ecd3a206dab27eda18ed8c7a061d9a32aef4421d04c2f22850ac",
+      "bytes": 2509
+    },
+    {
+      "source": "containers/sim/compose.yaml",
+      "path": "containers/sim/compose.yaml",
+      "sha256": "d29f0a13da2f1cf1a10e45f1608aec0f63a4694cc8af3b033a98abc660bbaac0",
+      "bytes": 2251
+    },
+    {
+      "source": "containers/sim/desktop_entry.sh",
+      "path": "containers/sim/desktop_entry.sh",
+      "sha256": "ebab29b269cd65fd5c94a353a84353482fe403898a1b02430dd3a5cabcef1574",
+      "bytes": 676
+    },
+    {
+      "source": "containers/sim/fastdds.xml",
+      "path": "containers/sim/fastdds.xml",
+      "sha256": "f670eb488c4e73fe7049c628fa88647451f195d925ac9ef2fee73a77f1fd04d9",
+      "bytes": 1295
+    },
+    {
+      "source": "containers/sim/hold.py",
+      "path": "containers/sim/hold.py",
+      "sha256": "b1304b78333dce03f00e92e9aa300be406aa95b5dc40877c2d92c7d75b86237f",
+      "bytes": 2888
+    },
+    {
+      "source": "containers/sim/lowstate.py",
+      "path": "containers/sim/lowstate.py",
+      "sha256": "2b1c4da49e36f9f6707689e447b5f51f73e603c4e258d5442bfb5e685c3cad5c",
+      "bytes": 2488
+    },
+    {
+      "source": "containers/sim/metrics.py",
+      "path": "containers/sim/metrics.py",
+      "sha256": "f167860b018444874daf3cc8c567eddd57732760aac84159a0df65fd3995b6de",
+      "bytes": 3906
+    },
+    {
+      "source": "containers/sim/plant.py",
+      "path": "containers/sim/plant.py",
+      "sha256": "ca7591e18e4f6d6bb8f4c956fddb5b97ae7b47ac0523402f96a0946c0883da96",
+      "bytes": 12440
+    },
+    {
+      "source": "containers/sim/plant_server.py",
+      "path": "containers/sim/plant_server.py",
+      "sha256": "52e1e527cd9d72d2e1747917d3dbc5d838ac96e534135cde6bea616d299ff1d6",
+      "bytes": 937
+    },
+    {
+      "source": "containers/sim/runner.py",
+      "path": "containers/sim/runner.py",
+      "sha256": "e2697146ef6e9fa4a5743ec001f2072ec15b0ddae5be69a05d43e22305126ca3",
+      "bytes": 19492
+    },
+    {
+      "source": "containers/sim/summary.py",
+      "path": "containers/sim/summary.py",
+      "sha256": "cf9ebe959eebce4892db01ef2f2dc1af8251bedbfd07cde2132ecc0f4a65f1b6",
+      "bytes": 2285
+    },
+    {
+      "source": "containers/sim/test_summary.py",
+      "path": "containers/sim/test_summary.py",
+      "sha256": "629763da545a292403d06c56d766cebd68c3ec34e2a522b854be18e2e14d767d",
+      "bytes": 1569
+    },
+    {
+      "source": "desktop_sim.sh",
+      "path": "desktop_sim.sh",
+      "sha256": "36c3c390eb611967a8be9cf062817398aebe53663a302a1d7228d7d9aa79d8db",
+      "bytes": 270
+    },
+    {
+      "source": "examples/policies/walker/LICENSE",
+      "path": "examples/policies/walker/LICENSE",
+      "sha256": "a0c4f6a35dd2c858c86069d84140052831820e78f3074a2fb758bb4156b66994",
+      "bytes": 10125
+    },
+    {
+      "source": "examples/policies/walker/balance.onnx",
+      "path": "examples/policies/walker/balance.onnx",
+      "sha256": "f645da599d4ca3d29ed273c8f4712620bb680d34977469ca3aeabe5bb9631c18",
+      "bytes": 1886682
+    },
+    {
+      "source": "examples/policies/walker/provenance.json",
+      "path": "examples/policies/walker/provenance.json",
+      "sha256": "4e8da8be440e2ba4088327d7adb249a5923393304a02e8ff8ad4075669edf9c4",
+      "bytes": 559
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/__init__.py",
+      "path": "packages/policy_safety/src/policy_safety/__init__.py",
+      "sha256": "919386841054f08ca21d6e43ccd9dccf330a043db68b96c9cc6fe8436715e796",
+      "bytes": 96
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/adapter.py",
+      "path": "packages/policy_safety/src/policy_safety/adapter.py",
+      "sha256": "4c338c7f3e3c2e7e6e3fd4bcc5457c37c9d0799ae0a8c7b43ac41d50141af33d",
+      "bytes": 9899
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/bundle.py",
+      "path": "packages/policy_safety/src/policy_safety/bundle.py",
+      "sha256": "12777f1d9cc94c96fd6c7902a7b751dc1b5c68c8a565713e010b8a30664981e0",
+      "bytes": 5488
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/config.py",
+      "path": "packages/policy_safety/src/policy_safety/config.py",
+      "sha256": "752c49eb9ca673f6086ae179f385469269f4108797153a8d1075bc975c29552f",
+      "bytes": 12773
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/evaluation.py",
+      "path": "packages/policy_safety/src/policy_safety/evaluation.py",
+      "sha256": "890c1dbd45f25eeb0c54ca996b0728267ff3495f0291c75fb73e37490cc4cf17",
+      "bytes": 24834
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/joint_rules.py",
+      "path": "packages/policy_safety/src/policy_safety/joint_rules.py",
+      "sha256": "9c712de902f0e791c54d6c572e760d4b3cdb09e5aab9e8e7c881c3b85bd16418",
+      "bytes": 5028
+    },
+    {
+      "source": "robot_safety/profiles/g1_type5.template.json",
+      "path": "packages/policy_safety/src/policy_safety/profiles/g1_type5.template.json",
+      "sha256": "67d266654c4caf95452bdbc98953bcc42ac75b56816becf28c9a179c56a96d7b",
+      "bytes": 5970
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/profiles/provisional.json",
+      "path": "packages/policy_safety/src/policy_safety/profiles/provisional.json",
+      "sha256": "bfeb2784638a34472c7b80eeff95988c7ac5a6354247d969b3336f86c22716a3",
+      "bytes": 346
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/THIRD_PARTY_NOTICES.md",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/THIRD_PARTY_NOTICES.md",
+      "sha256": "c454c7bbb5c21131f46b99e3313931a0aa8a96d1d388080bd59ac5c76605739a",
+      "bytes": 2005
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/g1_robot.xml",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/g1_robot.xml",
+      "sha256": "97942784d7085f5c98a8f5863184c88f51d8699bc528271f89ebf831a52be51c",
+      "bytes": 24322
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/LICENSE",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/LICENSE",
+      "sha256": "98335465f43a20b5850e4651db6e74c4aa1e9fc8e8813d38f345178045c0da50",
+      "bytes": 1537
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/MENAGERIE_COMMIT.txt",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/MENAGERIE_COMMIT.txt",
+      "sha256": "434aa649df5f03a60eb48dc3ec3f13190ff0eebcf9ef8dbb5080a514964a0bcd",
+      "bytes": 58
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/README.md",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/README.md",
+      "sha256": "e0ca5e85f68ff9554631c3ea6ac624b469d6018a37e273daa1234e43e3ad4395",
+      "bytes": 2202
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/head_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/head_link.STL",
+      "sha256": "005fb67fbd3eff94aa8bf4a6e83238174e9f91b6721f7111594322f223724411",
+      "bytes": 932784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_ankle_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_ankle_pitch_link.STL",
+      "sha256": "d49e3abc6f5b12e532062cd575b87b5ef40cd2a3fc18f54a1ca5bba4f773d51d",
+      "bytes": 71184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_ankle_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_ankle_roll_link.STL",
+      "sha256": "c4092af943141d4d9f74232f3cfa345afc6565f46a077793b8ae0e68b39dc33f",
+      "bytes": 653384
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_elbow_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_elbow_link.STL",
+      "sha256": "fa752198accd104d5c4c3a01382e45165b944fbbc5acce085059223324e5bed3",
+      "bytes": 88784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_index_0_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_index_0_link.STL",
+      "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+      "bytes": 475984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_index_1_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_index_1_link.STL",
+      "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+      "bytes": 1521784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_middle_0_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_middle_0_link.STL",
+      "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+      "bytes": 475984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_middle_1_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_middle_1_link.STL",
+      "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+      "bytes": 1521784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_palm_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_palm_link.STL",
+      "sha256": "23a486b75bd78a9bf03cec25d84d87f97f3dae038cf21a743b6d469b337e4004",
+      "bytes": 2140184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_thumb_0_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_thumb_0_link.STL",
+      "sha256": "a90c721661c0622685488a3c74d1e122c7da89242d3a1daef75edb83422d05e0",
+      "bytes": 8884
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_thumb_1_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_thumb_1_link.STL",
+      "sha256": "445c54a45bc13ce36001556f66bc0f49c83cb40321205ae4d676bb2874325684",
+      "bytes": 475984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_thumb_2_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hand_thumb_2_link.STL",
+      "sha256": "3d8dbe5085acfc213d21aa8b0782e89cd79084e9678f3a85fc7b04a86b029db5",
+      "bytes": 1521784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hip_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hip_pitch_link.STL",
+      "sha256": "4725168105ee768ee31638ef22b53f6be2d7641bfd7cfefe803488d884776fa4",
+      "bytes": 181684
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hip_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hip_roll_link.STL",
+      "sha256": "91f25922ee8a7c3152790051bebad17b4d9cd243569c38fe340285ff93a97acf",
+      "bytes": 192184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hip_yaw_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_hip_yaw_link.STL",
+      "sha256": "a16d88aa6ddac8083aa7ad55ed317bea44b1fa003d314fba88965b7ed0f3b55b",
+      "bytes": 296284
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_knee_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_knee_link.STL",
+      "sha256": "8d92b9e3d3a636761150bb8025e32514c4602b91c7028d523ee42b3e632de477",
+      "bytes": 854884
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_rubber_hand.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_rubber_hand.STL",
+      "sha256": "cff2221a690fa69303f61fce68f2d155c1517b52efb6ca9262dd56e0bc6e70fe",
+      "bytes": 2287484
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_shoulder_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_shoulder_pitch_link.STL",
+      "sha256": "f0d1cfd02fcf0d42f95e678eeca33da3afbcc366ffba5c052847773ec4f31d52",
+      "bytes": 176784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_shoulder_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_shoulder_roll_link.STL",
+      "sha256": "fb9df21687773522598dc384f1a2945c7519f11cbc8bd372a49170316d6eee88",
+      "bytes": 400284
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_shoulder_yaw_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_shoulder_yaw_link.STL",
+      "sha256": "1aa97e9748e924336567992181f78c7cd0652fd52a4afcca3df6b2ef6f9e712e",
+      "bytes": 249184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_wrist_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_wrist_pitch_link.STL",
+      "sha256": "b251d8e05047f695d0f536cd78c11973cfa4e78d08cfe82759336cc3471de3a9",
+      "bytes": 85984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_wrist_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_wrist_roll_link.STL",
+      "sha256": "edc387c9a0ba8c2237e9b296d32531426fabeb6f53e58df45c76106bca74148c",
+      "bytes": 356184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_wrist_yaw_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/left_wrist_yaw_link.STL",
+      "sha256": "83f8fb3a726bf9613d65dd14f0f447cb918c3c95b3938042a0c9c09749267d3b",
+      "bytes": 318684
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/logo_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/logo_link.STL",
+      "sha256": "8571a0a19bc4916fa55f91449f51d5fdefd751000054865a842449429d5f155b",
+      "bytes": 243384
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/pelvis.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/pelvis.STL",
+      "sha256": "5ba6bbc888e630550140d3c26763f10206da8c8bd30ed886b8ede41c61f57a31",
+      "bytes": 1060884
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/pelvis_contour_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/pelvis_contour_link.STL",
+      "sha256": "5cc5c2c7a312329e3feeb2b03d3fc09fc29705bd01864f6767e51be959662420",
+      "bytes": 1805184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_ankle_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_ankle_pitch_link.STL",
+      "sha256": "15be426539ec1be70246d4d82a168806db64a41301af8b35c197a33348c787a9",
+      "bytes": 71184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_ankle_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_ankle_roll_link.STL",
+      "sha256": "4b66222ea56653e627711b56d0a8949b4920da5df091da0ceb343f54e884e3a5",
+      "bytes": 653784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_elbow_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_elbow_link.STL",
+      "sha256": "1be925d7aa268bb8fddf5362b9173066890c7d32092c05638608126e59d1e2ab",
+      "bytes": 88784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_index_0_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_index_0_link.STL",
+      "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+      "bytes": 475984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_index_1_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_index_1_link.STL",
+      "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+      "bytes": 1521784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_middle_0_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_middle_0_link.STL",
+      "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+      "bytes": 475984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_middle_1_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_middle_1_link.STL",
+      "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+      "bytes": 1521784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_palm_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_palm_link.STL",
+      "sha256": "86c0b231cc44477d64a6493e5a427ba16617a00738112dd187c652675b086fb9",
+      "bytes": 2140184
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_thumb_0_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_thumb_0_link.STL",
+      "sha256": "544298d0ea1088f5b276a10cc6a6a9e533efdd91594955fdc956c46211d07f83",
+      "bytes": 8884
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_thumb_1_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_thumb_1_link.STL",
+      "sha256": "0a9a820da8dd10f298778b714f1364216e8a5976f4fd3a05689ea26327d44bf6",
+      "bytes": 475984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_thumb_2_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hand_thumb_2_link.STL",
+      "sha256": "3f1bfb37668e8f61801c8d25f171fa1949e08666be86c67acad7e0079937cc45",
+      "bytes": 1521784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hip_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hip_pitch_link.STL",
+      "sha256": "e4f3c99d7f4a7d34eadbef9461fc66e3486cb5442db1ec50c86317d459f1a9c6",
+      "bytes": 181284
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hip_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hip_roll_link.STL",
+      "sha256": "4c254ef66a356f492947f360dd931965477b631e3fcc841f91ccc46d945d54f6",
+      "bytes": 192684
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hip_yaw_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_hip_yaw_link.STL",
+      "sha256": "e479c2936ca2057e9eb2f7dff6c189b7419d7b8484dea0b298cbb36a2a6aa668",
+      "bytes": 296284
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_knee_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_knee_link.STL",
+      "sha256": "63c4008449c9bbe701a6e2b557b7a252e90cf3a5abcf54cee46862b9a69f8ec8",
+      "bytes": 852284
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_rubber_hand.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_rubber_hand.STL",
+      "sha256": "99533b778bca6246144fa511bb9d4e555e075c641f2a0251e04372869cd99d67",
+      "bytes": 2192684
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_shoulder_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_shoulder_pitch_link.STL",
+      "sha256": "24cdb387e0128dfe602770a81c56cdce3a0181d34d039a11d1aaf8819b7b8c02",
+      "bytes": 176784
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_shoulder_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_shoulder_roll_link.STL",
+      "sha256": "962b97c48f9ce9e8399f45dd9522e0865d19aa9fd299406b2d475a8fc4a53e81",
+      "bytes": 401884
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_shoulder_yaw_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_shoulder_yaw_link.STL",
+      "sha256": "a0b76489271da0c72461a344c9ffb0f0c6e64f019ea5014c1624886c442a2fe5",
+      "bytes": 249984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_wrist_pitch_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_wrist_pitch_link.STL",
+      "sha256": "d22f8f3b3127f15a63e5be1ee273cd5075786c3142f1c3d9f76cbf43d2a26477",
+      "bytes": 79584
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_wrist_roll_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_wrist_roll_link.STL",
+      "sha256": "a7ee9212ff5b94d6cb7f52bb1bbf3f352194d5b598acff74f4c77d340c5b344f",
+      "bytes": 356084
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_wrist_yaw_link.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/right_wrist_yaw_link.STL",
+      "sha256": "bc9dece2d12509707e0057ba2e48df8f3d56db0c79410212963a25e8a50f61a6",
+      "bytes": 341484
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/torso_link_rev_1_0.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/torso_link_rev_1_0.STL",
+      "sha256": "11ddb46f2098efbbd8816b1d65893632d8e78be936376c7cdcd6771899ccc723",
+      "bytes": 2570584
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/waist_roll_link_rev_1_0.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/waist_roll_link_rev_1_0.STL",
+      "sha256": "b67c347a05abc3e8ddae600d98a082bee273bb39f8e651647708b0a7140a8a97",
+      "bytes": 85884
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/waist_yaw_link_rev_1_0.STL",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/assets/waist_yaw_link_rev_1_0.STL",
+      "sha256": "ec6db442b11f25eed898b5add07940c85d804f300de24dcbd264ccd8be7d554c",
+      "bytes": 619984
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/g1.xml",
+      "path": "packages/policy_safety/src/policy_safety/robots/g1/third_party/unitree_g1/g1.xml",
+      "sha256": "3c2616550a31f33e84d3c80b8e913ac5618c8888019b0c9490dae93493e647f3",
+      "bytes": 23446
+    },
+    {
+      "source": "packages/policy_safety/src/policy_safety/simulation.py",
+      "path": "packages/policy_safety/src/policy_safety/simulation.py",
+      "sha256": "9e41b1d7bad0f6feeef29f94168089f21dbe2dc93004aff378429f467c65e19e",
+      "bytes": 12205
+    },
+    {
+      "source": "robot_safety/__init__.py",
+      "path": "robot_safety/__init__.py",
+      "sha256": "2235452100e1389718c7080f12a5ff511e8c366f3b47e1bd1b1ac8d72233e623",
+      "bytes": 74
+    },
+    {
+      "source": "robot_safety/balance_policy.py",
+      "path": "robot_safety/balance_policy.py",
+      "sha256": "c1eae81a5fc795ae1a3d2f71ddbe814f82cdb6c9b1ee66bc0975aa955b9cb1b3",
+      "bytes": 6678
+    },
+    {
+      "source": "robot_safety/config.py",
+      "path": "robot_safety/config.py",
+      "sha256": "912e51bcd672f794c1583673ddd0140bd82d5c40772ef8be4cece4b2a6d1df62",
+      "bytes": 4410
+    },
+    {
+      "source": "robot_safety/controller.py",
+      "path": "robot_safety/controller.py",
+      "sha256": "b243690db00d09b27428b595c2d7d1f94b3ffe8a981fecc36818e60e212ed1db",
+      "bytes": 4591
+    },
+    {
+      "source": "robot_safety/core.py",
+      "path": "robot_safety/core.py",
+      "sha256": "834b643964a932ec38f0bc512451df49e5a090d5e71955c12b0fb94e3bb3377f",
+      "bytes": 18057
+    },
+    {
+      "source": "robot_safety/hardware_constants.py",
+      "path": "robot_safety/hardware_constants.py",
+      "sha256": "81b5a90e5b5fa3d18a643ec5d02458ec0ad513ef0cd6e33d8e1ffaf403d5695a",
+      "bytes": 2089
+    },
+    {
+      "source": "robot_safety/joint_checks.py",
+      "path": "robot_safety/joint_checks.py",
+      "sha256": "b4095f4a026ddb0269340ee60f477b2a9735d003fab7eaa884974eb49e56912e",
+      "bytes": 11028
+    },
+    {
+      "source": "robot_safety/motor_gate.py",
+      "path": "robot_safety/motor_gate.py",
+      "sha256": "2c03b4260b0c7cf45b8e42341eca245d4bccd9a6b8e16c2e21bc9bb4a3290a17",
+      "bytes": 4841
+    },
+    {
+      "source": "robot_safety/ros_nodes.py",
+      "path": "robot_safety/ros_nodes.py",
+      "sha256": "b88359c697bf3b004a1ef4db531d9a1a262a445d5f2f885eed7199a45a1809c8",
+      "bytes": 15707
+    },
+    {
+      "source": "robot_safety/ros_topics.py",
+      "path": "robot_safety/ros_topics.py",
+      "sha256": "2963aa76bc1840c724dced139f0d50d8994bbfd0b3df1345004f4f7c526adb2a",
+      "bytes": 604
+    },
+    {
+      "source": "robot_safety/startup_balance.py",
+      "path": "robot_safety/startup_balance.py",
+      "sha256": "9e93acec67da3211df15c2d85f80a38e1ff217c18947b01a59f2fa459f1b0e49",
+      "bytes": 10333
+    },
+    {
+      "source": "robot_safety/thrash.py",
+      "path": "robot_safety/thrash.py",
+      "sha256": "fc9f657946f34ceb015e550e683ecee2fa70de6ec836d8e701cb42170c3011a3",
+      "bytes": 6703
+    },
+    {
+      "source": "ros2/him_safety_interfaces/CMakeLists.txt",
+      "path": "ros2/him_safety_interfaces/CMakeLists.txt",
+      "sha256": "caa4ef6d75d9b888f2107c17091d92500ed4a135fc6344cbfbece5b0335d05a0",
+      "bytes": 403
+    },
+    {
+      "source": "ros2/him_safety_interfaces/msg/Abort.msg",
+      "path": "ros2/him_safety_interfaces/msg/Abort.msg",
+      "sha256": "ae04d6bee05a40d30369ee98cc240e27dddbe876cd3b97024f5a6d378078b4ca",
+      "bytes": 106
+    },
+    {
+      "source": "ros2/him_safety_interfaces/msg/CheckedCommand.msg",
+      "path": "ros2/him_safety_interfaces/msg/CheckedCommand.msg",
+      "sha256": "83ced0a15ef93df2bceecf0338521c52c6bd5fc13e9d88281754c674ecd86a37",
+      "bytes": 158
+    },
+    {
+      "source": "ros2/him_safety_interfaces/msg/DryRunOutput.msg",
+      "path": "ros2/him_safety_interfaces/msg/DryRunOutput.msg",
+      "sha256": "b5afd0f9629802012acc7e0f21c0d7d4216ebe9f86b3caf9e638cf7cafbb0937",
+      "bytes": 124
+    },
+    {
+      "source": "ros2/him_safety_interfaces/msg/JointCommand.msg",
+      "path": "ros2/him_safety_interfaces/msg/JointCommand.msg",
+      "sha256": "c6c7ff12c0a5aef781c76024200240b8b2135c6d5b97df63860813fbd0fc8b09",
+      "bytes": 226
+    },
+    {
+      "source": "ros2/him_safety_interfaces/msg/RobotFeedback.msg",
+      "path": "ros2/him_safety_interfaces/msg/RobotFeedback.msg",
+      "sha256": "e2a895318108b4bbcc70fefd8a7989f7ba9fc48e65c861dea6fcc7d24c9eed12",
+      "bytes": 209
+    },
+    {
+      "source": "ros2/him_safety_interfaces/package.xml",
+      "path": "ros2/him_safety_interfaces/package.xml",
+      "sha256": "90bc4cecde60d4d65cc7bc567256a8c3e9e05dd7fe93cafcc393c718f805a7f0",
+      "bytes": 539
+    },
+    {
+      "source": "ros2/him_safety_interfaces/srv/ArmGate.srv",
+      "path": "ros2/him_safety_interfaces/srv/ArmGate.srv",
+      "sha256": "bdae4ce569e0b12c06730aa4285ec50fecaa6504879f739fc222551497f2a535",
+      "bytes": 113
+    },
+    {
+      "source": "sim.sh",
+      "path": "sim-upstream.sh",
+      "sha256": "6627aeef3dc2e81c32bc6f6401f5d9f17dc3cc01e96b7ffc257a92b853db7c28",
+      "bytes": 15673
+    },
+    {
+      "source": "robot_safety/profiles/g1_type5.template.json",
+      "path": "robot_safety/profiles/g1_type5.template.json",
+      "sha256": "67d266654c4caf95452bdbc98953bcc42ac75b56816becf28c9a179c56a96d7b",
+      "bytes": 5970
+    }
+  ]
+}

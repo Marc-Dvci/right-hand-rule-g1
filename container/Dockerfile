@@ -9,6 +9,6 @@ WORKDIR /submission
 COPY vendor/builder-kit/ros2/him_safety_interfaces interfaces
 RUN source /opt/ros/foxy/setup.bash && colcon build --base-paths interfaces --packages-select him_safety_interfaces
 COPY policy policy
-COPY container/ros_node.py container/entrypoint.sh ./
+COPY container/ros_node.py container/timing.py container/entrypoint.sh ./
 ENV OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFERED=1
 ENTRYPOINT ["/bin/bash", "/submission/entrypoint.sh"]

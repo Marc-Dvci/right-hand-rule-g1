@@ -5,16 +5,27 @@ import json
 import shutil
 import sys
 import urllib.request
+import argparse
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-KIT_SOURCE = ROOT.parents[1] / 'Ping Pong challenge/research/kit/g1-builder-kit'
 KIT = ROOT / 'vendor/builder-kit'
 REVISION = 'b042411fae38ee4d1af9aac82a37a1f8d14d6dd0'
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--kit-source',type=Path,help='Optional existing public kit directory')
+    args = parser.parse_args()
     if not KIT.exists():
-        shutil.copytree(KIT_SOURCE, KIT, ignore=shutil.ignore_patterns('__pycache__', '*.pyc', 'output', 'submission.tar'))
+        if args.kit_source:
+            shutil.copytree(args.kit_source, KIT, ignore=shutil.ignore_patterns('__pycache__', '*.pyc', 'output', 'submission.tar'))
+        else:
+            archive = ROOT/'research/g1-builder-kit-e93c492-v1.zip'
+            archive.parent.mkdir(parents=True,exist_ok=True)
+            urllib.request.urlretrieve('https://arena.himrobotics.com/policy-contracts/g1-builder-kit-e93c492-v1.zip',archive)
+            with zipfile.ZipFile(archive) as z:
+                z.extractall(KIT.parent)
     models = ROOT / 'policy/models'
     models.mkdir(parents=True, exist_ok=True)
     provenance = json.loads((KIT / 'examples/policies/walker/provenance.json').read_text())

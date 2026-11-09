@@ -1,0 +1,69 @@
+name: Exact image — native ARM64 kit
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Release holding submission.tar and its SHA-256 sidecar
+        required: true
+      image_sha256:
+        description: Expected SHA-256 of submission.tar
+        required: true
+      scene:
+        description: Task scene basename under scene/
+        default: maze-0-w1.250
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  kit:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 35
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      GH_TOKEN: ${{ github.token }}
+      IMAGE_SHA: ${{ inputs.image_sha256 }}
+      RELEASE_TAG: ${{ inputs.release_tag }}
+      SCENE_NAME: ${{ inputs.scene }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Download and verify the exact reviewed image
+        run: |
+          mkdir -p dist
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern submission.tar --dir dist
+          printf '%s  dist/submission.tar\n' "$IMAGE_SHA" | sha256sum -c -
+          docker load -i dist/submission.tar
+          test "$(docker image inspect right-hand-rule:local --format '{{.Architecture}}')" = arm64
+          docker image inspect right-hand-rule:local > dist/image-inspect.json
+      - name: Install pinned evaluation dependencies and test contracts
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pytest -q tests
+      - name: Test standard and actual task scenes three times each
+        run: |
+          for repeat in 1 2 3; do
+            python tools/run_kit.py --seconds 60 --name "standard-$repeat"
+            python tools/run_kit.py --scene "$SCENE_NAME" --seconds 240 --name "task-$repeat"
+          done
+      - name: Record every counterfactual on both scenes
+        if: always()
+        run: |
+          python tools/run_kit.py --seconds 60 --counterfactuals --name counterfactuals-standard || true
+          python tools/run_kit.py --scene "$SCENE_NAME" --seconds 60 --counterfactuals --name counterfactuals-task || true
+      - name: Preserve raw evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-arm64-evidence-${{ github.run_id }}
+          path: |
+            evidence/container-native/
+            dist/image-inspect.json
+          retention-days: 7

@@ -1,0 +1,6 @@
+{
+  "archive_sha256": "42b235a847bd89ff2ce63bbc56ff6c157e9fb2617abe72cb4d2fff7f2038222c",
+  "mismatches_in_reused_kit": [],
+  "action": "Replaced mismatching files with fresh public archive bytes",
+  "manifest_mismatches": []
+}

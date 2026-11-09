@@ -1,5 +1,6 @@
 """Touch-only wall following over the attributed NVIDIA locomotion policy."""
 import json
+from dataclasses import dataclass
 from pathlib import Path
 import numpy as np
 from .networks import Walker, rotation
@@ -11,17 +12,40 @@ def wrap(a):
     return (a+np.pi) % (2*np.pi)-np.pi
 
 
+@dataclass(frozen=True)
+class Parameters:
+    speed: float = .12
+    arc_speed: float = .085
+    arc_rate: float = .20
+    contact_threshold: float = 4.
+    lost_threshold: float = 3.
+    lost_seconds: float = .6
+    turn_rate: float = .24
+    front_threshold: float = 5.
+    force_target: float = 6.
+
+    def __post_init__(self):
+        if any(not np.isfinite(v) or v <= 0 for v in self.__dict__.values()):
+            raise ValueError('Controller parameters must be finite and positive')
+        if max(self.speed,self.arc_speed) > .35 or max(self.arc_rate,self.turn_rate) > .6:
+            raise ValueError('Controller velocity envelope exceeded')
+
+
 class Controller:
     """act accepts only q/dq/quat/gyro and host control readiness.
 
     No maze, contact labels, world coordinates or simulator velocity enter it.
     All distances are estimates from foot kinematics; yaw is from the IMU.
     """
-    def __init__(self, mode='navigate', speed=.12):
+    def __init__(self, mode='navigate', speed=None, parameters=None):
         if mode not in ('navigate', 'neutral', 'touch_off', 'touch_shuffled', 'walk_test'):
             raise ValueError('Unknown controller mode')
         self.mode = mode
-        self.speed = speed
+        default_path = Path(__file__).parent/'models/navigation.json'
+        if parameters is None:
+            parameters = json.loads(default_path.read_text()) if default_path.exists() else {}
+        self.parameters = Parameters(**parameters)
+        self.speed = self.parameters.speed if speed is None else speed
         self.walker = Walker()
         self.model = ArmModel()
         self.arm_pose = np.array(json.loads((Path(__file__).parent/'models/arm_pose.json').read_text()))
@@ -89,7 +113,6 @@ class Controller:
         yaw = np.arctan2(R[1, 0], R[0, 0])
         kin = self.model.evaluate(q, quat)
         velocity = self.odometry.update(kin['feet'], quat, foot_rotations=kin['foot_rotations'])
-        self.navigation_velocity += .045*(velocity-self.navigation_velocity)
         if self.initial_arms is None:
             self.initial_arms = q[15:].copy()
         if not self.started:
@@ -149,11 +172,11 @@ class Controller:
                 self.transition('STOP')
         elif self.state == 'FOLLOW':
             cmd[0] = self.speed
-            cmd[1] = np.clip(.012*(right-6.), -.07, .07)
-            self.lost = self.lost+.02 if right < 3. else max(0., self.lost-.04)
-            if front > 5.:
+            cmd[1] = np.clip(.012*(right-self.parameters.force_target), -.07, .07)
+            self.lost = self.lost+.02 if right < self.parameters.lost_threshold else max(0., self.lost-.04)
+            if front > self.parameters.front_threshold:
                 self.transition('BACKOFF')
-            elif self.lost > .6:
+            elif self.lost > self.parameters.lost_seconds:
                 self.transition('ARC')
             if right > 3.5:
                 point = self.odometry.position + kin['right']['position']
@@ -170,18 +193,14 @@ class Controller:
                         # Keep this estimate for logging until odometry accuracy
                         # qualifies it for heading feedback.
                         self.wall_heading_estimate = candidate
-                        if abs(wrap(candidate-self.heading)) < .5:
-                            self.heading = wrap(self.heading+.005*wrap(candidate-self.heading))
         elif self.state == 'ARC':
-            cmd[0] = .085
+            cmd[0] = self.parameters.arc_speed
             self.heading = wrap(self.heading-.19*.02)
-            if right > 4. and self.state_age > 1.:
-                normal = R @ self.navigation_force[1]
-                tangent = np.arctan2(normal[1],normal[0])-np.pi/2
-                self.heading = wrap(self.origin_heading+np.round((tangent-self.origin_heading)/(np.pi/2))*(np.pi/2))
+            if right > self.parameters.contact_threshold and self.state_age > 1.:
+                self.heading = yaw
                 self.transition('FOLLOW')
-            elif front > 6.:
-                cmd[0] = -.035
+            elif front > self.parameters.front_threshold+1.:
+                self.transition('BACKOFF')
             elif self.state_age > 35:
                 self.transition('STOP')
         elif self.state == 'CLEAR':
@@ -212,19 +231,17 @@ class Controller:
                 self.transition('FIND')
         if self.mode == 'neutral':
             cmd[:] = 0
-        if self.state == 'FOLLOW':
-            cmd[0] *= max(0., 1-abs(wrap(self.heading-yaw))/.5)
         if self.state.startswith('RETRACT_') or self.state in ('TURN', 'EXTEND'):
             cmd[:2] = np.clip((R.T@(self.turn_anchor-self.odometry.position))[:2]*.8, -.15, .15)
         if self.state not in ('ARMING', 'STOP') and self.mode != 'neutral':
             err = wrap(self.heading-yaw)
             self.heading_integral = np.clip(self.heading_integral+err*.02, -.8, .8)
-            cmd[2] = np.clip(2.*err + .5*self.heading_integral, -.24, .24)
+            cmd[2] = np.clip(2.*err + .5*self.heading_integral, -self.parameters.turn_rate, self.parameters.turn_rate)
             if self.state == 'ARC':
-                cmd[2] = -.2
-            self.velocity_integral += (cmd[:2]-self.navigation_velocity[:2])*.02
+                cmd[2] = -self.parameters.arc_rate
+            self.velocity_integral += (cmd[:2]-velocity[:2])*.02
             self.velocity_integral = np.clip(self.velocity_integral, -.25, .25)
-            cmd[:2] = np.clip(cmd[:2]+.9*(cmd[:2]-self.navigation_velocity[:2])+1.8*self.velocity_integral, [-.25,-.3], [.4,.3])
+            cmd[:2] = np.clip(cmd[:2]+.9*(cmd[:2]-velocity[:2])+1.8*self.velocity_integral, [-.25,-.3], [.4,.3])
         if max(front, right) > 35 and self.state not in ('RETRACT_LEFT', 'RETRACT_RIGHT', 'TURN', 'EXTEND', 'BACKOFF'):
             self.transition('GUARD')
         if self.state in ('ARMING', 'STOP', 'GUARD') or self.mode == 'neutral':
@@ -237,7 +254,7 @@ class Controller:
         targets = np.r_[lower, self.initial_arms+self.arm_alpha*(self.arm_pose-self.initial_arms)]
         if self.state in ('FOLLOW', 'FIND', 'CLEAR') and self.mode not in ('neutral', 'touch_off'):
             J = R.T @ kin['right']['jacobian'][:, :4]
-            dy = np.clip(.012*(right-6.)-velocity[1], -.16, .16)*.02
+            dy = np.clip(.012*(right-self.parameters.force_target)-velocity[1], -.16, .16)*.02
             step = J.T@np.linalg.solve(J@J.T+np.eye(3)*.001, [0, dy, 0])
             self.right_adjustment[:4] = np.clip(self.right_adjustment[:4]+step, -.35, .35)
         else:
@@ -245,20 +262,10 @@ class Controller:
         targets[22:] += self.arm_alpha*self.right_adjustment
         tau = np.zeros(29)
         tau[12:15] = np.clip(190*(targets[12:15]-q[12:15])-3.5*dq[12:15], [-25,-20,-20], [25,20,20])
-        reference = q.copy()
-        reference[15:] = targets[15:]
-        desired_kinematics = self.model.evaluate(reference, quat)
         for side, i in (('left', 15), ('right', 22)):
-            J = kin[side]['jacobian']
-            force = 160*(desired_kinematics[side]['position']-kin[side]['position'])-8*(J@dq[i:i+7])
-            force *= min(1., 12./max(np.linalg.norm(force),1e-9))
-            null = np.eye(7)-J.T@np.linalg.solve(J@J.T+np.eye(3)*.0005,J)
-            posture = null@(4*(targets[i:i+7]-q[i:i+7])-.5*dq[i:i+7])
-            tau[i:i+7] = kin[side]['gravity'] + J.T@force + posture
+            tau[i:i+7] = kin[side]['gravity']*self.arm_alpha
+            tau[i:i+7] -= 40*self.arm_alpha*(targets[i:i+7]-q[i:i+7])
             tau[i:i+7] = np.clip(tau[i:i+7], [-20,-20,-20,-20,-20,-4,-4], [20,20,20,20,20,4,4])
-            # Update the host spring around the measured arm pose; motion and
-            # contact are driven by the bounded Cartesian impedance torque.
-            targets[i:i+7] = q[i:i+7]
         command = dict(q=targets, dq=np.zeros(29), kp=self.kp.copy(), kd=self.kd.copy(), tau=tau)
         self.last_command = command
         self.telemetry = dict(state=self.state, age=self.age, right_force=right, front_force=front,

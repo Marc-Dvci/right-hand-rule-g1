@@ -4,16 +4,13 @@ import json
 import urllib.request
 import zipfile
 import shutil
+import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
 archive = ROOT/'research/g1-builder-kit-e93c492-v1.zip'
 archive.parent.mkdir(parents=True, exist_ok=True)
 if not archive.exists():
-    local = ROOT.parents[1]/'Ping Pong challenge/research/kit.zip'
-    if local.exists():
-        shutil.copyfile(local, archive)
-    else:
-        urllib.request.urlretrieve('https://arena.himrobotics.com/policy-contracts/g1-builder-kit-e93c492-v1.zip', archive)
+    urllib.request.urlretrieve('https://arena.himrobotics.com/policy-contracts/g1-builder-kit-e93c492-v1.zip', archive)
 fresh = ROOT/'research/official-kit'
 if not fresh.exists():
     with zipfile.ZipFile(archive) as z:

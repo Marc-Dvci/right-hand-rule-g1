@@ -5,6 +5,8 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import hashlib
+import platform
 
 ROOT = Path(__file__).resolve().parents[1]
 KIT = ROOT/'vendor/builder-kit'
@@ -16,7 +18,8 @@ p.add_argument('--counterfactuals', action='store_true')
 args = p.parse_args()
 environment = KIT/'containers/upload/environment'
 shutil.copytree(ROOT/'scene', environment, dirs_exist_ok=True)
-output = ROOT/'evidence/container-qemu'/args.name
+native = platform.machine().lower() in ('aarch64','arm64')
+output = ROOT/'evidence'/('container-native' if native else 'container-qemu')/args.name
 output.mkdir(parents=True, exist_ok=True)
 command = ['bash','sim.sh','--image','right-hand-rule:local','--seconds',str(args.seconds),'--output',str(output)]
 if args.scene != 'standard':
@@ -24,8 +27,19 @@ if args.scene != 'standard':
 if args.counterfactuals:
     command.append('--counterfactuals')
 image = json.loads(subprocess.check_output(['docker','image','inspect','right-hand-rule:local'],text=True))[0]
+archive = ROOT/'dist/submission.tar'
+archive_digest = None
+if archive.exists():
+    digest = hashlib.sha256()
+    with archive.open('rb') as stream:
+        for chunk in iter(lambda:stream.read(1024*1024),b''):
+            digest.update(chunk)
+    archive_digest = digest.hexdigest()
 (output/'invocation.json').write_text(json.dumps(dict(command=command,image_id=image['Id'],
-    image_architecture=image['Architecture'],runtime='local x86_64 with ARM64 emulation; not native ARM64'),indent=2)+'\n')
+    image_architecture=image['Architecture'],image_archive_sha256=archive_digest,
+    runtime='native ARM64' if native else 'local x86_64 with ARM64 emulation; not native ARM64',
+    github_run=(os.environ.get('GITHUB_SERVER_URL','https://github.com')+'/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'])
+        if os.environ.get('GITHUB_REPOSITORY') and os.environ.get('GITHUB_RUN_ID') else None),indent=2)+'\n')
 with (output/'launcher.log').open('w') as log:
     result = subprocess.run(command,cwd=KIT,env=dict(os.environ,DOCKER_BUILDKIT='0'),stdout=log,stderr=log)
 print('kit exit',result.returncode,'evidence',output,flush=True)

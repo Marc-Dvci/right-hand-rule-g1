@@ -6,3 +6,9 @@ dist/
 *.tar
 *.log
 vendor/builder-kit/containers/sim/output/
+vendor/builder-kit/containers/upload/
+research/official-kit/
+research/*.zip
+.tools/
+evidence/
+reports/

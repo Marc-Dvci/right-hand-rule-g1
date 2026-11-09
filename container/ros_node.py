@@ -1,4 +1,5 @@
 """ROS 2 transport only. The policy sees the documented sensor allowlist."""
+print('RIGHT HAND RULE: loading policy dependencies',flush=True)
 import gc
 import json
 import time
@@ -11,12 +12,14 @@ from std_msgs.msg import String
 from std_srvs.srv import Trigger
 from him_safety_interfaces.msg import RobotFeedback, JointCommand, Abort
 from policy.controller import Controller
+from timing import TimedPolicy
 
 
 class TouchNode(Node):
     def __init__(self, controller):
         super().__init__('right_hand_rule')
         self.controller = controller
+        self.timed_policy = TimedPolicy(controller)
         self.session = None
         self.sequence = 0
         self.sent = -1
@@ -65,7 +68,9 @@ class TouchNode(Node):
         if time.monotonic()-min(stamp_q, stamp_imu) > .12:
             return
         try:
-            result = self.controller.act(dict(q=q, dq=dq, quat=quat, gyro=gyro), ready=ready)
+            if not hasattr(self,'timed_policy'):
+                self.timed_policy = TimedPolicy(self.controller)
+            result = self.timed_policy.act(dict(q=q, dq=dq, quat=quat, gyro=gyro), key, ready)
             message = JointCommand()
             message.session_id = self.session
             message.sequence = self.sequence
@@ -83,21 +88,26 @@ class TouchNode(Node):
             self.get_logger().error('Policy stopped: ' + str(exc))
 
     def start(self):
+        self.get_logger().info('Waiting for checker arm service')
         if not self.arm.wait_for_service(timeout_sec=15.):
+            self.get_logger().error('Checker arm service did not appear')
             return False
         future = self.arm.call_async(Trigger.Request())
         rclpy.spin_until_future_complete(self, future, timeout_sec=5.)
         result = future.result()
         if result is None or not result.success or not result.message:
+            self.get_logger().error('Checker arm request failed: '+str(result))
             return False
         self.session = result.message
         return True
 
 
 def main():
+    print('RIGHT HAND RULE: loading verified networks',flush=True)
     controller = Controller()
     rclpy.init()
     node = TouchNode(controller)
+    print('RIGHT HAND RULE: ROS node initialized',flush=True)
     gc.disable()
     try:
         if not node.start():

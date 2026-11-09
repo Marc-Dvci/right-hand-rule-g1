@@ -3,6 +3,8 @@ from pathlib import Path
 import json
 import random
 import xml.etree.ElementTree as ET
+import os
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -17,7 +19,10 @@ def write_scene(name, walls, exit_spec=None):
                       pos=f'{center[0]} {center[1]} .65', size=f'{size[0]} {size[1]} .65',
                       rgba='.70 .75 .79 1', friction='.35 .005 .0001', condim='3')
     scene = ROOT/'scene'/f'{name}.xml'
-    ET.ElementTree(root).write(scene, encoding='unicode')
+    with tempfile.NamedTemporaryFile(mode='w',suffix='.xml',dir=scene.parent,delete=False) as temp:
+        ET.ElementTree(root).write(temp, encoding='unicode')
+        temp_path = temp.name
+    os.replace(temp_path,scene)
     (scene.with_suffix('.json')).write_text(json.dumps(dict(walls=walls, exit=exit_spec), indent=2)+'\n')
     return scene
 
@@ -60,7 +65,7 @@ def make(kind='wall', seed=0, size=3, width=1.25):
                 walls.append(((left,top),(right,top)))
             if not (x == size-1 and y == size-1) and (x == size-1 or frozenset(((x,y),(x+1,y))) not in passages):
                 walls.append(((right,bottom),(right,top)))
-    return write_scene(f'maze-{seed}', walls, dict(axis=0, value=(size-.5)*w+.25, sign=1,
+    return write_scene(f'maze-{seed}-w{width:.3f}', walls, dict(axis=0, value=(size-.5)*w+.25, sign=1,
                                                min_y=(size-1.5)*w, max_y=(size-.5)*w))
 
 

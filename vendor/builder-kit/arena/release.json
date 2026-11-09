@@ -1,0 +1,51 @@
+{
+  "protocol_version": 1,
+  "id": "g1-screening-pr10-e93c492-v3",
+  "repository": "HIMRobotics/him-sim2real-management",
+  "revision": "e93c49267a7b6b905c6666c8c70668f8ee7ac397",
+  "package_version": "0.1.0",
+  "adapter": "g1-walker-99-v1",
+  "target": "Unitree G1 · walker, NVIDIA Walk/Balance, basketball, Handle and scripted long jump",
+  "timeout_seconds": 1800,
+  "lease_seconds": 2100,
+  "max_archive_bytes": 104857600,
+  "max_expanded_bytes": 536870912,
+  "max_evidence_bytes": 536870912,
+  "profile_sha256": "bfeb2784638a34472c7b80eeff95988c7ac5a6354247d969b3336f86c22716a3",
+  "joint_profile_sha256": "67d266654c4caf95452bdbc98953bcc42ac75b56816becf28c9a179c56a96d7b",
+  "hardware_ready": false,
+  "robot_config_sha256": "5b9c2882827abcfea3ce8fb2bf1ae8089792a7d3a9472ab550dd826fba351d20",
+  "submission_config_sha256": "32f6ab3da720f5d906a556c2317d442ef0df4de54d1424400fbcc1d2374ce9bf",
+  "submission_robot_sha256": "97942784d7085f5c98a8f5863184c88f51d8699bc528271f89ebf831a52be51c",
+  "profile_calibrated": false,
+  "reference_exit_code": 1,
+  "reference_coverage": {
+    "planned": 100,
+    "reported": 100,
+    "completed": 92,
+    "violation": 8,
+    "error": 0,
+    "incomplete": 0
+  },
+  "additional_adapters": [
+    {
+      "adapter": "g1-basketball-115-v1",
+      "robot_config_sha256": "2f4ba5f601d12661815c90bf14d8dca29d3028ffa7e28647a9235709097a1b1e"
+    },
+    {
+      "adapter": "g1-handle-1080-v1",
+      "robot_config_sha256": "732525cc3821e228e10ea0fc7f1653ffc9ac6df42aae7eb2c6584c9b0b8615d3"
+    },
+    {
+      "adapter": "g1-long-jump-v1",
+      "robot_config_sha256": "732525cc3821e228e10ea0fc7f1653ffc9ac6df42aae7eb2c6584c9b0b8615d3"
+    },
+    {
+      "adapter": "nvidia-decoupled-wbc-516-v1",
+      "robot_config_sha256": "3fde3c98026dfaa16d60ee968c5c79ed3b390d69bc7d338161da45663434e2f7",
+      "policy_yaml_sha256": "689d24e5b70f71f07091f61e5c1a5073beba9b2c247b75363eb41fec90cfe318"
+    }
+  ],
+  "policy_yaml_sha256": "f4fa59ecea7310b9b1112755e9161348965c650812c7a37b572194255c2d73fc",
+  "robot_slugs": ["unitree-g1"]
+}

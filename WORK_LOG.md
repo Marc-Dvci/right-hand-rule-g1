@@ -33,3 +33,14 @@ Implement the current `../01_PLAN.md`: touch navigation on a free-standing Unitr
 - Strictly scored development maze 0 was exited in 196.00 simulated seconds, no kit warnings, no fall, thrash peak 0.519. This is a development result, not a final-seed robustness claim.
 
 Native ARM64 container checks, randomized evaluation, touch-accuracy gates and the final 100-maze gate remain unclaimed until their actual results exist.
+
+## Container and tuning progress
+
+- The ROS setup scripts require nounset to be disabled while sourcing their environment. This caused the first no-command run and is fixed in our entrypoint.
+- With the default ARM interpreter, ROS could not discover the checker service. The installed QEMU 10.2.3 resolves discovery. The wrapper temporarily changes binfmt, runs the kit, and restores the exact original interpreter registration in `finally`.
+- `evidence/container-qemu/standard-004-qemu10/builder-check.json` reports `simulation_checks_complete`: 60.04 simulated seconds, handoff at 2.00 seconds, 3,001 accepted commands, no warnings. This is a real ARM64-image container run under emulation, not native ARM64 or hardware qualification.
+- CMA-ES tuning changes immutable parameter JSON per episode. It uses only development seeds 0, 4, 5 and verifies that policy source/weights do not change during the search. Trial 6 exits all three with no warnings. Held-out layouts and final-seed randomization remain separate.
+- The Cartesian arm-impedance experiment and force-based heading snapping reduced navigation reliability and were rejected. The simpler compliant joint controller reproduces the strongest baseline (maze 0: 196.00 seconds).
+- Added deterministic dynamics/sensor perturbations, including effective floor friction (foot priority otherwise overrides the plane). Seventeen tests pass.
+- A 75-second development replay is in `dist/preview-development.mp4`. It replays saved qpos only. Transparency exposes the motion; the introductory contact trace is explicitly labeled as simulator reference data.
+- The plan's public-repository assumption is outdated: GitHub's January 29, 2026 changelog allows standard ARM64 runners in private repositories against included minutes. No GitHub write, paid compute, publication or external message has been performed.
