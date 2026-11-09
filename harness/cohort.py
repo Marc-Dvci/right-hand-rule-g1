@@ -14,6 +14,7 @@ p.add_argument('--name', default='dev-arc-v2')
 p.add_argument('--mode', default='navigate')
 p.add_argument('--width', type=float, default=1.25)
 p.add_argument('--parameters',type=Path)
+p.add_argument('--control-config',type=Path)
 p.add_argument('--randomize',action='store_true')
 p.add_argument('--workers',type=int,default=1)
 p.add_argument('--transport',action='store_true')
@@ -45,6 +46,8 @@ def episode(seed):
                    '--seconds',str(args.seconds),'--mode',args.mode,'--width',str(args.width),'--output',str(target)]
         if args.parameters:
             command.extend(['--parameters',str(args.parameters)])
+        if args.control_config:
+            command.extend(['--control-config',str(args.control_config)])
         if args.randomize:
             command.append('--randomize')
         if args.transport:

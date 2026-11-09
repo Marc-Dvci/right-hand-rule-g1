@@ -1,6 +1,6 @@
 {
-  "files": 337,
-  "bytes": 83002033,
+  "files": 340,
+  "bytes": 83010629,
   "blocked": [],
   "inventory": [
     {
@@ -10,13 +10,13 @@
     },
     {
       "path": ".github/workflows/native-arm64.yml",
-      "bytes": 3494,
-      "sha256": "3e5d1ef8fb0f3663bd774d1d776146441da90d074fb2c0bfe1c3bbfc067a41ed"
+      "bytes": 3675,
+      "sha256": "67c739ed3a959aa3fddfe72411ba477834e8626e88125fb689090ee8360bb45e"
     },
     {
       "path": ".gitignore",
-      "bytes": 296,
-      "sha256": "9e87afcf061cfa9a0ae81dddf10b8e171cabe5c36bc4eec78c43f61665fb56dc"
+      "bytes": 326,
+      "sha256": "ee65454ed7a03925f225dadccd463c9cc900276112172a40b2c2f5c39722ff6d"
     },
     {
       "path": "HARDWARE_ATTEMPT.md",
@@ -165,8 +165,18 @@
     },
     {
       "path": "harness/cohort.py",
-      "bytes": 3766,
-      "sha256": "80540c95e0aebd998a0acbffe4b4cfb76b9b3acbfb2f5fc36bb8bec364b25717"
+      "bytes": 3917,
+      "sha256": "c6e17db5899dcbb4c72775f6ea79f951a12f2f8bffb16df0aed13aff796256a6"
+    },
+    {
+      "path": "harness/control_sweep.py",
+      "bytes": 1976,
+      "sha256": "d333ffa113cf1c3bc8c38a72e0f857c7d1a0fa8a8ec71c6b127e2139e685f107"
+    },
+    {
+      "path": "harness/control_validation.py",
+      "bytes": 1875,
+      "sha256": "5a9638b60ec4401518e33fdfdf480bf3b3c6238d6920b76284dd56d9c6c6c038"
     },
     {
       "path": "harness/development_batch.py",
@@ -175,8 +185,8 @@
     },
     {
       "path": "harness/evaluate.py",
-      "bytes": 13038,
-      "sha256": "e37f945fb87ebae95bf542b9c5f52f6256668dbaf28c77a931bfb173e0b861cd"
+      "bytes": 13358,
+      "sha256": "72af17499367050a0695f97c2653e95be18837f9eb8328e6affc1f3ef85f0fb6"
     },
     {
       "path": "harness/experimental_transport.py",
@@ -187,6 +197,11 @@
       "path": "harness/gate0.py",
       "bytes": 4222,
       "sha256": "b87781bbe083e5ec2d58898334d62559279d5ffd76e8673b0518730e6484dfa3"
+    },
+    {
+      "path": "harness/gravity_sweep.py",
+      "bytes": 2026,
+      "sha256": "26862e7144a651088ef08e60272ce9f3f0a52306dba3f79236e903438b2e221c"
     },
     {
       "path": "harness/kit.py",
@@ -235,13 +250,13 @@
     },
     {
       "path": "policy/controller.py",
-      "bytes": 13270,
-      "sha256": "f6e202cac9d7d4d7f31eb813f91d0a3c15d40968577174bb41e5c74bd0397e34"
+      "bytes": 14725,
+      "sha256": "401d3a4e4cae2aab809ca48c016cc8e71196d23d59ef5a6873bba3dc981e4917"
     },
     {
       "path": "policy/kinematics.py",
-      "bytes": 3270,
-      "sha256": "dcb38eb9a7256d15d4b804bc65416e46441bdcafe5c1f11b80d6e803a5ec4787"
+      "bytes": 3307,
+      "sha256": "ece8289cd8938c457357368baf4c850271bba56a011f3f223473907655b15ad5"
     },
     {
       "path": "policy/models/LICENSE-NVIDIA",
@@ -285,8 +300,8 @@
     },
     {
       "path": "policy/networks.py",
-      "bytes": 3218,
-      "sha256": "f4b4093ce067e701bba56a3d7c25e64fdd35733da8ee51fde62e18ad93c970c1"
+      "bytes": 3664,
+      "sha256": "0e3b70eb3605af97c27ea0d02bf24ac5549fede8b3f6437cbe670ce0628114e6"
     },
     {
       "path": "policy/odometry.py",
@@ -845,8 +860,8 @@
     },
     {
       "path": "tests/test_physics_contract.py",
-      "bytes": 1880,
-      "sha256": "edfec121c0b8691179323104df7462706d4961b96b70affdb25b4e68bcc53d97"
+      "bytes": 1979,
+      "sha256": "1fdb3cc9e441e902000a690f83bb181c8713debd0a04b7aafd7de1d02e9d4c5c"
     },
     {
       "path": "tests/test_policy.py",

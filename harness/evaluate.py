@@ -39,7 +39,7 @@ def contact_truth(plant):
     return f
 
 
-def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, parameters=None, randomize=False, transport=False, transport_config=None, latency_steps=None):
+def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, parameters=None, randomize=False, transport=False, transport_config=None, latency_steps=None, control=None):
     output.mkdir(parents=True, exist_ok=True)
     source_files = sorted((ROOT/'policy').glob('*.py'))+sorted((ROOT/'policy/models').glob('*.json'))+sorted((ROOT/'policy/models').glob('*.npz'))
     source_digest = hashlib.sha256()
@@ -61,7 +61,7 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
     runner = Runner(scene=scene, pose=pose, record_trace=False)
     if perturbations:
         apply(runner.plant,perturbations)
-    controller = Controller(mode, speed, parameters)
+    controller = Controller(mode, speed, parameters,**({'control':control} if control is not None else {}))
     adapter = None
     if transport:
         if transport_config and 'max_gap_frames' not in transport_config:
@@ -163,6 +163,7 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
     report['topology_sha256'] = hashlib.sha256(json.dumps(normalized_walls).encode()).hexdigest()
     report['corridor_width'] = width
     report['controller_parameters'] = asdict(controller.parameters)
+    report['control_parameters'] = asdict(controller.control) if hasattr(controller,'control') else None
     report['randomized_parameters'] = perturbations
     report['transport_adapter'] = transport
     report['transport_config'] = transport_config
@@ -200,6 +201,7 @@ if __name__ == '__main__':
     p.add_argument('--mode', default='navigate')
     p.add_argument('--speed', type=float)
     p.add_argument('--parameters', type=Path)
+    p.add_argument('--control-config',type=Path)
     p.add_argument('--randomize', action='store_true')
     p.add_argument('--transport', action='store_true')
     p.add_argument('--transport-config',type=Path)
@@ -210,4 +212,5 @@ if __name__ == '__main__':
     args = p.parse_args()
     params = json.loads(args.parameters.read_text()) if args.parameters else None
     transport_config = json.loads(args.transport_config.read_text()) if args.transport_config else None
-    run(args.scene, args.seed, args.seconds, args.mode, args.speed, args.output, args.pose, args.width, params, args.randomize, args.transport, transport_config,args.latency_steps)
+    control=json.loads(args.control_config.read_text()) if args.control_config else None
+    run(args.scene, args.seed, args.seconds, args.mode, args.speed, args.output, args.pose, args.width, params, args.randomize, args.transport, transport_config,args.latency_steps,control)

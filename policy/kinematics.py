@@ -62,7 +62,7 @@ class ArmModel:
         centers = positions + np.einsum('bij,bj->bi',rotations,self.inertial_offsets)
         moments = self.descendant_mass@centers-self.mass_sum[:,None]*origins
         gravity = 9.81*(axes[:,0]*moments[:,1]-axes[:,1]*moments[:,0])
-        out = {}
+        out = {'waist_gravity':gravity[12:15].copy()}
         for side, first in (('left', 15), ('right', 22)):
             b = self.names[side+'_wrist_yaw_link']
             hand = positions[b]+rotations[b]@[.075,0,0]

@@ -29,6 +29,7 @@ def test_arm_fk_jacobian_and_gravity_match_mujoco():
         p.data.qvel[:] = 0
         mujoco.mj_forward(p.model, p.data)
         kin = model.evaluate(p.q(), quat)
+        np.testing.assert_allclose(kin['waist_gravity'],p.data.qfrc_bias[p.vadr[12:15]],atol=1e-8)
         for side, first in (('left',15), ('right',22)):
             body = p.model.body(side+'_wrist_yaw_link').id
             hand = p.data.xpos[body]+p.data.xmat[body].reshape(3,3)@[.075,0,0]

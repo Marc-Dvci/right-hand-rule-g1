@@ -16,6 +16,10 @@ on:
         description: Repeats of both standard and task scenes
         default: '3'
         required: true
+      task_seconds:
+        description: Task duration in simulated seconds
+        default: '300'
+        required: true
       counterfactuals:
         description: Also run all six starts on both scenes
         type: boolean
@@ -41,6 +45,7 @@ jobs:
       RELEASE_TAG: ${{ inputs.release_tag }}
       SCENE_NAME: ${{ inputs.scene }}
       REPEATS: ${{ inputs.repeats }}
+      TASK_SECONDS: ${{ inputs.task_seconds }}
       REPORT_TIMEOUT_FIX: ${{ inputs.report_timeout_fix }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -68,7 +73,7 @@ jobs:
           if [[ "$REPORT_TIMEOUT_FIX" = true ]]; then fix+=(--report-timeout-fix); fi
           for repeat in $(seq 1 "$REPEATS"); do
             python tools/run_kit.py --seconds 60 --name "standard-$repeat"
-            python tools/run_kit.py --scene "$SCENE_NAME" --seconds 300 --name "task-$repeat" "${fix[@]}"
+            python tools/run_kit.py --scene "$SCENE_NAME" --seconds "$TASK_SECONDS" --name "task-$repeat" "${fix[@]}"
             python tools/score_container.py "evidence/container-native/task-$repeat" "scene/$SCENE_NAME.xml"
           done
       - name: Record every counterfactual on both scenes

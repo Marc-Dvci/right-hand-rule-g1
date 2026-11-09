@@ -57,7 +57,7 @@ class Walker:
         self.seeded = False
         self.last_features = np.zeros(516, np.float32)
 
-    def update(self, q, dq, quat, gyro, command):
+    def update(self, q, dq, quat, gyro, command,*,action_filter=1.,blend_width=0.):
         obs = np.zeros(86, np.float32)
         obs[:3] = np.asarray(command) * [2, 2, .5]
         obs[3] = .74
@@ -73,8 +73,16 @@ class Walker:
             self.history[:-1] = self.history[1:]
             self.history[-1] = obs
         self.last_features = self.history.reshape(-1).copy()
-        net = self.balance if np.linalg.norm(command) < 1e-6 else self.walk
-        self.action = net(self.last_features)[0]
+        magnitude=np.linalg.norm(command)
+        if magnitude<1e-6:
+            action=self.balance(self.last_features)[0]
+        elif blend_width and magnitude<blend_width:
+            alpha=magnitude/blend_width
+            alpha=alpha*alpha*(3-2*alpha)
+            action=(1-alpha)*self.balance(self.last_features)[0]+alpha*self.walk(self.last_features)[0]
+        else:
+            action=self.walk(self.last_features)[0]
+        self.action = action.copy() if action_filter==1. else self.action+action_filter*(action-self.action)
         if not np.isfinite(self.action).all():
             raise ValueError('Nonfinite network output')
         return np.clip(self.action * .25 + DEFAULT[:15], LOWER, UPPER)

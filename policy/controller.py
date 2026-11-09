@@ -31,13 +31,32 @@ class Parameters:
             raise ValueError('Controller velocity envelope exceeded')
 
 
+@dataclass(frozen=True)
+class ControlParameters:
+    waist_kp: float = 190.
+    waist_kd: float = 3.5
+    waist_gravity: float = 0.
+    walker_prediction: float = 0.
+    action_filter: float = 1.
+    walk_blend: float = 0.
+
+    def __post_init__(self):
+        for key,high in (('waist_kp',190.),('waist_kd',15.),('waist_gravity',1.2),
+                         ('walker_prediction',.06),('action_filter',1.),('walk_blend',.1)):
+            value=getattr(self,key)
+            if not np.isfinite(value) or not 0<=value<=high:
+                raise ValueError('Invalid control parameter: '+key)
+        if self.action_filter<.1:
+            raise ValueError('Action filter must retain control authority')
+
+
 class Controller:
     """act accepts only q/dq/quat/gyro and host control readiness.
 
     No maze, contact labels, world coordinates or simulator velocity enter it.
     All distances are estimates from foot kinematics; yaw is from the IMU.
     """
-    def __init__(self, mode='navigate', speed=None, parameters=None):
+    def __init__(self, mode='navigate', speed=None, parameters=None, control=None):
         if mode not in ('navigate', 'neutral', 'touch_off', 'touch_shuffled', 'walk_test'):
             raise ValueError('Unknown controller mode')
         self.mode = mode
@@ -45,6 +64,10 @@ class Controller:
         if parameters is None:
             parameters = json.loads(default_path.read_text()) if default_path.exists() else {}
         self.parameters = Parameters(**parameters)
+        control_path=Path(__file__).parent/'models/control.json'
+        if control is None:
+            control=json.loads(control_path.read_text()) if control_path.exists() else {}
+        self.control=ControlParameters(**control)
         self.speed = self.parameters.speed if speed is None else speed
         self.walker = Walker()
         self.model = ArmModel()
@@ -248,7 +271,14 @@ class Controller:
             cmd[:] = 0
             self.velocity_integral *= .95
         self.velocity_command += np.clip(cmd-self.velocity_command, [-.003,-.003,-.006], [.003,.003,.006])
-        lower = self.walker.update(q, dq, quat, gyro, self.velocity_command)
+        prediction=self.control.walker_prediction
+        future_q=q+prediction*dq
+        w,x,y,z=quat
+        a,b,c=gyro*prediction/2
+        future_quat=np.array([w-x*a-y*b-z*c,x+w*a+y*c-z*b,y+w*b-x*c+z*a,z+w*c+x*b-y*a])
+        future_quat/=np.linalg.norm(future_quat)
+        lower = self.walker.update(future_q,dq,future_quat,gyro,self.velocity_command,
+                                  action_filter=self.control.action_filter,blend_width=self.control.walk_blend)
         target_alpha = 0. if self.state.startswith('RETRACT_') or self.state in ('TURN', 'GUARD', 'STOP') else min(1., self.age/3.)
         self.arm_alpha += np.clip(target_alpha-self.arm_alpha, -.012, .012)
         targets = np.r_[lower, self.initial_arms+self.arm_alpha*(self.arm_pose-self.initial_arms)]
@@ -261,7 +291,9 @@ class Controller:
             self.right_adjustment *= .96
         targets[22:] += self.arm_alpha*self.right_adjustment
         tau = np.zeros(29)
-        tau[12:15] = np.clip(190*(targets[12:15]-q[12:15])-3.5*dq[12:15], [-25,-20,-20], [25,20,20])
+        tau[12:15] = np.clip(self.control.waist_kp*(targets[12:15]-q[12:15])-
+            self.control.waist_kd*dq[12:15]+self.control.waist_gravity*kin['waist_gravity'],
+            [-25,-20,-20],[25,20,20])
         for side, i in (('left', 15), ('right', 22)):
             tau[i:i+7] = kin[side]['gravity']*self.arm_alpha
             tau[i:i+7] -= 40*self.arm_alpha*(targets[i:i+7]-q[i:i+7])

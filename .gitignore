@@ -15,5 +15,6 @@ reports/
 execution/
 research/*.log
 research/qemu-before.txt
+research/competitor-archives/
 scene/maze-*-w*.xml
 scene/maze-*-w*.json
