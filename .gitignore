@@ -12,3 +12,8 @@ research/*.zip
 .tools/
 evidence/
 reports/
+execution/
+research/*.log
+research/qemu-before.txt
+scene/maze-*-w*.xml
+scene/maze-*-w*.json

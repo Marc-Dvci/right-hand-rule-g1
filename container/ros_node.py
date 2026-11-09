@@ -4,6 +4,7 @@ import gc
 import json
 import time
 import sys
+from pathlib import Path
 import numpy as np
 import rclpy
 from rclpy.node import Node
@@ -16,10 +17,10 @@ from timing import TimedPolicy
 
 
 class TouchNode(Node):
-    def __init__(self, controller):
+    def __init__(self, controller,transport_config=None):
         super().__init__('right_hand_rule')
         self.controller = controller
-        self.timed_policy = TimedPolicy(controller)
+        self.timed_policy = TimedPolicy(controller,**(transport_config or {}))
         self.session = None
         self.sequence = 0
         self.sent = -1
@@ -104,9 +105,13 @@ class TouchNode(Node):
 
 def main():
     print('RIGHT HAND RULE: loading verified networks',flush=True)
-    controller = Controller()
+    config = Path(__file__).parent/'navigation.json'
+    parameters = json.loads(config.read_text()) if config.exists() else None
+    controller = Controller(parameters=parameters)
+    deployment = Path(__file__).parent/'deployment.json'
+    transport_config = json.loads(deployment.read_text()) if deployment.exists() else None
     rclpy.init()
-    node = TouchNode(controller)
+    node = TouchNode(controller,transport_config)
     print('RIGHT HAND RULE: ROS node initialized',flush=True)
     gc.disable()
     try:

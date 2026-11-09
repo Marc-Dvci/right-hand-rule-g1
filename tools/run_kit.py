@@ -15,7 +15,10 @@ p.add_argument('--scene', default='standard')
 p.add_argument('--seconds', type=int, default=60)
 p.add_argument('--name', default='standard-001')
 p.add_argument('--counterfactuals', action='store_true')
+p.add_argument('--report-timeout-fix',action='store_true')
 args = p.parse_args()
+from prepare_kit import prepare
+KIT,patch = prepare(ROOT,args.report_timeout_fix)
 environment = KIT/'containers/upload/environment'
 shutil.copytree(ROOT/'scene', environment, dirs_exist_ok=True)
 native = platform.machine().lower() in ('aarch64','arm64')
@@ -37,6 +40,7 @@ if archive.exists():
     archive_digest = digest.hexdigest()
 (output/'invocation.json').write_text(json.dumps(dict(command=command,image_id=image['Id'],
     image_architecture=image['Architecture'],image_archive_sha256=archive_digest,
+    report_timeout_patch=patch,
     runtime='native ARM64' if native else 'local x86_64 with ARM64 emulation; not native ARM64',
     github_run=(os.environ.get('GITHUB_SERVER_URL','https://github.com')+'/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'])
         if os.environ.get('GITHUB_REPOSITORY') and os.environ.get('GITHUB_RUN_ID') else None),indent=2)+'\n')

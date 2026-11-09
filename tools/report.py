@@ -87,7 +87,8 @@ def episode_figures(episode,output):
             axis = axes[n]
             component,sign = (0,-1) if n==0 else (1,1)
             axis.plot(t,sign*z['true_force'][:,n,component],label='Simulated contact force',lw=.8,color='#528cdd')
-            axis.plot(t,sign*z['estimated_force'][:,n,component],label='Joint-based estimate',lw=.8,color='#159d76')
+            observation_time = z['observation_time'] if 'observation_time' in z else t
+            axis.plot(observation_time,sign*z['estimated_force'][:,n,component],label='Joint-based estimate',lw=.8,color='#159d76')
             axis.set(ylabel='Force (N)',title=side)
             axis.legend(loc='upper right')
         axes[2].plot(t,z['thrash'],color='#159d76',lw=1)

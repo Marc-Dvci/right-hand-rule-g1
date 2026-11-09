@@ -12,6 +12,18 @@ on:
         description: Task scene basename under scene/
         default: maze-0-w1.250
         required: true
+      repeats:
+        description: Repeats of both standard and task scenes
+        default: '3'
+        required: true
+      counterfactuals:
+        description: Also run all six starts on both scenes
+        type: boolean
+        default: true
+      report_timeout_fix:
+        description: Apply the disclosed report-only RPC timeout fix
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -19,7 +31,7 @@ permissions:
 jobs:
   kit:
     runs-on: ubuntu-24.04-arm
-    timeout-minutes: 35
+    timeout-minutes: 45
     env:
       OMP_NUM_THREADS: '1'
       OPENBLAS_NUM_THREADS: '1'
@@ -28,6 +40,8 @@ jobs:
       IMAGE_SHA: ${{ inputs.image_sha256 }}
       RELEASE_TAG: ${{ inputs.release_tag }}
       SCENE_NAME: ${{ inputs.scene }}
+      REPEATS: ${{ inputs.repeats }}
+      REPORT_TIMEOUT_FIX: ${{ inputs.report_timeout_fix }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -49,15 +63,19 @@ jobs:
           python -m pytest -q tests
       - name: Test standard and actual task scenes three times each
         run: |
-          for repeat in 1 2 3; do
+          [[ "$REPEATS" =~ ^[1-3]$ ]]
+          fix=()
+          if [[ "$REPORT_TIMEOUT_FIX" = true ]]; then fix+=(--report-timeout-fix); fi
+          for repeat in $(seq 1 "$REPEATS"); do
             python tools/run_kit.py --seconds 60 --name "standard-$repeat"
-            python tools/run_kit.py --scene "$SCENE_NAME" --seconds 240 --name "task-$repeat"
+            python tools/run_kit.py --scene "$SCENE_NAME" --seconds 300 --name "task-$repeat" "${fix[@]}"
+            python tools/score_container.py "evidence/container-native/task-$repeat" "scene/$SCENE_NAME.xml"
           done
       - name: Record every counterfactual on both scenes
-        if: always()
+        if: always() && inputs.counterfactuals
         run: |
           python tools/run_kit.py --seconds 60 --counterfactuals --name counterfactuals-standard || true
-          python tools/run_kit.py --scene "$SCENE_NAME" --seconds 60 --counterfactuals --name counterfactuals-task || true
+          python tools/run_kit.py --scene "$SCENE_NAME" --seconds 60 --counterfactuals --name counterfactuals-task --report-timeout-fix || true
       - name: Preserve raw evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

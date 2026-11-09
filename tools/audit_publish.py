@@ -11,6 +11,8 @@ patterns = [rb'github_pat_[A-Za-z0-9_]{30,}',rb'gh[pousr]_[A-Za-z0-9]{25,}',
             rb'sk-[A-Za-z0-9]{30,}',rb'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----']
 blocked,inventory = [],[]
 for name in filter(None,files):
+    if name == 'research/publication-audit.json':
+        continue  # A report cannot contain its own stable digest.
     path = ROOT/name
     data = path.read_bytes()
     if any(part in ('.venv','.aws','.ssh','credentials.json','.env') for part in path.relative_to(ROOT).parts):

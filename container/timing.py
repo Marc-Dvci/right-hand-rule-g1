@@ -3,8 +3,11 @@ import numpy as np
 
 
 class TimedPolicy:
-    def __init__(self,controller):
+    def __init__(self,controller,max_gap_frames=5):
         self.controller = controller
+        if not 1<=max_gap_frames<=5:
+            raise ValueError('Frame reconstruction must stay inside 100 ms')
+        self.max_gap_frames = max_gap_frames
         self.previous = None
         self.previous_id = None
         self.reconstructed_frames = 0
@@ -12,7 +15,7 @@ class TimedPolicy:
     def act(self,observation,observation_id,ready):
         current = {k:np.asarray(observation[k],dtype=float) for k in ('q','dq','quat','gyro')}
         gap = 1 if self.previous_id is None else observation_id-self.previous_id
-        if not 1 <= gap <= 5:
+        if not 1 <= gap <= self.max_gap_frames:
             raise ValueError('Observation sequence gap exceeds the 100 ms control envelope')
         held_command = getattr(self.controller,'last_command',None)
         walker = getattr(self.controller,'walker',None)

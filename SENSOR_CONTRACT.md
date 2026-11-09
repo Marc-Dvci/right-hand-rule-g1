@@ -12,6 +12,10 @@ The complete controller uses joint state and pelvis IMU only. There is no camera
 
 Transport: joint state from `/safety/policy_observation` and IMU from `/safety/policy_state`. They must have the same observation ID. The adapter caches at most 16 messages per stream, rejects duplicate/out-of-order IDs and pairs older than 120 ms, uses the checker-issued session ID, and publishes all 29 slots to `/safety/precheck`.
 
+Observation-ID gaps of up to five frames are reconstructed on the 20 ms policy clock using interpolation between received joint/IMU samples. Quaternion interpolation preserves the unit norm and sign equivalence. During reconstructed frames, the estimator and network retain the last command/action actually transmitted to the motors. Only the final current command is published. Larger gaps stop output. This handles missed samples; it does not replace the host freshness deadlines.
+
+Command-delay stress testing is separate from the nominal runner test. A full additional 20 ms delay destabilized the original high-gain waist feedback. Experimental damping, torso-hold and prediction variants are kept in the evaluation harness, not in the submitted inference path. Do not infer latency robustness from a nominal container pass.
+
 The adapter copies only quaternion, gyro and control readiness from the JSON feed. It discards simulator position, base velocity, object state and any other fields. A test replaces these fields with invalid values and checks bitwise equality of commands. Distances and translations used by the policy are estimates obtained from stance-foot joint kinematics, with the IMU providing relative orientation. Their errors are evaluated against simulator truth in the harness; truth never crosses the policy boundary.
 
 Invalid joint/IMU shape, nonfinite values or an invalid quaternion stop publication. Missing/freshness failures let the host's normal deadlines stop output. `/safety/abort` latches the adapter off. The image never publishes motor commands directly.

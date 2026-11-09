@@ -3,6 +3,8 @@
 !policy/**
 !container/
 !container/**
+!config/
+!config/**
 !vendor/
 !vendor/builder-kit/
 !vendor/builder-kit/ros2/

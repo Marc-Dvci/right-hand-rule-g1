@@ -23,7 +23,10 @@ def write_scene(name, walls, exit_spec=None):
         ET.ElementTree(root).write(temp, encoding='unicode')
         temp_path = temp.name
     os.replace(temp_path,scene)
-    (scene.with_suffix('.json')).write_text(json.dumps(dict(walls=walls, exit=exit_spec), indent=2)+'\n')
+    with tempfile.NamedTemporaryFile(mode='w',suffix='.json',dir=scene.parent,delete=False) as temp:
+        temp.write(json.dumps(dict(walls=walls, exit=exit_spec), indent=2)+'\n')
+        temp_path = temp.name
+    os.replace(temp_path,scene.with_suffix('.json'))
     return scene
 
 
