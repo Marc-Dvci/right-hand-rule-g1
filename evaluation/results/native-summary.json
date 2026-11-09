@@ -1,0 +1,1350 @@
+{
+  "repeats": 3,
+  "standard_passes": 3,
+  "task_passes": 3,
+  "task_exits": 3,
+  "task_status": "simulation_checks_complete",
+  "exact_image_gate_passed": true,
+  "image_sha256": "e6efe832912adb46f547911b29b8240a87234a6b68684bb26c0622852ac79f92",
+  "archive_config_digest": "sha256:f7dff72dd5a5f5d3874f9c1f5b37c94e0e58f94d1c41c80c80f2e93280d00766",
+  "native_peak_thrash": 0.3895575467541934,
+  "rows": [
+    {
+      "scene": "standard",
+      "repeat": 1,
+      "builder_status": "simulation_checks_complete",
+      "reason": null,
+      "clean": true,
+      "exited": null,
+      "exit_time": null,
+      "seconds": 60.00000000002736,
+      "commands": 3001,
+      "diagnostic_warnings": 0,
+      "hard_findings": [],
+      "peak_thrash": 0.260840419927112,
+      "github_run": "https://github.com/Marc-Dvci/right-hand-rule-g1/actions/runs/42656538931",
+      "report_timeout_patch": null,
+      "report_path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/standard-1/report.json",
+      "report_sha256": "849e228de12794559c61e96c9bf15f01435a0977070fa18cc61a1e75cec5d425",
+      "trace_sha256": "21d89a2cd150620d082a768ea42f66d813563f7c5b11d7b8784ffaa44731f365"
+    },
+    {
+      "scene": "standard",
+      "repeat": 2,
+      "builder_status": "simulation_checks_complete",
+      "reason": null,
+      "clean": true,
+      "exited": null,
+      "exit_time": null,
+      "seconds": 60.00000000002736,
+      "commands": 3001,
+      "diagnostic_warnings": 0,
+      "hard_findings": [],
+      "peak_thrash": 0.2606703960214202,
+      "github_run": "https://github.com/Marc-Dvci/right-hand-rule-g1/actions/runs/42656538931",
+      "report_timeout_patch": null,
+      "report_path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/standard-2/report.json",
+      "report_sha256": "957b90bd9c21dd95cf5174b92bf784bca28b5016aaae7567d39db61328402618",
+      "trace_sha256": "5ce50de4ac42869f4322ae89e54f1bb207db3161daad793c267f08daec7842c7"
+    },
+    {
+      "scene": "standard",
+      "repeat": 3,
+      "builder_status": "simulation_checks_complete",
+      "reason": null,
+      "clean": true,
+      "exited": null,
+      "exit_time": null,
+      "seconds": 60.00000000002736,
+      "commands": 3001,
+      "diagnostic_warnings": 0,
+      "hard_findings": [],
+      "peak_thrash": 0.2607859436572591,
+      "github_run": "https://github.com/Marc-Dvci/right-hand-rule-g1/actions/runs/42656538931",
+      "report_timeout_patch": null,
+      "report_path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/standard-3/report.json",
+      "report_sha256": "81a246b9efe3a2c5522e236fc2c31d86150fb7c627d363cfdb27e788777c6013",
+      "trace_sha256": "a566fd322ce82162c54f74c1724167114aa10f425a177b92d0bde9bd5ff21437"
+    },
+    {
+      "scene": "task",
+      "repeat": 1,
+      "builder_status": "simulation_checks_complete",
+      "reason": null,
+      "clean": true,
+      "exited": true,
+      "exit_time": 168.17563009193606,
+      "seconds": 300.00000000070435,
+      "commands": 15001,
+      "diagnostic_warnings": 0,
+      "hard_findings": [],
+      "peak_thrash": 0.38921980745697116,
+      "github_run": "https://github.com/Marc-Dvci/right-hand-rule-g1/actions/runs/42656538931",
+      "report_timeout_patch": {
+        "file": "containers/sim/bridge.py",
+        "original_sha256": "9ed51ae12e4f4559609c3076a63e0e2bdf27e29539ce685f7a7fd3d13245e533",
+        "patched_sha256": "e74ce68cbcdd70fd84b357f56f44c2b023244ebcd8ecaca17e09f73c00e3789f",
+        "before": "deadline = time.monotonic() + self.timeout",
+        "after": "deadline = time.monotonic() + (max(self.timeout, 60.0) if request.get(\"op\") == \"report\" else self.timeout)",
+        "scope": "Only the report RPC timeout after simulation. Active control/freshness deadlines, dynamics, gains, safety checks and trace data are unchanged."
+      },
+      "report_path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/task-1/report.json",
+      "report_sha256": "952534d31f1d208be530f25a91c5d7032f4421cbd713e86c9bcf991b4831fb46",
+      "trace_sha256": "8bfb9a649d2c1e9c95339a70e0a416aa2a2bd8809acc233a5ce081099e1aca9c"
+    },
+    {
+      "scene": "task",
+      "repeat": 2,
+      "builder_status": "simulation_checks_complete",
+      "reason": null,
+      "clean": true,
+      "exited": true,
+      "exit_time": 168.17563009193606,
+      "seconds": 300.00000000070435,
+      "commands": 15001,
+      "diagnostic_warnings": 0,
+      "hard_findings": [],
+      "peak_thrash": 0.3895575467541934,
+      "github_run": "https://github.com/Marc-Dvci/right-hand-rule-g1/actions/runs/42656538931",
+      "report_timeout_patch": {
+        "file": "containers/sim/bridge.py",
+        "original_sha256": "9ed51ae12e4f4559609c3076a63e0e2bdf27e29539ce685f7a7fd3d13245e533",
+        "patched_sha256": "e74ce68cbcdd70fd84b357f56f44c2b023244ebcd8ecaca17e09f73c00e3789f",
+        "before": "deadline = time.monotonic() + self.timeout",
+        "after": "deadline = time.monotonic() + (max(self.timeout, 60.0) if request.get(\"op\") == \"report\" else self.timeout)",
+        "scope": "Only the report RPC timeout after simulation. Active control/freshness deadlines, dynamics, gains, safety checks and trace data are unchanged."
+      },
+      "report_path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/task-2/report.json",
+      "report_sha256": "9012095d93ea13d78a6a3ee953d6b7a6c5d8ca5bcab47dfd30997ef01e689c61",
+      "trace_sha256": "df911b472a6dfe817eaded65f205287135c324633de55d2ffded8800d27b9e6f"
+    },
+    {
+      "scene": "task",
+      "repeat": 3,
+      "builder_status": "simulation_checks_complete",
+      "reason": null,
+      "clean": true,
+      "exited": true,
+      "exit_time": 168.17563009193606,
+      "seconds": 300.00000000070435,
+      "commands": 15001,
+      "diagnostic_warnings": 0,
+      "hard_findings": [],
+      "peak_thrash": 0.3893372590582078,
+      "github_run": "https://github.com/Marc-Dvci/right-hand-rule-g1/actions/runs/42656538931",
+      "report_timeout_patch": {
+        "file": "containers/sim/bridge.py",
+        "original_sha256": "9ed51ae12e4f4559609c3076a63e0e2bdf27e29539ce685f7a7fd3d13245e533",
+        "patched_sha256": "e74ce68cbcdd70fd84b357f56f44c2b023244ebcd8ecaca17e09f73c00e3789f",
+        "before": "deadline = time.monotonic() + self.timeout",
+        "after": "deadline = time.monotonic() + (max(self.timeout, 60.0) if request.get(\"op\") == \"report\" else self.timeout)",
+        "scope": "Only the report RPC timeout after simulation. Active control/freshness deadlines, dynamics, gains, safety checks and trace data are unchanged."
+      },
+      "report_path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/task-3/report.json",
+      "report_sha256": "731e1ef4bf5d88c1967d14104421ca589a86ed75f44914fa05887b54cee02f98",
+      "trace_sha256": "3af477c78aa70a60354ceafb1c1c3d7dab994412966a5cbe304282408667ff1d"
+    }
+  ],
+  "counterfactuals": [
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-standard/poses/left_side/report.json",
+      "pose": "left_side",
+      "status": "violation",
+      "scene": "standard",
+      "reason": "base_angular_speed_limit",
+      "detail": {
+        "joint": "2",
+        "value": 6.403963927162572,
+        "limit": 6.0,
+        "units": "rad/s"
+      },
+      "seconds": 59.702000000027,
+      "handoff": null,
+      "commands": 24,
+      "first_stop_time": 0.46800000000000036,
+      "warnings": {
+        "left_hip_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 149.3781219086009,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 5,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 1.2298295913696295,
+            "q_commanded": 1.0432552751187816,
+            "requested_torque_nm": 107.18614743762718,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 1,
+            "max_correction_rad": 0.18657431625084797
+          }
+        },
+        "left_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 172.46779963081946,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 14,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -1.0977609576568605,
+            "q_commanded": -0.5978317248741658,
+            "requested_torque_nm": -154.1893849174042,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 1,
+            "max_correction_rad": 0.49992923278269474
+          }
+        },
+        "left_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 360.82717996470194,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 13,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 1.6182994680175786,
+            "q_commanded": 1.2973556823489631,
+            "requested_torque_nm": 189.28875713372315,
+            "command_budget_nm": 125.10000000000001,
+            "hard_limit_nm": 139,
+            "count": 1,
+            "max_correction_rad": 0.3209437856686155
+          }
+        },
+        "right_hip_roll": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 273.8716730813314,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 12,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -1.198462604728699,
+            "q_commanded": -0.7883091196301627,
+            "requested_torque_nm": -186.62302276478047,
+            "command_budget_nm": 125.10000000000001,
+            "hard_limit_nm": 139,
+            "count": 1,
+            "max_correction_rad": 0.41015348509853633
+          }
+        },
+        "right_hip_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 125.83031521798715,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 3,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 1.0912413369674685,
+            "q_commanded": 0.8469197614534673,
+            "requested_torque_nm": 115.8482363271002,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 1,
+            "max_correction_rad": 0.24432157551400124
+          }
+        },
+        "left_wrist_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 9.083997163912517,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 12,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.0,
+            "q_commanded": 0.011433666011390467,
+            "requested_torque_nm": -4.957346640455619,
+            "command_budget_nm": 4.5,
+            "hard_limit_nm": 5.0,
+            "count": 4,
+            "max_correction_rad": 0.038899952731875284
+          }
+        },
+        "waist_roll": {
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.3151641645126345,
+            "q_commanded": 0.3075618721032216,
+            "requested_torque_nm": 33.40057310235322,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35.0,
+            "count": 1,
+            "max_correction_rad": 0.007602292409412903
+          }
+        },
+        "right_knee": {
+          "limits": [
+            {
+              "reason": "joint_velocity_limit",
+              "value": 21.864162546773375,
+              "limit": 20.0,
+              "units": "rad/s",
+              "count": 7
+            }
+          ]
+        },
+        "right_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 142.80180099766903,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 1,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.5089845388336183,
+            "q_commanded": 0.09439474212054055,
+            "requested_torque_nm": 141.38846950696166,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 1,
+            "max_correction_rad": 0.4145897967130777
+          }
+        },
+        "left_ankle_pitch": {
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -0.4956332620391847,
+            "q_commanded": -0.48302238740432174,
+            "requested_torque_nm": -32.004434985394525,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35,
+            "count": 1,
+            "max_correction_rad": 0.012610874634862934
+          }
+        }
+      },
+      "sha256": "e778e4ba7e180cacdf17e97230126c4dcf5bafedec74649d956e368cda62af11"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-standard/poses/prone/report.json",
+      "pose": "prone",
+      "status": "violation",
+      "scene": "standard",
+      "reason": "base_angular_speed_limit",
+      "detail": {
+        "joint": "2",
+        "value": 6.154781428068812,
+        "limit": 6.0,
+        "units": "rad/s"
+      },
+      "seconds": 59.986000000027346,
+      "handoff": null,
+      "commands": 18,
+      "first_stop_time": 0.34600000000000025,
+      "warnings": {
+        "left_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 174.59895343113487,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 8,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "waist_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 36.94635948952883,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 8,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "left_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 193.5659580600304,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 12,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.6574493658905034,
+            "q_commanded": 0.3950347559714049,
+            "requested_torque_nm": 118.56219148786478,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.2788969705218818
+          }
+        },
+        "right_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 194.6437790268142,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 11,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -0.9847520458908089,
+            "q_commanded": -0.5289443665388694,
+            "requested_torque_nm": -147.57115190279092,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.45580767935193944
+          }
+        },
+        "right_ankle_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 46.19260257541478,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 1,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": -0.614806483398438,
+            "q_commanded": -0.5053549356146303,
+            "requested_torque_nm": -35.878061911352304,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35,
+            "count": 1,
+            "max_correction_rad": 0.10945154778380772
+          }
+        }
+      },
+      "sha256": "727eb33a78982c82af5f8d7504749ad2085ac89bccb530b3c11d8e6b511b6903"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-standard/poses/right_side/report.json",
+      "pose": "right_side",
+      "status": "violation",
+      "scene": "standard",
+      "reason": "base_angular_speed_limit",
+      "detail": {
+        "joint": "0",
+        "value": 6.1806890301408535,
+        "limit": 6.0,
+        "units": "rad/s"
+      },
+      "seconds": 59.98200000002734,
+      "handoff": null,
+      "commands": 22,
+      "first_stop_time": 0.4220000000000003,
+      "warnings": {
+        "right_hip_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 152.42040874334688,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 15,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.773237884521485,
+            "q_commanded": 0.6678522115012068,
+            "requested_torque_nm": 95.00785095304174,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.10538567302027824
+          }
+        },
+        "left_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 143.3849696374143,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 3,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "right_wrist_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 21.221033943519647,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 29,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.0,
+            "q_commanded": -0.21262539638217137,
+            "requested_torque_nm": 13.005015855286855,
+            "command_budget_nm": 4.5,
+            "hard_limit_nm": 5.0,
+            "count": 5,
+            "max_correction_rad": 0.24118389905866078
+          }
+        },
+        "left_hip_roll": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 316.57161469863854,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 8,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 1.0064068093643197,
+            "q_commanded": 0.9872309872446394,
+            "requested_torque_nm": 127.97637331795205,
+            "command_budget_nm": 125.10000000000001,
+            "hard_limit_nm": 139,
+            "count": 7,
+            "max_correction_rad": 0.34411973676714125
+          }
+        },
+        "left_hip_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 160.34028157037764,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 2,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "right_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 145.5468856438897,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 5,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -0.47104950589370753,
+            "q_commanded": -0.5675383951488084,
+            "requested_torque_nm": 93.67333338826514,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 1,
+            "max_correction_rad": 0.09648888925510091
+          }
+        },
+        "right_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 322.26513265991133,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 9,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.9130655147552496,
+            "q_commanded": 1.4132418362906671,
+            "requested_torque_nm": -225.1352643070835,
+            "command_budget_nm": 125.10000000000001,
+            "hard_limit_nm": 139,
+            "count": 1,
+            "max_correction_rad": 0.5001763215354176
+          }
+        },
+        "right_wrist_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 7.976664467759845,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 12,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.0,
+            "q_commanded": -0.02044440779599742,
+            "requested_torque_nm": 5.317776311839896,
+            "command_budget_nm": 4.5,
+            "hard_limit_nm": 5.0,
+            "count": 2,
+            "max_correction_rad": 0.02044440779599742
+          }
+        },
+        "left_wrist_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 14.655699172505127,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 12,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.0,
+            "q_commanded": -0.13176165287508543,
+            "requested_torque_nm": 9.770466115003417,
+            "command_budget_nm": 4.5,
+            "hard_limit_nm": 5.0,
+            "count": 2,
+            "max_correction_rad": 0.13176165287508543
+          }
+        },
+        "left_wrist_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 12.625401826535835,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 8,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.0,
+            "q_commanded": -0.09792336377559725,
+            "requested_torque_nm": 8.416934551023889,
+            "command_budget_nm": 4.5,
+            "hard_limit_nm": 5.0,
+            "count": 1,
+            "max_correction_rad": 0.09792336377559725
+          }
+        },
+        "waist_roll": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 39.724868948798374,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 1,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -0.4103886432094576,
+            "q_commanded": -0.22456759089569495,
+            "requested_torque_nm": -77.95526307844068,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35.0,
+            "count": 1,
+            "max_correction_rad": 0.18582105231376267
+          }
+        }
+      },
+      "sha256": "8d0322b6196cb28a80b4ff8424acff40a14a3807d2ba80264cb72dd6de40155c"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-standard/poses/seated/report.json",
+      "pose": "seated",
+      "status": "violation",
+      "scene": "standard",
+      "reason": "base_angular_speed_limit",
+      "detail": {
+        "joint": "2",
+        "value": 6.096773361921868,
+        "limit": 6.0,
+        "units": "rad/s"
+      },
+      "seconds": 59.94200000002729,
+      "handoff": null,
+      "commands": 30,
+      "first_stop_time": 0.5960000000000004,
+      "warnings": {
+        "left_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 223.78791843936781,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 11,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "left_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 216.1631370347989,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 39,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -1.433297872543335,
+            "q_commanded": -1.0314960961164967,
+            "requested_torque_nm": -139.47026646402574,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 12,
+            "max_correction_rad": 0.9130875802319927
+          }
+        },
+        "right_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 210.60917722086594,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 24,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": -0.6388490796089172,
+            "q_commanded": -0.9002938520793405,
+            "requested_torque_nm": 118.4167158705635,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 10,
+            "max_correction_rad": 0.8760616583095979
+          }
+        },
+        "right_hip_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 129.73355625224934,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 9,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.12735387682914734,
+            "q_commanded": 0.059006277912964866,
+            "requested_torque_nm": 89.45213983742738,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 7,
+            "max_correction_rad": 0.35208044032182195
+          }
+        },
+        "left_hip_roll": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 177.24756011300997,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 1,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 1.043451113983155,
+            "q_commanded": 0.9426244577213315,
+            "requested_torque_nm": 140.22399843927352,
+            "command_budget_nm": 125.10000000000001,
+            "hard_limit_nm": 139,
+            "count": 1,
+            "max_correction_rad": 0.10082665626182352
+          }
+        },
+        "right_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 320.053870276414,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 2,
+              "torque_kind": "PD demand"
+            },
+            {
+              "reason": "joint_velocity_limit",
+              "value": 34.442388892879805,
+              "limit": 20.0,
+              "units": "rad/s",
+              "count": 21
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 1.923997229000856,
+            "q_commanded": 1.846210233069177,
+            "requested_torque_nm": 140.65739918633588,
+            "command_budget_nm": 125.10000000000001,
+            "hard_limit_nm": 139,
+            "count": 2,
+            "max_correction_rad": 0.5934737304775299
+          }
+        },
+        "waist_roll": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 37.94982479821907,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 1,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": -0.06063082456541066,
+            "q_commanded": -0.032988776887446024,
+            "requested_torque_nm": -38.41051191949116,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35.0,
+            "count": 1,
+            "max_correction_rad": 0.02764204767796464
+          }
+        },
+        "waist_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 58.93816492477752,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 14,
+              "torque_kind": "PD demand"
+            },
+            {
+              "reason": "joint_torque_limit",
+              "value": 50.0,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 11,
+              "torque_kind": "applied torque"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.5199999809265137,
+            "q_commanded": 0.4102473212274036,
+            "requested_torque_nm": 58.93816492477752,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35.0,
+            "count": 1,
+            "max_correction_rad": 0.10975265969911008
+          }
+        }
+      },
+      "sha256": "23e3567775d9c4e465942fcbc0122a377e1ad685e9746d5d52f345a3dea96562"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-standard/poses/standing/report.json",
+      "pose": "standing",
+      "status": "within_limits",
+      "scene": "standard",
+      "reason": null,
+      "detail": null,
+      "seconds": 60.00000000002736,
+      "handoff": 2.0000000000000013,
+      "commands": 3001,
+      "first_stop_time": null,
+      "warnings": {},
+      "sha256": "6045d7396aecd8ec3f30e094d7eacfba84ce0435f6afc885f8594ca6991d8fb5"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-standard/poses/supine/report.json",
+      "pose": "supine",
+      "status": "violation",
+      "scene": "standard",
+      "reason": "base_angular_speed_limit",
+      "detail": {
+        "joint": "2",
+        "value": 6.074394871514817,
+        "limit": 6.0,
+        "units": "rad/s"
+      },
+      "seconds": 59.90600000002725,
+      "handoff": null,
+      "commands": 18,
+      "first_stop_time": 0.35600000000000026,
+      "warnings": {
+        "right_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 223.69003947026397,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 24,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -0.1060767640571595,
+            "q_commanded": -0.3314831947558503,
+            "requested_torque_nm": 113.01096460480362,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.22540643069869082
+          }
+        },
+        "left_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 211.20678460839417,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 4,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -1.2498040835571298,
+            "q_commanded": -0.768042866849699,
+            "requested_torque_nm": -151.46418250611464,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.4817612167074308
+          }
+        },
+        "left_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 301.67145975687566,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 13,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "right_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 213.02179139017636,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 2,
+              "torque_kind": "PD demand"
+            },
+            {
+              "reason": "joint_velocity_limit",
+              "value": 25.04221769100538,
+              "limit": 20.0,
+              "units": "rad/s",
+              "count": 20
+            }
+          ]
+        }
+      },
+      "sha256": "1c4fbf2e92360906ce7454f6660c6acb015043ff9d37ab83a76e0135a2e84f28"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-task/poses/prone/report.json",
+      "pose": "prone",
+      "status": "violation",
+      "scene": "task",
+      "reason": "base_angular_speed_limit",
+      "detail": {
+        "joint": "2",
+        "value": 6.127835374069192,
+        "limit": 6.0,
+        "units": "rad/s"
+      },
+      "seconds": 59.99200000002735,
+      "handoff": null,
+      "commands": 18,
+      "first_stop_time": 0.35200000000000026,
+      "warnings": {
+        "left_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 174.59895343113487,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 8,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "waist_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 36.94635948952883,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 8,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "left_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 193.5659580600304,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 12,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": 0.644918066638947,
+            "q_commanded": 0.403362111041499,
+            "requested_torque_nm": 115.43339333961721,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.2775805389895614
+          }
+        },
+        "right_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 195.03038815246694,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 11,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -0.9862753880157478,
+            "q_commanded": -0.528375410478203,
+            "requested_torque_nm": -147.88499663063172,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.45789997753754474
+          }
+        },
+        "right_ankle_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 46.1816676243176,
+              "limit": 35.0,
+              "units": "Nm",
+              "count": 1,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": -0.614806483398438,
+            "q_commanded": -0.5056283093920599,
+            "requested_torque_nm": -35.86712696025512,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35,
+            "count": 1,
+            "max_correction_rad": 0.10917817400637808
+          }
+        }
+      },
+      "sha256": "467d759ffbe345cb17c7272fed709f5f910454366eb476dffa0ffc3877b371c9"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-task/poses/right_side/report.json",
+      "pose": "right_side",
+      "status": "violation",
+      "scene": "task",
+      "reason": "base_angular_speed_limit",
+      "detail": {
+        "joint": "0",
+        "value": 6.342755278309287,
+        "limit": 6.0,
+        "units": "rad/s"
+      },
+      "seconds": 59.97400000002733,
+      "handoff": null,
+      "commands": 21,
+      "first_stop_time": 0.4120000000000003,
+      "warnings": {
+        "right_hip_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 155.6841382157234,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 14,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.6936242245025641,
+            "q_commanded": 0.6348838327014729,
+            "requested_torque_nm": 88.01105877016369,
+            "command_budget_nm": 79.2,
+            "hard_limit_nm": 88,
+            "count": 2,
+            "max_correction_rad": 0.05874039180109125
+          }
+        },
+        "left_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 143.4342131226602,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 3,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "right_wrist_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 6.162531954186919,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 2,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "left_hip_roll": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 315.90771019418514,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 7,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.8992418671875008,
+            "q_commanded": 0.8969682168695565,
+            "requested_torque_nm": 125.44104754769164,
+            "command_budget_nm": 125.10000000000001,
+            "hard_limit_nm": 139,
+            "count": 6,
+            "max_correction_rad": 0.349109688951735
+          }
+        },
+        "left_hip_yaw": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 160.29693693000092,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 2,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "right_hip_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 147.51048494127224,
+              "limit": 88.0,
+              "units": "Nm",
+              "count": 4,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "right_knee": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 333.67302801492747,
+              "limit": 139.0,
+              "units": "Nm",
+              "count": 8,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "right_wrist_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 6.9184193451731435,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 2,
+              "torque_kind": "PD demand"
+            }
+          ],
+          "torque_target_clipping": {
+            "active": false,
+            "q_requested": 0.0,
+            "q_commanded": -0.0028069890862190694,
+            "requested_torque_nm": 4.612279563448762,
+            "command_budget_nm": 4.5,
+            "hard_limit_nm": 5.0,
+            "count": 1,
+            "max_correction_rad": 0.0028069890862190694
+          }
+        },
+        "left_wrist_pitch": {
+          "limits": [
+            {
+              "reason": "joint_torque_limit",
+              "value": 6.482807007863693,
+              "limit": 5.0,
+              "units": "Nm",
+              "count": 5,
+              "torque_kind": "PD demand"
+            }
+          ]
+        },
+        "waist_roll": {
+          "torque_target_clipping": {
+            "active": true,
+            "q_requested": -0.23513611602783221,
+            "q_commanded": -0.2060746205856295,
+            "requested_torque_nm": -38.765373860550675,
+            "command_budget_nm": 31.5,
+            "hard_limit_nm": 35.0,
+            "count": 1,
+            "max_correction_rad": 0.02906149544220271
+          }
+        }
+      },
+      "sha256": "a59ece8254161e59c9bc8bb8d67b46ee97042ae9b276e488376478b4b5c7390c"
+    },
+    {
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-task/poses/standing/report.json",
+      "pose": "standing",
+      "status": "within_limits",
+      "scene": "task",
+      "reason": null,
+      "detail": null,
+      "seconds": 60.00000000002736,
+      "handoff": 2.0000000000000013,
+      "commands": 3001,
+      "first_stop_time": null,
+      "warnings": {},
+      "sha256": "3e19c20bc87b6dbd3f2abf95c984adfc0ba20b271faf51b9e1d30fa8d20a23aa"
+    },
+    {
+      "scene": "task",
+      "pose": "seated",
+      "status": "error",
+      "reason": "no_report",
+      "detail": "invalid seated pose: substantial initial penetration",
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-task/launcher.log",
+      "handoff": null,
+      "commands": null,
+      "sha256": "4a528fd4380e84362b5966edb199da94246694faa5c5e8a6e1a370538065be81"
+    },
+    {
+      "scene": "task",
+      "pose": "supine",
+      "status": "error",
+      "reason": "no_report",
+      "detail": "invalid supine pose: substantial initial penetration",
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-task/launcher.log",
+      "handoff": null,
+      "commands": null,
+      "sha256": "4a528fd4380e84362b5966edb199da94246694faa5c5e8a6e1a370538065be81"
+    },
+    {
+      "scene": "task",
+      "pose": "left_side",
+      "status": "error",
+      "reason": "no_report",
+      "detail": "invalid left_side pose: substantial initial penetration",
+      "path": "evidence/native-ci-42656538931/native-arm64-evidence-42656538931/evidence/container-native/counterfactuals-task/launcher.log",
+      "handoff": null,
+      "commands": null,
+      "sha256": "4a528fd4380e84362b5966edb199da94246694faa5c5e8a6e1a370538065be81"
+    }
+  ],
+  "hardware_authorization": false,
+  "note": "Standard uses canonical kit. Task uses isolated report-only RPC timeout extension; active checks and plant are unchanged. Counterfactual findings are reported separately, never counted as passes."
+}

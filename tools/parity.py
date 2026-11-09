@@ -29,11 +29,13 @@ options = ort.SessionOptions()
 options.intra_op_num_threads = 1
 options.inter_op_num_threads = 1
 rows = []
+full = {'features':x}
 for name in ('walker','balance'):
     path = ROOT/'policy/models'/f'{name}.onnx'
     session = ort.InferenceSession(str(path), sess_options=options, providers=['CPUExecutionProvider'])
     net = Network(path.with_suffix('.npz'))
     expected = np.concatenate([session.run(None, {session.get_inputs()[0].name: row[None]})[0] for row in x])
+    full[name+'_expected'] = expected
     actual = np.concatenate([net(row) for row in x])
     error = float(np.max(abs(expected-actual)))
     print(name, 'single-observation maximum absolute error', error, flush=True)
@@ -46,6 +48,9 @@ for name in ('walker','balance'):
 report = dict(observations=10000, source_observations=sum(s['rows'] for s in sources),
               sampling_seed=261109, onnxruntime=ort.__version__, numpy=np.__version__, models=rows, sources=sources)
 target = ROOT/'evidence/walker/numpy-parity.json'
+target.parent.mkdir(parents=True,exist_ok=True)
+np.savez_compressed(target.parent/'parity-10000.npz',**full)
+report['full_fixture_sha256'] = hashlib.sha256((target.parent/'parity-10000.npz').read_bytes()).hexdigest()
 target.write_text(json.dumps(report, indent=2)+'\n')
 if not all(r['passed'] for r in rows):
     raise RuntimeError('NumPy parity gate failed')

@@ -1,0 +1,2998 @@
+{
+  "neutral": {
+    "episodes": 10,
+    "exits": 0,
+    "exit_rate": 0.0,
+    "wilson_95_interval": [
+      0.0,
+      0.2775401687666166
+    ],
+    "zero_hard_findings_exits": 0,
+    "falls": 0,
+    "episodes_with_hard_findings": 0,
+    "wrong_exits": 0,
+    "peak_thrash": 0.14846256671487384,
+    "checker_stops": 0,
+    "unique_topologies": 7,
+    "peak_500hz_hand_force_n": 0,
+    "median_success_seconds": null,
+    "controller_hashes": [
+      "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152"
+    ],
+    "baseline_hashes": [],
+    "evidence_kind": "in-process kit harness; no native container or hardware claim",
+    "rows": [
+      {
+        "seed": 26111500,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.14846256671487384,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.112611960909415,
+          "wall_friction": 0.3663837748154895,
+          "hand_friction": 0.28707041070017025,
+          "floor_friction": 0.9049977303014067,
+          "link_mass_scale": 1.0696090964152245,
+          "motor_strength": 1.0423111295328633,
+          "joint_friction_scale": 1.0868055456955485,
+          "encoder_std_rad": 0.0004851765146310752,
+          "gyro_std_rad_s": 0.009100583433479073,
+          "imu_rotation_std_rad": 0.0006887359796110465,
+          "imu_yaw_drift_rad_s": -0.00035232479201615,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.008757206615188133,
+            0.03134474176395021
+          ],
+          "start_yaw_rad": -0.038357983438779344
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.47590059725460127,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111500/report.json",
+        "report_sha256": "33f1867722f3d66f9fe8d66528d834543f132d4bac44e24a7cd7bc13d1739f59"
+      },
+      {
+        "seed": 26111501,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.1474202150853798,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2461633433035033,
+          "wall_friction": 0.41052615087580974,
+          "hand_friction": 0.1322361069233044,
+          "floor_friction": 1.030057750978239,
+          "link_mass_scale": 1.0228525216667483,
+          "motor_strength": 1.029324557230344,
+          "joint_friction_scale": 0.9573516193967866,
+          "encoder_std_rad": 0.00032148148566970544,
+          "gyro_std_rad_s": 0.0034817999982513907,
+          "imu_rotation_std_rad": 0.001915163836453982,
+          "imu_yaw_drift_rad_s": -0.0003417075662034597,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.0121488079931594,
+            0.009500091500195346
+          ],
+          "start_yaw_rad": 0.0051938240279556375
+        },
+        "topology_sha256": "73bfd87660db54f40db40f8170e17ebd883fca39871fc8cf69abf274a3cceb78",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.4688183204254287,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111501/report.json",
+        "report_sha256": "236c2898b5dc23d35fb3537d76b1645a9ac9733518acaab0f5adf9917158bb79"
+      },
+      {
+        "seed": 26111502,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.1471247881468866,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3440641791103098,
+          "wall_friction": 0.5281807861386352,
+          "hand_friction": 0.25537871817174973,
+          "floor_friction": 0.8948401488985779,
+          "link_mass_scale": 1.0182763229769112,
+          "motor_strength": 0.9921088624606325,
+          "joint_friction_scale": 1.1495094145475329,
+          "encoder_std_rad": 0.0007535031106629748,
+          "gyro_std_rad_s": 0.00237447966319045,
+          "imu_rotation_std_rad": 0.0005499596798438691,
+          "imu_yaw_drift_rad_s": -0.0003711356526595259,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.002646158676293281,
+            -0.038251836312345286
+          ],
+          "start_yaw_rad": 0.05211578029723264
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.4692656770630143,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111502/report.json",
+        "report_sha256": "61a8a74f009c713b4cdcebee3b818d71e10d56f545967836a27fa61503c22c7f"
+      },
+      {
+        "seed": 26111503,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.14543318780674241,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3885588161607427,
+          "wall_friction": 0.28109061263716256,
+          "hand_friction": 0.20170676866592396,
+          "floor_friction": 0.8492713406628389,
+          "link_mass_scale": 0.9514539604334428,
+          "motor_strength": 1.0953024830472013,
+          "joint_friction_scale": 1.164420949384401,
+          "encoder_std_rad": 0.00035925314106845057,
+          "gyro_std_rad_s": 0.0022450588412945118,
+          "imu_rotation_std_rad": 0.0008534403166145788,
+          "imu_yaw_drift_rad_s": -0.0004765363983531712,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.0009564338376593512,
+            -0.021705822839387167
+          ],
+          "start_yaw_rad": -0.037138473980478516
+        },
+        "topology_sha256": "fdf7f7e367b51223c1de25fae8ce7bff23d46690b853d35d7bd793490f987a51",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.4627689901103137,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111503/report.json",
+        "report_sha256": "2f751052de69ad7116e9ef3b9d0c742e177fb530a856e14993b06dc8efede2a9"
+      },
+      {
+        "seed": 26111504,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.14437709780736258,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3897212680581936,
+          "wall_friction": 0.28830168112957144,
+          "hand_friction": 0.24103917689790655,
+          "floor_friction": 0.8826411171165405,
+          "link_mass_scale": 0.9046345857290223,
+          "motor_strength": 1.0640154434932305,
+          "joint_friction_scale": 1.0453251408050552,
+          "encoder_std_rad": 0.0004523341947818097,
+          "gyro_std_rad_s": 0.0021522668782653228,
+          "imu_rotation_std_rad": 0.001187680327197903,
+          "imu_yaw_drift_rad_s": 8.074848609189531e-05,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.013304885681247394,
+            -0.0040511825096587115
+          ],
+          "start_yaw_rad": 0.025187171706259143
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.4599394220674881,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111504/report.json",
+        "report_sha256": "92332865048707f0aad2ea6f95e8ad719f23cfbcc4871e5117f378fb93249699"
+      },
+      {
+        "seed": 26111505,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.14826914402176794,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3921003472911617,
+          "wall_friction": 0.5907115027923172,
+          "hand_friction": 0.17211440957133034,
+          "floor_friction": 1.1298362275429659,
+          "link_mass_scale": 1.0532765445370396,
+          "motor_strength": 1.0095599070845087,
+          "joint_friction_scale": 0.988050662635172,
+          "encoder_std_rad": 0.00042608904062676036,
+          "gyro_std_rad_s": 0.008584248706224824,
+          "imu_rotation_std_rad": 0.0018371734367923144,
+          "imu_yaw_drift_rad_s": -0.0003502863879912796,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.029001688081595055,
+            0.01029827428023402
+          ],
+          "start_yaw_rad": 0.007115092510040555
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.46479874772304414,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111505/report.json",
+        "report_sha256": "f26751e1fddc3ada870cd59056d07c9119b06ffbdb64527a47ab2212ba44f32b"
+      },
+      {
+        "seed": 26111506,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.1446332796160586,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2212166653574112,
+          "wall_friction": 0.5385601304955421,
+          "hand_friction": 0.1625981860041819,
+          "floor_friction": 0.7975103719124013,
+          "link_mass_scale": 0.9228544267864212,
+          "motor_strength": 1.0289929019335617,
+          "joint_friction_scale": 1.1303948523637557,
+          "encoder_std_rad": 0.0007188361787594331,
+          "gyro_std_rad_s": 0.004984350221969419,
+          "imu_rotation_std_rad": 0.0014540709601447545,
+          "imu_yaw_drift_rad_s": 0.00015948723869910696,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.037472494408182073,
+            -0.038264801714435734
+          ],
+          "start_yaw_rad": -0.012262190016574949
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.46321798059972213,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111506/report.json",
+        "report_sha256": "d395abae8a0a9766da47749577d744e48734a3919f7adc7aff36f2e663d47679"
+      },
+      {
+        "seed": 26111507,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.1464781335086605,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3701883008752724,
+          "wall_friction": 0.23343870792996754,
+          "hand_friction": 0.28307285644459623,
+          "floor_friction": 0.9673646609265052,
+          "link_mass_scale": 0.9888049888600362,
+          "motor_strength": 0.9850219124326305,
+          "joint_friction_scale": 1.1253368087853468,
+          "encoder_std_rad": 0.0009370537208407165,
+          "gyro_std_rad_s": 0.0032127634794726703,
+          "imu_rotation_std_rad": 0.00037696549483902104,
+          "imu_yaw_drift_rad_s": 0.00019045376381784918,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.03327364229378812,
+            0.017782540759396108
+          ],
+          "start_yaw_rad": -0.02946601008038308
+        },
+        "topology_sha256": "8988102852ebc3f4bea8ec0e9cf574c6d972b84d88e9c775adba614b9bbc16c0",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.4636814539142392,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111507/report.json",
+        "report_sha256": "9cf8cb9502da5aabd61b96924b90739f8bf49918b4db7bcf7e164483ddeb800f"
+      },
+      {
+        "seed": 26111508,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.1471545524072417,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.1870051216589912,
+          "wall_friction": 0.31989704459865653,
+          "hand_friction": 0.18959923192480913,
+          "floor_friction": 1.061120083410621,
+          "link_mass_scale": 1.0137576447928376,
+          "motor_strength": 0.9557422066844895,
+          "joint_friction_scale": 1.106835216158079,
+          "encoder_std_rad": 0.0009363412719540711,
+          "gyro_std_rad_s": 0.00808438105587941,
+          "imu_rotation_std_rad": 0.00023778642631347386,
+          "imu_yaw_drift_rad_s": -0.00040853430820142543,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.03234233470042157,
+            -0.011600189782533753
+          ],
+          "start_yaw_rad": 0.047803755221066765
+        },
+        "topology_sha256": "ae76ed457e5c439714b34b5e7ccb454f6b0f1cdbe126e3e178004f30e6277887",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.46266904068557346,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111508/report.json",
+        "report_sha256": "2e68ab96d31982c4e2f4cdf820970b85a9fc96ece6fb277856cac32c6c74e0f3"
+      },
+      {
+        "seed": 26111509,
+        "mode": "neutral",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.14580245797862695,
+        "peak_hand_force_n": 0.0,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2314940535005339,
+          "wall_friction": 0.34476248027040574,
+          "hand_friction": 0.2994491683130969,
+          "floor_friction": 0.8470978296264847,
+          "link_mass_scale": 0.9667663208120597,
+          "motor_strength": 0.9419224172471099,
+          "joint_friction_scale": 1.0597003930246014,
+          "encoder_std_rad": 0.0005915234359350973,
+          "gyro_std_rad_s": 0.003510600036731166,
+          "imu_rotation_std_rad": 0.0017615642208214258,
+          "imu_yaw_drift_rad_s": -0.0004761234321062338,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.030171333078906286,
+            0.012282035335859344
+          ],
+          "start_yaw_rad": 0.034537390871156204
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 0.0,
+        "peak_applied_torque_fraction": 0.46683285764459653,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-neutral/neutral-26111509/report.json",
+        "report_sha256": "b5cdad0f82300558b370e0d65726af6f4a32ec9109f65733a16ee400a67bc1d5"
+      }
+    ]
+  },
+  "touch_off": {
+    "episodes": 10,
+    "exits": 0,
+    "exit_rate": 0.0,
+    "wilson_95_interval": [
+      0.0,
+      0.2775401687666166
+    ],
+    "zero_hard_findings_exits": 0,
+    "falls": 0,
+    "episodes_with_hard_findings": 0,
+    "wrong_exits": 0,
+    "peak_thrash": 0.49494797723703693,
+    "checker_stops": 0,
+    "unique_topologies": 7,
+    "peak_500hz_hand_force_n": 36.43323708098744,
+    "median_success_seconds": null,
+    "controller_hashes": [
+      "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152"
+    ],
+    "baseline_hashes": [],
+    "evidence_kind": "in-process kit harness; no native container or hardware claim",
+    "rows": [
+      {
+        "seed": 26111500,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.42748513081344197,
+        "peak_hand_force_n": 32.89963664773633,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.112611960909415,
+          "wall_friction": 0.3663837748154895,
+          "hand_friction": 0.28707041070017025,
+          "floor_friction": 0.9049977303014067,
+          "link_mass_scale": 1.0696090964152245,
+          "motor_strength": 1.0423111295328633,
+          "joint_friction_scale": 1.0868055456955485,
+          "encoder_std_rad": 0.0004851765146310752,
+          "gyro_std_rad_s": 0.009100583433479073,
+          "imu_rotation_std_rad": 0.0006887359796110465,
+          "imu_yaw_drift_rad_s": -0.00035232479201615,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.008757206615188133,
+            0.03134474176395021
+          ],
+          "start_yaw_rad": -0.038357983438779344
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 34.51583734517241,
+        "peak_applied_torque_fraction": 0.582161548647045,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111500/report.json",
+        "report_sha256": "9c0aa72b6ea426f685b1e36f242f26431eb0ed32cf0773eeb1d7bad9bddc3a47"
+      },
+      {
+        "seed": 26111501,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.44235145440498913,
+        "peak_hand_force_n": 27.47720240243016,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2461633433035033,
+          "wall_friction": 0.41052615087580974,
+          "hand_friction": 0.1322361069233044,
+          "floor_friction": 1.030057750978239,
+          "link_mass_scale": 1.0228525216667483,
+          "motor_strength": 1.029324557230344,
+          "joint_friction_scale": 0.9573516193967866,
+          "encoder_std_rad": 0.00032148148566970544,
+          "gyro_std_rad_s": 0.0034817999982513907,
+          "imu_rotation_std_rad": 0.001915163836453982,
+          "imu_yaw_drift_rad_s": -0.0003417075662034597,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.0121488079931594,
+            0.009500091500195346
+          ],
+          "start_yaw_rad": 0.0051938240279556375
+        },
+        "topology_sha256": "73bfd87660db54f40db40f8170e17ebd883fca39871fc8cf69abf274a3cceb78",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 29.67052705058387,
+        "peak_applied_torque_fraction": 0.5720826744153197,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111501/report.json",
+        "report_sha256": "f0ba4b91796aae03402e94c18727e7f66d4acc7a75376a0188ba92a05626ad65"
+      },
+      {
+        "seed": 26111502,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.4494651475508508,
+        "peak_hand_force_n": 30.998398585146766,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3440641791103098,
+          "wall_friction": 0.5281807861386352,
+          "hand_friction": 0.25537871817174973,
+          "floor_friction": 0.8948401488985779,
+          "link_mass_scale": 1.0182763229769112,
+          "motor_strength": 0.9921088624606325,
+          "joint_friction_scale": 1.1495094145475329,
+          "encoder_std_rad": 0.0007535031106629748,
+          "gyro_std_rad_s": 0.00237447966319045,
+          "imu_rotation_std_rad": 0.0005499596798438691,
+          "imu_yaw_drift_rad_s": -0.0003711356526595259,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.002646158676293281,
+            -0.038251836312345286
+          ],
+          "start_yaw_rad": 0.05211578029723264
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 36.43323708098744,
+        "peak_applied_torque_fraction": 0.6203506096626181,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111502/report.json",
+        "report_sha256": "f38422ea58e8cef703a36d12f225cc8fa73f99e7b35c97eb2351c5137dbb2108"
+      },
+      {
+        "seed": 26111503,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.47456212189522545,
+        "peak_hand_force_n": 26.056523915624243,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3885588161607427,
+          "wall_friction": 0.28109061263716256,
+          "hand_friction": 0.20170676866592396,
+          "floor_friction": 0.8492713406628389,
+          "link_mass_scale": 0.9514539604334428,
+          "motor_strength": 1.0953024830472013,
+          "joint_friction_scale": 1.164420949384401,
+          "encoder_std_rad": 0.00035925314106845057,
+          "gyro_std_rad_s": 0.0022450588412945118,
+          "imu_rotation_std_rad": 0.0008534403166145788,
+          "imu_yaw_drift_rad_s": -0.0004765363983531712,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.0009564338376593512,
+            -0.021705822839387167
+          ],
+          "start_yaw_rad": -0.037138473980478516
+        },
+        "topology_sha256": "fdf7f7e367b51223c1de25fae8ce7bff23d46690b853d35d7bd793490f987a51",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 26.056523915624243,
+        "peak_applied_torque_fraction": 0.548127022556364,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111503/report.json",
+        "report_sha256": "24718e6c721a534cb5087014c3b199e81499329baf49d0191dfb109de8814667"
+      },
+      {
+        "seed": 26111504,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.49494797723703693,
+        "peak_hand_force_n": 23.94451660227481,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3897212680581936,
+          "wall_friction": 0.28830168112957144,
+          "hand_friction": 0.24103917689790655,
+          "floor_friction": 0.8826411171165405,
+          "link_mass_scale": 0.9046345857290223,
+          "motor_strength": 1.0640154434932305,
+          "joint_friction_scale": 1.0453251408050552,
+          "encoder_std_rad": 0.0004523341947818097,
+          "gyro_std_rad_s": 0.0021522668782653228,
+          "imu_rotation_std_rad": 0.001187680327197903,
+          "imu_yaw_drift_rad_s": 8.074848609189531e-05,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.013304885681247394,
+            -0.0040511825096587115
+          ],
+          "start_yaw_rad": 0.025187171706259143
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 24.638078578954545,
+        "peak_applied_torque_fraction": 0.5488077991235396,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111504/report.json",
+        "report_sha256": "752972b73f4462229bc8ed4b4ff9b95a76949fd7d717f371f8dd5f21633244b5"
+      },
+      {
+        "seed": 26111505,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.42235322344776294,
+        "peak_hand_force_n": 27.107900782815666,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3921003472911617,
+          "wall_friction": 0.5907115027923172,
+          "hand_friction": 0.17211440957133034,
+          "floor_friction": 1.1298362275429659,
+          "link_mass_scale": 1.0532765445370396,
+          "motor_strength": 1.0095599070845087,
+          "joint_friction_scale": 0.988050662635172,
+          "encoder_std_rad": 0.00042608904062676036,
+          "gyro_std_rad_s": 0.008584248706224824,
+          "imu_rotation_std_rad": 0.0018371734367923144,
+          "imu_yaw_drift_rad_s": -0.0003502863879912796,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.029001688081595055,
+            0.01029827428023402
+          ],
+          "start_yaw_rad": 0.007115092510040555
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 28.150945678290395,
+        "peak_applied_torque_fraction": 0.586720560380361,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111505/report.json",
+        "report_sha256": "7114baae920973b7e184a1f02b7374e12e20fb91b04c42f894a1698bc7b3ad9d"
+      },
+      {
+        "seed": 26111506,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.4867419743544991,
+        "peak_hand_force_n": 27.03215734458338,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2212166653574112,
+          "wall_friction": 0.5385601304955421,
+          "hand_friction": 0.1625981860041819,
+          "floor_friction": 0.7975103719124013,
+          "link_mass_scale": 0.9228544267864212,
+          "motor_strength": 1.0289929019335617,
+          "joint_friction_scale": 1.1303948523637557,
+          "encoder_std_rad": 0.0007188361787594331,
+          "gyro_std_rad_s": 0.004984350221969419,
+          "imu_rotation_std_rad": 0.0014540709601447545,
+          "imu_yaw_drift_rad_s": 0.00015948723869910696,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.037472494408182073,
+            -0.038264801714435734
+          ],
+          "start_yaw_rad": -0.012262190016574949
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 27.43885251459569,
+        "peak_applied_torque_fraction": 0.5396417178721041,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111506/report.json",
+        "report_sha256": "94c7adebed28a33403fe1d8dc2e8bdf38a06df0c20d40dbf8a25d76ba3b89736"
+      },
+      {
+        "seed": 26111507,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.45488559604858375,
+        "peak_hand_force_n": 25.90382926497608,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3701883008752724,
+          "wall_friction": 0.23343870792996754,
+          "hand_friction": 0.28307285644459623,
+          "floor_friction": 0.9673646609265052,
+          "link_mass_scale": 0.9888049888600362,
+          "motor_strength": 0.9850219124326305,
+          "joint_friction_scale": 1.1253368087853468,
+          "encoder_std_rad": 0.0009370537208407165,
+          "gyro_std_rad_s": 0.0032127634794726703,
+          "imu_rotation_std_rad": 0.00037696549483902104,
+          "imu_yaw_drift_rad_s": 0.00019045376381784918,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.03327364229378812,
+            0.017782540759396108
+          ],
+          "start_yaw_rad": -0.02946601008038308
+        },
+        "topology_sha256": "8988102852ebc3f4bea8ec0e9cf574c6d972b84d88e9c775adba614b9bbc16c0",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 32.3557124326932,
+        "peak_applied_torque_fraction": 0.5581405075805989,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111507/report.json",
+        "report_sha256": "fde7cb98e7936d21814f08c8505831a078be59fb1850a27c3ec49282a7f713bb"
+      },
+      {
+        "seed": 26111508,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.44388441854632205,
+        "peak_hand_force_n": 27.95478458457933,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.1870051216589912,
+          "wall_friction": 0.31989704459865653,
+          "hand_friction": 0.18959923192480913,
+          "floor_friction": 1.061120083410621,
+          "link_mass_scale": 1.0137576447928376,
+          "motor_strength": 0.9557422066844895,
+          "joint_friction_scale": 1.106835216158079,
+          "encoder_std_rad": 0.0009363412719540711,
+          "gyro_std_rad_s": 0.00808438105587941,
+          "imu_rotation_std_rad": 0.00023778642631347386,
+          "imu_yaw_drift_rad_s": -0.00040853430820142543,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.03234233470042157,
+            -0.011600189782533753
+          ],
+          "start_yaw_rad": 0.047803755221066765
+        },
+        "topology_sha256": "ae76ed457e5c439714b34b5e7ccb454f6b0f1cdbe126e3e178004f30e6277887",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 29.510285980879665,
+        "peak_applied_torque_fraction": 0.6221652218990553,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111508/report.json",
+        "report_sha256": "1a240158242afaadf7a3dfd874a779ccf44c21b1fb20f062b9be86114b4fe30e"
+      },
+      {
+        "seed": 26111509,
+        "mode": "touch_off",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 32.05999999999322,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.4674971104880612,
+        "peak_hand_force_n": 25.304759094937722,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2314940535005339,
+          "wall_friction": 0.34476248027040574,
+          "hand_friction": 0.2994491683130969,
+          "floor_friction": 0.8470978296264847,
+          "link_mass_scale": 0.9667663208120597,
+          "motor_strength": 0.9419224172471099,
+          "joint_friction_scale": 1.0597003930246014,
+          "encoder_std_rad": 0.0005915234359350973,
+          "gyro_std_rad_s": 0.003510600036731166,
+          "imu_rotation_std_rad": 0.0017615642208214258,
+          "imu_yaw_drift_rad_s": -0.0004761234321062338,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.030171333078906286,
+            0.012282035335859344
+          ],
+          "start_yaw_rad": 0.034537390871156204
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 25.46343017839947,
+        "peak_applied_torque_fraction": 0.5848328293312546,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_off/touch_off-26111509/report.json",
+        "report_sha256": "709e5d0c178a03c5637128c441ebeeca644e05ff7e1efc330460b5a529514bb0"
+      }
+    ]
+  },
+  "touch_shuffled": {
+    "episodes": 10,
+    "exits": 0,
+    "exit_rate": 0.0,
+    "wilson_95_interval": [
+      0.0,
+      0.2775401687666166
+    ],
+    "zero_hard_findings_exits": 0,
+    "falls": 0,
+    "episodes_with_hard_findings": 1,
+    "wrong_exits": 0,
+    "peak_thrash": 1.1077121470067357,
+    "checker_stops": 0,
+    "unique_topologies": 7,
+    "peak_500hz_hand_force_n": 151.0443657557266,
+    "median_success_seconds": null,
+    "controller_hashes": [
+      "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152"
+    ],
+    "baseline_hashes": [],
+    "evidence_kind": "in-process kit harness; no native container or hardware claim",
+    "rows": [
+      {
+        "seed": 26111500,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 129.6999999998912,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5803803421896856,
+        "peak_hand_force_n": 109.76938193098766,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.112611960909415,
+          "wall_friction": 0.3663837748154895,
+          "hand_friction": 0.28707041070017025,
+          "floor_friction": 0.9049977303014067,
+          "link_mass_scale": 1.0696090964152245,
+          "motor_strength": 1.0423111295328633,
+          "joint_friction_scale": 1.0868055456955485,
+          "encoder_std_rad": 0.0004851765146310752,
+          "gyro_std_rad_s": 0.009100583433479073,
+          "imu_rotation_std_rad": 0.0006887359796110465,
+          "imu_yaw_drift_rad_s": -0.00035232479201615,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.008757206615188133,
+            0.03134474176395021
+          ],
+          "start_yaw_rad": -0.038357983438779344
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 119.64428085661307,
+        "peak_applied_torque_fraction": 0.8981830325180785,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111500/report.json",
+        "report_sha256": "ef27100e71e81cb6bb16149710773990ef53fc96dbbb04d2bb579c698c5c327c"
+      },
+      {
+        "seed": 26111501,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 79.3399999999965,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5804749952002003,
+        "peak_hand_force_n": 78.69865975856564,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2461633433035033,
+          "wall_friction": 0.41052615087580974,
+          "hand_friction": 0.1322361069233044,
+          "floor_friction": 1.030057750978239,
+          "link_mass_scale": 1.0228525216667483,
+          "motor_strength": 1.029324557230344,
+          "joint_friction_scale": 0.9573516193967866,
+          "encoder_std_rad": 0.00032148148566970544,
+          "gyro_std_rad_s": 0.0034817999982513907,
+          "imu_rotation_std_rad": 0.001915163836453982,
+          "imu_yaw_drift_rad_s": -0.0003417075662034597,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.0121488079931594,
+            0.009500091500195346
+          ],
+          "start_yaw_rad": 0.0051938240279556375
+        },
+        "topology_sha256": "73bfd87660db54f40db40f8170e17ebd883fca39871fc8cf69abf274a3cceb78",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 89.26454856916509,
+        "peak_applied_torque_fraction": 0.8091263225956176,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111501/report.json",
+        "report_sha256": "56d818ad83d13705ce39219ed11417dbb6476ff877cd1ec014074d1d7808caea"
+      },
+      {
+        "seed": 26111502,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 164.56000000005764,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.6217186466070419,
+        "peak_hand_force_n": 108.9837120599235,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3440641791103098,
+          "wall_friction": 0.5281807861386352,
+          "hand_friction": 0.25537871817174973,
+          "floor_friction": 0.8948401488985779,
+          "link_mass_scale": 1.0182763229769112,
+          "motor_strength": 0.9921088624606325,
+          "joint_friction_scale": 1.1495094145475329,
+          "encoder_std_rad": 0.0007535031106629748,
+          "gyro_std_rad_s": 0.00237447966319045,
+          "imu_rotation_std_rad": 0.0005499596798438691,
+          "imu_yaw_drift_rad_s": -0.0003711356526595259,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.002646158676293281,
+            -0.038251836312345286
+          ],
+          "start_yaw_rad": 0.05211578029723264
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 109.52508344990241,
+        "peak_applied_torque_fraction": 0.8277845998883037,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111502/report.json",
+        "report_sha256": "60b183bbabe7c3fa560ddf291e9e43f813cb3c59bfbc4f44f195cc45ec58d9e5"
+      },
+      {
+        "seed": 26111503,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 119.03999999990397,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.6562416329760175,
+        "peak_hand_force_n": 59.06776294428807,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3885588161607427,
+          "wall_friction": 0.28109061263716256,
+          "hand_friction": 0.20170676866592396,
+          "floor_friction": 0.8492713406628389,
+          "link_mass_scale": 0.9514539604334428,
+          "motor_strength": 1.0953024830472013,
+          "joint_friction_scale": 1.164420949384401,
+          "encoder_std_rad": 0.00035925314106845057,
+          "gyro_std_rad_s": 0.0022450588412945118,
+          "imu_rotation_std_rad": 0.0008534403166145788,
+          "imu_yaw_drift_rad_s": -0.0004765363983531712,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.0009564338376593512,
+            -0.021705822839387167
+          ],
+          "start_yaw_rad": -0.037138473980478516
+        },
+        "topology_sha256": "fdf7f7e367b51223c1de25fae8ce7bff23d46690b853d35d7bd793490f987a51",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 78.55280453786098,
+        "peak_applied_torque_fraction": 0.7138203676530239,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111503/report.json",
+        "report_sha256": "083c7a406cbae522c4762c050dff5fa1927f8d82744a8e946fa83adc900824ce"
+      },
+      {
+        "seed": 26111504,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 83.17999999998754,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.623833753111529,
+        "peak_hand_force_n": 75.09722681428866,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3897212680581936,
+          "wall_friction": 0.28830168112957144,
+          "hand_friction": 0.24103917689790655,
+          "floor_friction": 0.8826411171165405,
+          "link_mass_scale": 0.9046345857290223,
+          "motor_strength": 1.0640154434932305,
+          "joint_friction_scale": 1.0453251408050552,
+          "encoder_std_rad": 0.0004523341947818097,
+          "gyro_std_rad_s": 0.0021522668782653228,
+          "imu_rotation_std_rad": 0.001187680327197903,
+          "imu_yaw_drift_rad_s": 8.074848609189531e-05,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.013304885681247394,
+            -0.0040511825096587115
+          ],
+          "start_yaw_rad": 0.025187171706259143
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 75.09722681428865,
+        "peak_applied_torque_fraction": 0.7936194261637363,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111504/report.json",
+        "report_sha256": "1aeffed167ea511ed3130a19aa2d13f10c14731c0923e67401be3f90ba722db5"
+      },
+      {
+        "seed": 26111505,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 82.41999999998932,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5597990689738217,
+        "peak_hand_force_n": 77.30049390762862,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3921003472911617,
+          "wall_friction": 0.5907115027923172,
+          "hand_friction": 0.17211440957133034,
+          "floor_friction": 1.1298362275429659,
+          "link_mass_scale": 1.0532765445370396,
+          "motor_strength": 1.0095599070845087,
+          "joint_friction_scale": 0.988050662635172,
+          "encoder_std_rad": 0.00042608904062676036,
+          "gyro_std_rad_s": 0.008584248706224824,
+          "imu_rotation_std_rad": 0.0018371734367923144,
+          "imu_yaw_drift_rad_s": -0.0003502863879912796,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.029001688081595055,
+            0.01029827428023402
+          ],
+          "start_yaw_rad": 0.007115092510040555
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 77.30049390762862,
+        "peak_applied_torque_fraction": 0.7411807048657785,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111505/report.json",
+        "report_sha256": "5ab2720a31f58c9e1720001128b9b05bd69e6b751f9f297e78d4d89ad025f144"
+      },
+      {
+        "seed": 26111506,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 206.94000000026,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.6792095075050876,
+        "peak_hand_force_n": 142.57629465641102,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2212166653574112,
+          "wall_friction": 0.5385601304955421,
+          "hand_friction": 0.1625981860041819,
+          "floor_friction": 0.7975103719124013,
+          "link_mass_scale": 0.9228544267864212,
+          "motor_strength": 1.0289929019335617,
+          "joint_friction_scale": 1.1303948523637557,
+          "encoder_std_rad": 0.0007188361787594331,
+          "gyro_std_rad_s": 0.004984350221969419,
+          "imu_rotation_std_rad": 0.0014540709601447545,
+          "imu_yaw_drift_rad_s": 0.00015948723869910696,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.037472494408182073,
+            -0.038264801714435734
+          ],
+          "start_yaw_rad": -0.012262190016574949
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 151.0443657557266,
+        "peak_applied_torque_fraction": 0.6485079087385532,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111506/report.json",
+        "report_sha256": "4d49de3a5fc1b9d0e00c7d357fa5f391ad01a953f029e91c4b33168c0f7dbe79"
+      },
+      {
+        "seed": 26111507,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 142.29999999995135,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 2,
+        "thrash_peak": 0.6225176024417215,
+        "peak_hand_force_n": 105.12758873159218,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3701883008752724,
+          "wall_friction": 0.23343870792996754,
+          "hand_friction": 0.28307285644459623,
+          "floor_friction": 0.9673646609265052,
+          "link_mass_scale": 0.9888049888600362,
+          "motor_strength": 0.9850219124326305,
+          "joint_friction_scale": 1.1253368087853468,
+          "encoder_std_rad": 0.0009370537208407165,
+          "gyro_std_rad_s": 0.0032127634794726703,
+          "imu_rotation_std_rad": 0.00037696549483902104,
+          "imu_yaw_drift_rad_s": 0.00019045376381784918,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.03327364229378812,
+            0.017782540759396108
+          ],
+          "start_yaw_rad": -0.02946601008038308
+        },
+        "topology_sha256": "8988102852ebc3f4bea8ec0e9cf574c6d972b84d88e9c775adba614b9bbc16c0",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 105.12758873159214,
+        "peak_applied_torque_fraction": 0.9204642800079756,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111507/report.json",
+        "report_sha256": "a5ce69b0f07cd0ac27e05007d123af45bea7b29b1efc29106b00387deffe12a2"
+      },
+      {
+        "seed": 26111508,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [
+          {
+            "joint": "right_wrist_pitch",
+            "reason": "joint_torque_limit",
+            "value": 20.841599303094583,
+            "limit": 5.0,
+            "units": "Nm",
+            "count": 189,
+            "torque_kind": "PD demand"
+          }
+        ],
+        "diagnostic_warnings": 1,
+        "thrash_peak": 1.1077121470067357,
+        "peak_hand_force_n": 77.23109311998203,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.1870051216589912,
+          "wall_friction": 0.31989704459865653,
+          "hand_friction": 0.18959923192480913,
+          "floor_friction": 1.061120083410621,
+          "link_mass_scale": 1.0137576447928376,
+          "motor_strength": 0.9557422066844895,
+          "joint_friction_scale": 1.106835216158079,
+          "encoder_std_rad": 0.0009363412719540711,
+          "gyro_std_rad_s": 0.00808438105587941,
+          "imu_rotation_std_rad": 0.00023778642631347386,
+          "imu_yaw_drift_rad_s": -0.00040853430820142543,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.03234233470042157,
+            -0.011600189782533753
+          ],
+          "start_yaw_rad": 0.047803755221066765
+        },
+        "topology_sha256": "ae76ed457e5c439714b34b5e7ccb454f6b0f1cdbe126e3e178004f30e6277887",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 84.13193180656725,
+        "peak_applied_torque_fraction": 0.9557422066844895,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111508/report.json",
+        "report_sha256": "fb6f93a449c6797d624dd94c468cac658d71cca71af1f4224aefeab60aaa0c57"
+      },
+      {
+        "seed": 26111509,
+        "mode": "touch_shuffled",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 127.7399999998837,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.637161658330146,
+        "peak_hand_force_n": 77.0033833917005,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2314940535005339,
+          "wall_friction": 0.34476248027040574,
+          "hand_friction": 0.2994491683130969,
+          "floor_friction": 0.8470978296264847,
+          "link_mass_scale": 0.9667663208120597,
+          "motor_strength": 0.9419224172471099,
+          "joint_friction_scale": 1.0597003930246014,
+          "encoder_std_rad": 0.0005915234359350973,
+          "gyro_std_rad_s": 0.003510600036731166,
+          "imu_rotation_std_rad": 0.0017615642208214258,
+          "imu_yaw_drift_rad_s": -0.0004761234321062338,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.030171333078906286,
+            0.012282035335859344
+          ],
+          "start_yaw_rad": 0.034537390871156204
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 92.16056922508164,
+        "peak_applied_torque_fraction": 0.6806177772945684,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-touch_shuffled/touch_shuffled-26111509/report.json",
+        "report_sha256": "1585e94283bf07cb6867ae676e42eb8d9f2a8542659ccb160db8c5fb5eabe590"
+      }
+    ]
+  },
+  "map_only": {
+    "episodes": 10,
+    "exits": 0,
+    "exit_rate": 0.0,
+    "wilson_95_interval": [
+      0.0,
+      0.2775401687666166
+    ],
+    "zero_hard_findings_exits": 0,
+    "falls": 0,
+    "episodes_with_hard_findings": 0,
+    "wrong_exits": 0,
+    "peak_thrash": 0.6202104542622294,
+    "checker_stops": 0,
+    "unique_topologies": 7,
+    "peak_500hz_hand_force_n": 72.5600528163505,
+    "median_success_seconds": null,
+    "controller_hashes": [
+      "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152"
+    ],
+    "baseline_hashes": [
+      "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a"
+    ],
+    "evidence_kind": "in-process kit harness; no native container or hardware claim",
+    "rows": [
+      {
+        "seed": 26111500,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5963536602330298,
+        "peak_hand_force_n": 49.17451109488387,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.112611960909415,
+          "wall_friction": 0.3663837748154895,
+          "hand_friction": 0.28707041070017025,
+          "floor_friction": 0.9049977303014067,
+          "link_mass_scale": 1.0696090964152245,
+          "motor_strength": 1.0423111295328633,
+          "joint_friction_scale": 1.0868055456955485,
+          "encoder_std_rad": 0.0004851765146310752,
+          "gyro_std_rad_s": 0.009100583433479073,
+          "imu_rotation_std_rad": 0.0006887359796110465,
+          "imu_yaw_drift_rad_s": -0.00035232479201615,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.008757206615188133,
+            0.03134474176395021
+          ],
+          "start_yaw_rad": -0.038357983438779344
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              1.112611960909415,
+              0.0
+            ],
+            [
+              1.112611960909415,
+              1.112611960909415
+            ],
+            [
+              2.22522392181883,
+              1.112611960909415
+            ],
+            [
+              2.22522392181883,
+              2.22522392181883
+            ],
+            [
+              3.2315299022735378,
+              2.22522392181883
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 72.0030455670769,
+        "peak_applied_torque_fraction": 0.611544502009449,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111500/report.json",
+        "report_sha256": "36eb2fc4af4883eb326e1cea90ecc4bfcb22700eca084da528106ef50e720f3e"
+      },
+      {
+        "seed": 26111501,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.508120740428345,
+        "peak_hand_force_n": 61.035363894477236,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2461633433035033,
+          "wall_friction": 0.41052615087580974,
+          "hand_friction": 0.1322361069233044,
+          "floor_friction": 1.030057750978239,
+          "link_mass_scale": 1.0228525216667483,
+          "motor_strength": 1.029324557230344,
+          "joint_friction_scale": 0.9573516193967866,
+          "encoder_std_rad": 0.00032148148566970544,
+          "gyro_std_rad_s": 0.0034817999982513907,
+          "imu_rotation_std_rad": 0.001915163836453982,
+          "imu_yaw_drift_rad_s": -0.0003417075662034597,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.0121488079931594,
+            0.009500091500195346
+          ],
+          "start_yaw_rad": 0.0051938240279556375
+        },
+        "topology_sha256": "73bfd87660db54f40db40f8170e17ebd883fca39871fc8cf69abf274a3cceb78",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              0.0,
+              1.2461633433035033
+            ],
+            [
+              1.2461633433035033,
+              1.2461633433035033
+            ],
+            [
+              1.2461633433035033,
+              2.4923266866070066
+            ],
+            [
+              2.4923266866070066,
+              2.4923266866070066
+            ],
+            [
+              3.5654083582587583,
+              2.4923266866070066
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 68.64587183723116,
+        "peak_applied_torque_fraction": 0.47337928685512926,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111501/report.json",
+        "report_sha256": "7025abd3c7dcf9eda9cbffffe260044469f31c0d447481ad416df9209306b183"
+      },
+      {
+        "seed": 26111502,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5623862482533762,
+        "peak_hand_force_n": 52.79252732204918,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3440641791103098,
+          "wall_friction": 0.5281807861386352,
+          "hand_friction": 0.25537871817174973,
+          "floor_friction": 0.8948401488985779,
+          "link_mass_scale": 1.0182763229769112,
+          "motor_strength": 0.9921088624606325,
+          "joint_friction_scale": 1.1495094145475329,
+          "encoder_std_rad": 0.0007535031106629748,
+          "gyro_std_rad_s": 0.00237447966319045,
+          "imu_rotation_std_rad": 0.0005499596798438691,
+          "imu_yaw_drift_rad_s": -0.0003711356526595259,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.002646158676293281,
+            -0.038251836312345286
+          ],
+          "start_yaw_rad": 0.05211578029723264
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              1.3440641791103098,
+              0.0
+            ],
+            [
+              1.3440641791103098,
+              1.3440641791103098
+            ],
+            [
+              1.3440641791103098,
+              2.6881283582206197
+            ],
+            [
+              2.6881283582206197,
+              2.6881283582206197
+            ],
+            [
+              3.810160447775775,
+              2.6881283582206197
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 60.6797131909355,
+        "peak_applied_torque_fraction": 0.55962944699147,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111502/report.json",
+        "report_sha256": "76a1ca8d75e16bf04807530df97253462160ec1384144d41d8adc0ef6a285706"
+      },
+      {
+        "seed": 26111503,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5846500213497534,
+        "peak_hand_force_n": 59.650310306658795,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3885588161607427,
+          "wall_friction": 0.28109061263716256,
+          "hand_friction": 0.20170676866592396,
+          "floor_friction": 0.8492713406628389,
+          "link_mass_scale": 0.9514539604334428,
+          "motor_strength": 1.0953024830472013,
+          "joint_friction_scale": 1.164420949384401,
+          "encoder_std_rad": 0.00035925314106845057,
+          "gyro_std_rad_s": 0.0022450588412945118,
+          "imu_rotation_std_rad": 0.0008534403166145788,
+          "imu_yaw_drift_rad_s": -0.0004765363983531712,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.0009564338376593512,
+            -0.021705822839387167
+          ],
+          "start_yaw_rad": -0.037138473980478516
+        },
+        "topology_sha256": "fdf7f7e367b51223c1de25fae8ce7bff23d46690b853d35d7bd793490f987a51",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              0.0,
+              1.3885588161607427
+            ],
+            [
+              0.0,
+              2.7771176323214855
+            ],
+            [
+              1.3885588161607427,
+              2.7771176323214855
+            ],
+            [
+              2.7771176323214855,
+              2.7771176323214855
+            ],
+            [
+              3.9213970404018568,
+              2.7771176323214855
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 59.65031030665868,
+        "peak_applied_torque_fraction": 0.5493836596597176,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111503/report.json",
+        "report_sha256": "bdbf434091ea8d4a81596d2c4caa056dabf123675392b98b4ce4330bd30289b7"
+      },
+      {
+        "seed": 26111504,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5925816530124549,
+        "peak_hand_force_n": 49.22806503493454,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3897212680581936,
+          "wall_friction": 0.28830168112957144,
+          "hand_friction": 0.24103917689790655,
+          "floor_friction": 0.8826411171165405,
+          "link_mass_scale": 0.9046345857290223,
+          "motor_strength": 1.0640154434932305,
+          "joint_friction_scale": 1.0453251408050552,
+          "encoder_std_rad": 0.0004523341947818097,
+          "gyro_std_rad_s": 0.0021522668782653228,
+          "imu_rotation_std_rad": 0.001187680327197903,
+          "imu_yaw_drift_rad_s": 8.074848609189531e-05,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.013304885681247394,
+            -0.0040511825096587115
+          ],
+          "start_yaw_rad": 0.025187171706259143
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              1.3897212680581936,
+              0.0
+            ],
+            [
+              2.7794425361163873,
+              0.0
+            ],
+            [
+              2.7794425361163873,
+              1.3897212680581936
+            ],
+            [
+              1.3897212680581936,
+              1.3897212680581936
+            ],
+            [
+              1.3897212680581936,
+              2.7794425361163873
+            ],
+            [
+              2.7794425361163873,
+              2.7794425361163873
+            ],
+            [
+              3.9243031701454845,
+              2.7794425361163873
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 61.58240320181902,
+        "peak_applied_torque_fraction": 0.631226454462795,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111504/report.json",
+        "report_sha256": "5aaba14dff57d3f17938a06eab85e9c3755e0488dfda7cfe28f67e54d6907e5b"
+      },
+      {
+        "seed": 26111505,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.4767438002899595,
+        "peak_hand_force_n": 44.59715492530426,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3921003472911617,
+          "wall_friction": 0.5907115027923172,
+          "hand_friction": 0.17211440957133034,
+          "floor_friction": 1.1298362275429659,
+          "link_mass_scale": 1.0532765445370396,
+          "motor_strength": 1.0095599070845087,
+          "joint_friction_scale": 0.988050662635172,
+          "encoder_std_rad": 0.00042608904062676036,
+          "gyro_std_rad_s": 0.008584248706224824,
+          "imu_rotation_std_rad": 0.0018371734367923144,
+          "imu_yaw_drift_rad_s": -0.0003502863879912796,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.029001688081595055,
+            0.01029827428023402
+          ],
+          "start_yaw_rad": 0.007115092510040555
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              1.3921003472911617,
+              0.0
+            ],
+            [
+              2.7842006945823234,
+              0.0
+            ],
+            [
+              2.7842006945823234,
+              1.3921003472911617
+            ],
+            [
+              1.3921003472911617,
+              1.3921003472911617
+            ],
+            [
+              1.3921003472911617,
+              2.7842006945823234
+            ],
+            [
+              2.7842006945823234,
+              2.7842006945823234
+            ],
+            [
+              3.9302508682279047,
+              2.7842006945823234
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 47.68034854500816,
+        "peak_applied_torque_fraction": 0.47590758366491337,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111505/report.json",
+        "report_sha256": "e60bad877815dd80ce9af6c908fe58a785c193e3f147a04a39e2df2da0428575"
+      },
+      {
+        "seed": 26111506,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5745323040087156,
+        "peak_hand_force_n": 50.697106876894104,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2212166653574112,
+          "wall_friction": 0.5385601304955421,
+          "hand_friction": 0.1625981860041819,
+          "floor_friction": 0.7975103719124013,
+          "link_mass_scale": 0.9228544267864212,
+          "motor_strength": 1.0289929019335617,
+          "joint_friction_scale": 1.1303948523637557,
+          "encoder_std_rad": 0.0007188361787594331,
+          "gyro_std_rad_s": 0.004984350221969419,
+          "imu_rotation_std_rad": 0.0014540709601447545,
+          "imu_yaw_drift_rad_s": 0.00015948723869910696,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.037472494408182073,
+            -0.038264801714435734
+          ],
+          "start_yaw_rad": -0.012262190016574949
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              1.2212166653574112,
+              0.0
+            ],
+            [
+              1.2212166653574112,
+              1.2212166653574112
+            ],
+            [
+              1.2212166653574112,
+              2.4424333307148225
+            ],
+            [
+              2.4424333307148225,
+              2.4424333307148225
+            ],
+            [
+              3.503041663393528,
+              2.4424333307148225
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 52.157008569258316,
+        "peak_applied_torque_fraction": 0.4965316562295373,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111506/report.json",
+        "report_sha256": "499f2d4c9678168085030521353d386b3c4bbd3d60bdbffb31583258f7270f87"
+      },
+      {
+        "seed": 26111507,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.6041451018357086,
+        "peak_hand_force_n": 43.103617788586476,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3701883008752724,
+          "wall_friction": 0.23343870792996754,
+          "hand_friction": 0.28307285644459623,
+          "floor_friction": 0.9673646609265052,
+          "link_mass_scale": 0.9888049888600362,
+          "motor_strength": 0.9850219124326305,
+          "joint_friction_scale": 1.1253368087853468,
+          "encoder_std_rad": 0.0009370537208407165,
+          "gyro_std_rad_s": 0.0032127634794726703,
+          "imu_rotation_std_rad": 0.00037696549483902104,
+          "imu_yaw_drift_rad_s": 0.00019045376381784918,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.03327364229378812,
+            0.017782540759396108
+          ],
+          "start_yaw_rad": -0.02946601008038308
+        },
+        "topology_sha256": "8988102852ebc3f4bea8ec0e9cf574c6d972b84d88e9c775adba614b9bbc16c0",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              0.0,
+              1.3701883008752724
+            ],
+            [
+              1.3701883008752724,
+              1.3701883008752724
+            ],
+            [
+              2.740376601750545,
+              1.3701883008752724
+            ],
+            [
+              2.740376601750545,
+              2.740376601750545
+            ],
+            [
+              3.875470752188181,
+              2.740376601750545
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 48.35800831105679,
+        "peak_applied_torque_fraction": 0.5638963086926049,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111507/report.json",
+        "report_sha256": "7876a0d90797833cf5fe9815c4c0d95b6e1e6f3e76b963150e15b0007f6741db"
+      },
+      {
+        "seed": 26111508,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5236436452093288,
+        "peak_hand_force_n": 64.04358760544523,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.1870051216589912,
+          "wall_friction": 0.31989704459865653,
+          "hand_friction": 0.18959923192480913,
+          "floor_friction": 1.061120083410621,
+          "link_mass_scale": 1.0137576447928376,
+          "motor_strength": 0.9557422066844895,
+          "joint_friction_scale": 1.106835216158079,
+          "encoder_std_rad": 0.0009363412719540711,
+          "gyro_std_rad_s": 0.00808438105587941,
+          "imu_rotation_std_rad": 0.00023778642631347386,
+          "imu_yaw_drift_rad_s": -0.00040853430820142543,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            -0.03234233470042157,
+            -0.011600189782533753
+          ],
+          "start_yaw_rad": 0.047803755221066765
+        },
+        "topology_sha256": "ae76ed457e5c439714b34b5e7ccb454f6b0f1cdbe126e3e178004f30e6277887",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              1.1870051216589912,
+              0.0
+            ],
+            [
+              1.1870051216589912,
+              1.1870051216589912
+            ],
+            [
+              0.0,
+              1.1870051216589912
+            ],
+            [
+              0.0,
+              2.3740102433179824
+            ],
+            [
+              1.1870051216589912,
+              2.3740102433179824
+            ],
+            [
+              2.3740102433179824,
+              2.3740102433179824
+            ],
+            [
+              3.4175128041474783,
+              2.3740102433179824
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 72.5600528163505,
+        "peak_applied_torque_fraction": 0.5571670650885718,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111508/report.json",
+        "report_sha256": "141c91f4561a739d3fb88374649fa1241ae12edff7222cca06737716938ca681"
+      },
+      {
+        "seed": 26111509,
+        "mode": "map_only",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 400.00000000118183,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.6202104542622294,
+        "peak_hand_force_n": 44.29143953919296,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2314940535005339,
+          "wall_friction": 0.34476248027040574,
+          "hand_friction": 0.2994491683130969,
+          "floor_friction": 0.8470978296264847,
+          "link_mass_scale": 0.9667663208120597,
+          "motor_strength": 0.9419224172471099,
+          "joint_friction_scale": 1.0597003930246014,
+          "encoder_std_rad": 0.0005915234359350973,
+          "gyro_std_rad_s": 0.003510600036731166,
+          "imu_rotation_std_rad": 0.0017615642208214258,
+          "imu_yaw_drift_rad_s": -0.0004761234321062338,
+          "command_latency_steps": 0,
+          "start_xy_m": [
+            0.030171333078906286,
+            0.012282035335859344
+          ],
+          "start_yaw_rad": 0.034537390871156204
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": {
+          "name": "True map + BFS + joint/IMU dead reckoning, no touch",
+          "source_sha256": "08e2aafe085181a1b63ae249e53ed4c673c9b5fe2bc7b00b89eaaa8dcc93df9a",
+          "privileged_input": "Static scene walls/exit, before episode; no base state feedback",
+          "waypoints": [
+            [
+              1.2314940535005339,
+              0.0
+            ],
+            [
+              1.2314940535005339,
+              1.2314940535005339
+            ],
+            [
+              2.4629881070010677,
+              1.2314940535005339
+            ],
+            [
+              2.4629881070010677,
+              2.4629881070010677
+            ],
+            [
+              3.5287351337513346,
+              2.4629881070010677
+            ]
+          ]
+        },
+        "peak_500hz_hand_force_n": 70.77708470216852,
+        "peak_applied_torque_fraction": 0.5898922749066142,
+        "latency_ms": 0,
+        "report_path": "evidence/cohorts/final-control-map_only/map_only-26111509/report.json",
+        "report_sha256": "876547365e5d0cba852315a3e465d2b8d2bf52d34cc68256422c3cb51fb85c2f"
+      }
+    ]
+  },
+  "latency-20ms": {
+    "episodes": 5,
+    "exits": 4,
+    "exit_rate": 0.8,
+    "wilson_95_interval": [
+      0.3755282641185388,
+      0.9637768390302125
+    ],
+    "zero_hard_findings_exits": 4,
+    "falls": 0,
+    "episodes_with_hard_findings": 0,
+    "wrong_exits": 0,
+    "peak_thrash": 0.5870374025075262,
+    "checker_stops": 0,
+    "unique_topologies": 5,
+    "peak_500hz_hand_force_n": 103.52225320344539,
+    "median_success_seconds": 220.7000000003257,
+    "controller_hashes": [
+      "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152"
+    ],
+    "baseline_hashes": [],
+    "evidence_kind": "in-process kit harness; no native container or hardware claim",
+    "rows": [
+      {
+        "seed": 26111500,
+        "mode": "navigate",
+        "exited": true,
+        "wrong_exit": false,
+        "seconds": 176.82000000011618,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5870374025075262,
+        "peak_hand_force_n": 89.48655058638947,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.112611960909415,
+          "wall_friction": 0.3663837748154895,
+          "hand_friction": 0.28707041070017025,
+          "floor_friction": 0.9049977303014067,
+          "link_mass_scale": 1.0696090964152245,
+          "motor_strength": 1.0423111295328633,
+          "joint_friction_scale": 1.0868055456955485,
+          "encoder_std_rad": 0.0004851765146310752,
+          "gyro_std_rad_s": 0.009100583433479073,
+          "imu_rotation_std_rad": 0.0006887359796110465,
+          "imu_yaw_drift_rad_s": -0.00035232479201615,
+          "command_latency_steps": 1,
+          "start_xy_m": [
+            0.008757206615188133,
+            0.03134474176395021
+          ],
+          "start_yaw_rad": -0.038357983438779344
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 96.25357764235487,
+        "peak_applied_torque_fraction": 0.8475851156099278,
+        "latency_ms": 20,
+        "report_path": "evidence/cohorts/final-latency-20ms/navigate-26111500/report.json",
+        "report_sha256": "f7f0af2261bc9dc6fa1bd3518aa114ac6ee90ee9ce03f108cbd52494b9fd06b9"
+      },
+      {
+        "seed": 26111501,
+        "mode": "navigate",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 188.2600000001708,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5516984488241077,
+        "peak_hand_force_n": 91.72748261432696,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2461633433035033,
+          "wall_friction": 0.41052615087580974,
+          "hand_friction": 0.1322361069233044,
+          "floor_friction": 1.030057750978239,
+          "link_mass_scale": 1.0228525216667483,
+          "motor_strength": 1.029324557230344,
+          "joint_friction_scale": 0.9573516193967866,
+          "encoder_std_rad": 0.00032148148566970544,
+          "gyro_std_rad_s": 0.0034817999982513907,
+          "imu_rotation_std_rad": 0.001915163836453982,
+          "imu_yaw_drift_rad_s": -0.0003417075662034597,
+          "command_latency_steps": 1,
+          "start_xy_m": [
+            0.0121488079931594,
+            0.009500091500195346
+          ],
+          "start_yaw_rad": 0.0051938240279556375
+        },
+        "topology_sha256": "73bfd87660db54f40db40f8170e17ebd883fca39871fc8cf69abf274a3cceb78",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 91.7274826143268,
+        "peak_applied_torque_fraction": 0.7689477319062399,
+        "latency_ms": 20,
+        "report_path": "evidence/cohorts/final-latency-20ms/navigate-26111501/report.json",
+        "report_sha256": "9e1b719e7c84dc42c77955289b99e2a9a0bd65e03f5d970b3918c2bb5f4c56e5"
+      },
+      {
+        "seed": 26111502,
+        "mode": "navigate",
+        "exited": true,
+        "wrong_exit": false,
+        "seconds": 239.64000000041614,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.4929595211375019,
+        "peak_hand_force_n": 94.47380883746077,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3440641791103098,
+          "wall_friction": 0.5281807861386352,
+          "hand_friction": 0.25537871817174973,
+          "floor_friction": 0.8948401488985779,
+          "link_mass_scale": 1.0182763229769112,
+          "motor_strength": 0.9921088624606325,
+          "joint_friction_scale": 1.1495094145475329,
+          "encoder_std_rad": 0.0007535031106629748,
+          "gyro_std_rad_s": 0.00237447966319045,
+          "imu_rotation_std_rad": 0.0005499596798438691,
+          "imu_yaw_drift_rad_s": -0.0003711356526595259,
+          "command_latency_steps": 1,
+          "start_xy_m": [
+            0.002646158676293281,
+            -0.038251836312345286
+          ],
+          "start_yaw_rad": 0.05211578029723264
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 103.52225320344539,
+        "peak_applied_torque_fraction": 0.8054008485178084,
+        "latency_ms": 20,
+        "report_path": "evidence/cohorts/final-latency-20ms/navigate-26111502/report.json",
+        "report_sha256": "12f808505a96555092650452cdf0e93dfc9a826be89acc24c8d74c125a423a29"
+      },
+      {
+        "seed": 26111503,
+        "mode": "navigate",
+        "exited": true,
+        "wrong_exit": false,
+        "seconds": 386.8200000011189,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.5190893317549979,
+        "peak_hand_force_n": 80.07950378435733,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3885588161607427,
+          "wall_friction": 0.28109061263716256,
+          "hand_friction": 0.20170676866592396,
+          "floor_friction": 0.8492713406628389,
+          "link_mass_scale": 0.9514539604334428,
+          "motor_strength": 1.0953024830472013,
+          "joint_friction_scale": 1.164420949384401,
+          "encoder_std_rad": 0.00035925314106845057,
+          "gyro_std_rad_s": 0.0022450588412945118,
+          "imu_rotation_std_rad": 0.0008534403166145788,
+          "imu_yaw_drift_rad_s": -0.0004765363983531712,
+          "command_latency_steps": 1,
+          "start_xy_m": [
+            -0.0009564338376593512,
+            -0.021705822839387167
+          ],
+          "start_yaw_rad": -0.037138473980478516
+        },
+        "topology_sha256": "fdf7f7e367b51223c1de25fae8ce7bff23d46690b853d35d7bd793490f987a51",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 84.04151302463231,
+        "peak_applied_torque_fraction": 0.8547905958218841,
+        "latency_ms": 20,
+        "report_path": "evidence/cohorts/final-latency-20ms/navigate-26111503/report.json",
+        "report_sha256": "226e5b89c4f552edce6ba444d930faec9812661126caf92482b1c24b2340ce72"
+      },
+      {
+        "seed": 26111504,
+        "mode": "navigate",
+        "exited": true,
+        "wrong_exit": false,
+        "seconds": 201.76000000023527,
+        "status": "within_limits",
+        "reason": null,
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 0.4653796011608188,
+        "peak_hand_force_n": 58.8863243494203,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3897212680581936,
+          "wall_friction": 0.28830168112957144,
+          "hand_friction": 0.24103917689790655,
+          "floor_friction": 0.8826411171165405,
+          "link_mass_scale": 0.9046345857290223,
+          "motor_strength": 1.0640154434932305,
+          "joint_friction_scale": 1.0453251408050552,
+          "encoder_std_rad": 0.0004523341947818097,
+          "gyro_std_rad_s": 0.0021522668782653228,
+          "imu_rotation_std_rad": 0.001187680327197903,
+          "imu_yaw_drift_rad_s": 8.074848609189531e-05,
+          "command_latency_steps": 1,
+          "start_xy_m": [
+            0.013304885681247394,
+            -0.0040511825096587115
+          ],
+          "start_yaw_rad": 0.025187171706259143
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 94.25168391743514,
+        "peak_applied_torque_fraction": 0.5991793045289348,
+        "latency_ms": 20,
+        "report_path": "evidence/cohorts/final-latency-20ms/navigate-26111504/report.json",
+        "report_sha256": "d9f744fce6c27cd2130ad248794ea4d228d40260a2657ea79fff1faabdf068e0"
+      }
+    ]
+  },
+  "latency-40ms": {
+    "episodes": 5,
+    "exits": 0,
+    "exit_rate": 0.0,
+    "wilson_95_interval": [
+      0.0,
+      0.43449149475208104
+    ],
+    "zero_hard_findings_exits": 0,
+    "falls": 0,
+    "episodes_with_hard_findings": 0,
+    "wrong_exits": 0,
+    "peak_thrash": 1.7329090669144713,
+    "checker_stops": 5,
+    "unique_topologies": 5,
+    "peak_500hz_hand_force_n": 109.06953963937859,
+    "median_success_seconds": null,
+    "controller_hashes": [
+      "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152"
+    ],
+    "baseline_hashes": [],
+    "evidence_kind": "in-process kit harness; no native container or hardware claim",
+    "rows": [
+      {
+        "seed": 26111500,
+        "mode": "navigate",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 23.439999999997887,
+        "status": "violation",
+        "reason": "base_angular_speed_limit",
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 1.6593194009000636,
+        "peak_hand_force_n": 53.38618733291166,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.112611960909415,
+          "wall_friction": 0.3663837748154895,
+          "hand_friction": 0.28707041070017025,
+          "floor_friction": 0.9049977303014067,
+          "link_mass_scale": 1.0696090964152245,
+          "motor_strength": 1.0423111295328633,
+          "joint_friction_scale": 1.0868055456955485,
+          "encoder_std_rad": 0.0004851765146310752,
+          "gyro_std_rad_s": 0.009100583433479073,
+          "imu_rotation_std_rad": 0.0006887359796110465,
+          "imu_yaw_drift_rad_s": -0.00035232479201615,
+          "command_latency_steps": 2,
+          "start_xy_m": [
+            0.008757206615188133,
+            0.03134474176395021
+          ],
+          "start_yaw_rad": -0.038357983438779344
+        },
+        "topology_sha256": "b9217a10b4928dfee1cac19c21b2c5737888b8205775e71ef04323e86e20c244",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 73.22764025763792,
+        "peak_applied_torque_fraction": 0.7338523263728913,
+        "latency_ms": 40,
+        "report_path": "evidence/cohorts/final-latency-40ms/navigate-26111500/report.json",
+        "report_sha256": "a64f5c3cdff21ce2a1d28667c9cab79c7ab4d17a87a0bc685a3c397cb5929b8c"
+      },
+      {
+        "seed": 26111501,
+        "mode": "navigate",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 14.232000000001422,
+        "status": "violation",
+        "reason": "base_angular_speed_limit",
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 1.7093389074815681,
+        "peak_hand_force_n": 77.17964143635791,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.2461633433035033,
+          "wall_friction": 0.41052615087580974,
+          "hand_friction": 0.1322361069233044,
+          "floor_friction": 1.030057750978239,
+          "link_mass_scale": 1.0228525216667483,
+          "motor_strength": 1.029324557230344,
+          "joint_friction_scale": 0.9573516193967866,
+          "encoder_std_rad": 0.00032148148566970544,
+          "gyro_std_rad_s": 0.0034817999982513907,
+          "imu_rotation_std_rad": 0.001915163836453982,
+          "imu_yaw_drift_rad_s": -0.0003417075662034597,
+          "command_latency_steps": 2,
+          "start_xy_m": [
+            0.0121488079931594,
+            0.009500091500195346
+          ],
+          "start_yaw_rad": 0.0051938240279556375
+        },
+        "topology_sha256": "73bfd87660db54f40db40f8170e17ebd883fca39871fc8cf69abf274a3cceb78",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 81.55322908150609,
+        "peak_applied_torque_fraction": 0.7462258170509538,
+        "latency_ms": 40,
+        "report_path": "evidence/cohorts/final-latency-40ms/navigate-26111501/report.json",
+        "report_sha256": "4178aa903ebd3e2f626b799140cf5ce33b72d1fd4a0ff06d24d55a8a61834f97"
+      },
+      {
+        "seed": 26111502,
+        "mode": "navigate",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 27.869999999995432,
+        "status": "violation",
+        "reason": "base_angular_speed_limit",
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 1.7329090669144713,
+        "peak_hand_force_n": 93.24692663680959,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3440641791103098,
+          "wall_friction": 0.5281807861386352,
+          "hand_friction": 0.25537871817174973,
+          "floor_friction": 0.8948401488985779,
+          "link_mass_scale": 1.0182763229769112,
+          "motor_strength": 0.9921088624606325,
+          "joint_friction_scale": 1.1495094145475329,
+          "encoder_std_rad": 0.0007535031106629748,
+          "gyro_std_rad_s": 0.00237447966319045,
+          "imu_rotation_std_rad": 0.0005499596798438691,
+          "imu_yaw_drift_rad_s": -0.0003711356526595259,
+          "command_latency_steps": 2,
+          "start_xy_m": [
+            0.002646158676293281,
+            -0.038251836312345286
+          ],
+          "start_yaw_rad": 0.05211578029723264
+        },
+        "topology_sha256": "bb6a224970f8a6343a24c7407e601bc8808efc5a58e58bf961d9fdf1d9a831c4",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 103.12336866599088,
+        "peak_applied_torque_fraction": 0.8246052632500378,
+        "latency_ms": 40,
+        "report_path": "evidence/cohorts/final-latency-40ms/navigate-26111502/report.json",
+        "report_sha256": "2a800c0f8a2ea115ee31abb892b70c5184ad4e482ef1bf2d638fc16a90acb28a"
+      },
+      {
+        "seed": 26111503,
+        "mode": "navigate",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 14.828000000001621,
+        "status": "violation",
+        "reason": "base_angular_speed_limit",
+        "hard_findings": [],
+        "diagnostic_warnings": 0,
+        "thrash_peak": 1.5091915287825002,
+        "peak_hand_force_n": 62.45728835433579,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3885588161607427,
+          "wall_friction": 0.28109061263716256,
+          "hand_friction": 0.20170676866592396,
+          "floor_friction": 0.8492713406628389,
+          "link_mass_scale": 0.9514539604334428,
+          "motor_strength": 1.0953024830472013,
+          "joint_friction_scale": 1.164420949384401,
+          "encoder_std_rad": 0.00035925314106845057,
+          "gyro_std_rad_s": 0.0022450588412945118,
+          "imu_rotation_std_rad": 0.0008534403166145788,
+          "imu_yaw_drift_rad_s": -0.0004765363983531712,
+          "command_latency_steps": 2,
+          "start_xy_m": [
+            -0.0009564338376593512,
+            -0.021705822839387167
+          ],
+          "start_yaw_rad": -0.037138473980478516
+        },
+        "topology_sha256": "fdf7f7e367b51223c1de25fae8ce7bff23d46690b853d35d7bd793490f987a51",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 73.13030940226118,
+        "peak_applied_torque_fraction": 0.7885520256593616,
+        "latency_ms": 40,
+        "report_path": "evidence/cohorts/final-latency-40ms/navigate-26111503/report.json",
+        "report_sha256": "f0572be4f598022737a8f6bc0a82a406f5739c7fed60d4cca83a47a3b088a4eb"
+      },
+      {
+        "seed": 26111504,
+        "mode": "navigate",
+        "exited": false,
+        "wrong_exit": false,
+        "seconds": 38.19400000000071,
+        "status": "violation",
+        "reason": "base_angular_speed_limit",
+        "hard_findings": [],
+        "diagnostic_warnings": 1,
+        "thrash_peak": 1.6880980370031873,
+        "peak_hand_force_n": 98.90166463585938,
+        "controller_sha256": "eb00abad80dc9764ff75136e3e462e2b87eb4403a4409c86016fbe52c8695152",
+        "parameters": {
+          "speed": 0.10183684504428797,
+          "arc_speed": 0.07539718471429732,
+          "arc_rate": 0.23196697594653665,
+          "contact_threshold": 3.0045672458107533,
+          "lost_threshold": 3.0381610639704992,
+          "lost_seconds": 0.5457930452586666,
+          "turn_rate": 0.2191529090189805,
+          "front_threshold": 4.028580371639123,
+          "force_target": 7.236372114406157
+        },
+        "randomization": {
+          "corridor_width": 1.3897212680581936,
+          "wall_friction": 0.28830168112957144,
+          "hand_friction": 0.24103917689790655,
+          "floor_friction": 0.8826411171165405,
+          "link_mass_scale": 0.9046345857290223,
+          "motor_strength": 1.0640154434932305,
+          "joint_friction_scale": 1.0453251408050552,
+          "encoder_std_rad": 0.0004523341947818097,
+          "gyro_std_rad_s": 0.0021522668782653228,
+          "imu_rotation_std_rad": 0.001187680327197903,
+          "imu_yaw_drift_rad_s": 8.074848609189531e-05,
+          "command_latency_steps": 2,
+          "start_xy_m": [
+            0.013304885681247394,
+            -0.0040511825096587115
+          ],
+          "start_yaw_rad": 0.025187171706259143
+        },
+        "topology_sha256": "beb8c6feffe33200f4c4e7af79b264c41362a0433d9ae056c4a1d422e6d84b04",
+        "baseline": null,
+        "peak_500hz_hand_force_n": 109.06953963937859,
+        "peak_applied_torque_fraction": 0.9063293331909931,
+        "latency_ms": 40,
+        "report_path": "evidence/cohorts/final-latency-40ms/navigate-26111504/report.json",
+        "report_sha256": "d0d721c8fe530c56c595f529364ed55c479965d90594bdcea97d62537783402b"
+      }
+    ]
+  }
+}

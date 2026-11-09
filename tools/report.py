@@ -20,6 +20,7 @@ def hard_findings(report):
 
 
 def summarize(directory,output):
+    directory=directory.resolve()
     paths = sorted(directory.rglob('report.json'))
     rows = []
     for path in paths:
@@ -32,6 +33,11 @@ def summarize(directory,output):
                          peak_hand_force_n=r.get('touch_metrics',{}).get('peak_hand_force_n'),
                          controller_sha256=r.get('controller_sha256'),parameters=r.get('controller_parameters'),
                          randomization=r.get('randomized_parameters'),
+                         topology_sha256=r.get('topology_sha256'),
+                         baseline=r.get('baseline'),
+                         peak_500hz_hand_force_n=r.get('touch_metrics',{}).get('peak_500hz_hand_force_n'),
+                         peak_applied_torque_fraction=r.get('peak_applied_torque_fraction'),
+                         latency_ms=r.get('nominal_command_latency_ms'),
                          report_path=str(path.relative_to(ROOT)),report_sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
     n = len(rows)
     if not n:
@@ -41,12 +47,16 @@ def summarize(directory,output):
     z = 1.96
     center = (p+z*z/(2*n))/(1+z*z/n)
     half = z*math.sqrt(p*(1-p)/n+z*z/(4*n*n))/(1+z*z/n)
-    summary = dict(episodes=n,exits=successes,exit_rate=p,wilson_95_interval=[center-half,center+half],
+    summary = dict(episodes=n,exits=successes,exit_rate=p,wilson_95_interval=[max(0.,center-half),min(1.,center+half)],
         zero_hard_findings_exits=sum(r['exited'] and not r['hard_findings'] and not r['reason'] for r in rows),
         falls=sum(r['reason']=='fall' for r in rows),episodes_with_hard_findings=sum(bool(r['hard_findings']) for r in rows),
         wrong_exits=sum(r['wrong_exit'] for r in rows),peak_thrash=max(r['thrash_peak'] for r in rows),
+        checker_stops=sum(bool(r['reason']) for r in rows),
+        unique_topologies=len({r['topology_sha256'] for r in rows if r['topology_sha256']}),
+        peak_500hz_hand_force_n=max((r['peak_500hz_hand_force_n'] or 0) for r in rows),
         median_success_seconds=float(np.median([r['seconds'] for r in rows if r['exited']])) if successes else None,
         controller_hashes=sorted({r['controller_sha256'] or 'unrecorded' for r in rows}),
+        baseline_hashes=sorted({r['baseline']['source_sha256'] for r in rows if r['baseline']}),
         evidence_kind='in-process kit harness; no native container or hardware claim',rows=rows)
     output.mkdir(parents=True,exist_ok=True)
     (output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')

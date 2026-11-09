@@ -1,0 +1,11 @@
+{
+  "seed": 26111500,
+  "bandwidth_matched_force_vector_rmse_n": 1.8831501174273662,
+  "force_target_n": 7.236372114406157,
+  "relative_force_rmse": 0.26023400782256545,
+  "maximum_odometry_error_m": 0.9294594202861073,
+  "endpoint_odometry_error_m": 0.9251505928728274,
+  "median_contact_map_error_m": 0.39007718868967795,
+  "raw_500hz_peak_hand_force_n": 87.0966673036158,
+  "note": "Map is logging-only. Contact samples selected with simulation truth for evaluation, never navigation. Force alignment is causal and bandwidth-matched; raw peaks are not filtered away."
+}
