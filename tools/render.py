@@ -21,7 +21,8 @@ GREEN = (61,224,174)
 BLUE = (100,174,255)
 WHITE = (239,244,248)
 MUTED = (166,182,196)
-FONT_ROOT = Path('/usr/share/fonts/truetype/dejavu')
+import matplotlib
+FONT_ROOT = Path(matplotlib.get_data_path())/'fonts/ttf'
 
 
 def font(size, bold=False):

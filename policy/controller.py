@@ -39,6 +39,8 @@ class ControlParameters:
     walker_prediction: float = 0.
     action_filter: float = 1.
     walk_blend: float = 0.
+    bounded_navigation: bool = False
+    arm_stiffness: float = 20.
 
     def __post_init__(self):
         for key,high in (('waist_kp',190.),('waist_kd',15.),('waist_gravity',1.2),
@@ -48,6 +50,8 @@ class ControlParameters:
                 raise ValueError('Invalid control parameter: '+key)
         if self.action_filter<.1:
             raise ValueError('Action filter must retain control authority')
+        if type(self.bounded_navigation) is not bool or not 8<=self.arm_stiffness<=40:
+            raise ValueError('Invalid navigation/compliance control parameter')
 
 
 class Controller:
@@ -106,6 +110,8 @@ class Controller:
         self.right_adjustment = np.zeros(7)
         self.events = []
         self.telemetry = {}
+        self.gyro_average=np.zeros(3)
+        self.turn_settle=0.
 
     def transition(self, state):
         self.events.append(dict(time=self.age, source=self.state, target=state,
@@ -119,6 +125,10 @@ class Controller:
             self.contact_points = []
             self.arc_start = self.heading
         self.lost = 0.
+        if self.control.bounded_navigation:
+            self.heading_integral=0.
+            self.velocity_integral[:]=0.
+            self.turn_settle=0.
 
     def act(self, observation, *, ready=True):
         q = np.asarray(observation['q'], dtype=float)
@@ -132,6 +142,7 @@ class Controller:
         if not .95 <= norm <= 1.05:
             raise ValueError('Invalid IMU quaternion norm')
         quat = quat/norm
+        self.gyro_average+=.12*(gyro-self.gyro_average)
         R = rotation(quat)
         yaw = np.arctan2(R[1, 0], R[0, 0])
         kin = self.model.evaluate(q, quat)
@@ -168,6 +179,9 @@ class Controller:
             # Fixed long delay destroys the causal alignment without reading truth.
             sensed = self.force_history[max(0, len(self.force_history)-171)]
         front = max(0., -sensed[0, 0])
+        if self.control.bounded_navigation:
+            # A snag on the right forearm/hand also opposes forward motion.
+            front=max(front,-.8*sensed[1,0])
         right = max(0., sensed[1, 1])
         cmd = np.zeros(3)
         travelled = np.linalg.norm((self.odometry.position-self.state_position)[:2])
@@ -188,7 +202,9 @@ class Controller:
             cmd[1] = -.07
             if self.seek_forward:
                 cmd[0] = .08
-            if right > 3.:
+            if self.control.bounded_navigation and front>self.parameters.front_threshold+1:
+                self.transition('BACKOFF')
+            elif right > 3.:
                 self.transition('FOLLOW')
                 self.seek_forward = False
             elif travelled > 1.5 or self.state_age > 25:
@@ -245,7 +261,13 @@ class Controller:
                 self.heading = wrap(self.heading + direction*np.pi/2)
                 self.transition('TURN')
         elif self.state == 'TURN':
-            if abs(wrap(self.heading-yaw)) < .075 and abs(gyro[2]) < .15 and self.state_age > 3.:
+            if self.control.bounded_navigation:
+                settled=abs(wrap(self.heading-yaw))<.09 and abs(self.gyro_average[2])<.15
+                self.turn_settle=self.turn_settle+.02 if settled else 0.
+                finished=self.turn_settle>.25
+            else:
+                finished=abs(wrap(self.heading-yaw))<.075 and abs(gyro[2])<.15
+            if finished and self.state_age > 3.:
                 self.transition('EXTEND')
             elif self.state_age > 25:
                 self.transition('STOP')
@@ -258,13 +280,29 @@ class Controller:
             cmd[:2] = np.clip((R.T@(self.turn_anchor-self.odometry.position))[:2]*.8, -.15, .15)
         if self.state not in ('ARMING', 'STOP') and self.mode != 'neutral':
             err = wrap(self.heading-yaw)
-            self.heading_integral = np.clip(self.heading_integral+err*.02, -.8, .8)
+            if not self.control.bounded_navigation or abs(2*err+.5*self.heading_integral)<self.parameters.turn_rate or err*self.heading_integral<0:
+                self.heading_integral = np.clip(self.heading_integral+err*.02, -.8, .8)
             cmd[2] = np.clip(2.*err + .5*self.heading_integral, -self.parameters.turn_rate, self.parameters.turn_rate)
             if self.state == 'ARC':
                 cmd[2] = -self.parameters.arc_rate
-            self.velocity_integral += (cmd[:2]-velocity[:2])*.02
-            self.velocity_integral = np.clip(self.velocity_integral, -.25, .25)
-            cmd[:2] = np.clip(cmd[:2]+.9*(cmd[:2]-velocity[:2])+1.8*self.velocity_integral, [-.25,-.3], [.4,.3])
+            if self.control.bounded_navigation:
+                hold=self.state.startswith('RETRACT_') or self.state in ('TURN','EXTEND')
+                if hold or self.state=='BACKOFF':
+                    self.velocity_integral[:]=0
+                    limit=.06 if hold else .10
+                    cmd[:2]=np.clip(cmd[:2]+.4*(cmd[:2]-velocity[:2]),-limit,limit)
+                else:
+                    error=np.clip(cmd[:2]-velocity[:2],-.2,.2)
+                    candidate=np.clip(self.velocity_integral+error*.02,-.08,.08)
+                    raw_cmd=cmd[:2]+.65*error+1.2*candidate
+                    limits=np.array([.20,.14])
+                    accept=(abs(raw_cmd)<limits)|(error*self.velocity_integral<0)
+                    self.velocity_integral=np.where(accept,candidate,self.velocity_integral)
+                    cmd[:2]=np.clip(cmd[:2]+.65*error+1.2*self.velocity_integral,[-.12,-.14],limits)
+            else:
+                self.velocity_integral += (cmd[:2]-velocity[:2])*.02
+                self.velocity_integral = np.clip(self.velocity_integral, -.25, .25)
+                cmd[:2] = np.clip(cmd[:2]+.9*(cmd[:2]-velocity[:2])+1.8*self.velocity_integral, [-.25,-.3], [.4,.3])
         if max(front, right) > 35 and self.state not in ('RETRACT_LEFT', 'RETRACT_RIGHT', 'TURN', 'EXTEND', 'BACKOFF'):
             self.transition('GUARD')
         if self.state in ('ARMING', 'STOP', 'GUARD') or self.mode == 'neutral':
@@ -296,7 +334,7 @@ class Controller:
             [-25,-20,-20],[25,20,20])
         for side, i in (('left', 15), ('right', 22)):
             tau[i:i+7] = kin[side]['gravity']*self.arm_alpha
-            tau[i:i+7] -= 40*self.arm_alpha*(targets[i:i+7]-q[i:i+7])
+            tau[i:i+7] -= (60-self.control.arm_stiffness)*self.arm_alpha*(targets[i:i+7]-q[i:i+7])
             tau[i:i+7] = np.clip(tau[i:i+7], [-20,-20,-20,-20,-20,-4,-4], [20,20,20,20,20,4,4])
         command = dict(q=targets, dq=np.zeros(29), kp=self.kp.copy(), kd=self.kd.copy(), tau=tau)
         self.last_command = command

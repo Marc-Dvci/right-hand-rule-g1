@@ -4,6 +4,8 @@ A blindfolded, free-standing Unitree G1 finds its way through a maze by touch. I
 
 Navigation and arm compliance are scripted. Locomotion uses NVIDIA's attributed pretrained GR00T Walk and Balance networks, exported to equivalent NumPy inference. All robot motion comes from joint control; the maze is static collision geometry.
 
+> Development branch for the pre-submission review. Results below describe the preserved `v1.0.0` release. Current controller experiments are not qualified for submission; see `review/COMPETITIVE_AUDIT.md`.
+
 ## Results
 
 [Measured tables, failures and counterfactuals](evaluation/results/RESULTS.md) · [Force and touch-map figure](evaluation/results/force-and-touch-map.svg)
