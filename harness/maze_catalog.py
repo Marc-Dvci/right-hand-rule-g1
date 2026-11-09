@@ -31,6 +31,24 @@ def passages(index):
     return {frozenset(EDGES[e]) for e in catalog()[index]}
 
 
+def wall_segments(index,width=1.25):
+    tree=passages(index)
+    walls=[]
+    for y in range(3):
+        for x in range(3):
+            left,right=(x-.5)*width,(x+.5)*width
+            bottom,top=(y-.5)*width,(y+.5)*width
+            if y==0:
+                walls.append(((left,bottom),(right,bottom)))
+            if x==0 and y!=0:
+                walls.append(((left,bottom),(left,top)))
+            if y==2 or frozenset(((x,y),(x,y+1))) not in tree:
+                walls.append(((left,top),(right,top)))
+            if (x,y)!=(2,2) and (x==2 or frozenset(((x,y),(x+1,y))) not in tree):
+                walls.append(((right,bottom),(right,top)))
+    return walls
+
+
 @lru_cache(maxsize=1)
 def legacy_ids():
     """Exhaustively enumerate every topology reachable by the old DFS generator."""

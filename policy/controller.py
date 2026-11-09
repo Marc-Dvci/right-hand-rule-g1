@@ -40,6 +40,8 @@ class ControlParameters:
     action_filter: float = 1.
     walk_blend: float = 0.
     bounded_navigation: bool = False
+    turn_safety: bool = False
+    snag_detection: bool = False
     arm_stiffness: float = 20.
 
     def __post_init__(self):
@@ -50,7 +52,7 @@ class ControlParameters:
                 raise ValueError('Invalid control parameter: '+key)
         if self.action_filter<.1:
             raise ValueError('Action filter must retain control authority')
-        if type(self.bounded_navigation) is not bool or not 8<=self.arm_stiffness<=40:
+        if any(type(value) is not bool for value in (self.bounded_navigation,self.turn_safety,self.snag_detection)) or not 8<=self.arm_stiffness<=40:
             raise ValueError('Invalid navigation/compliance control parameter')
 
 
@@ -114,6 +116,7 @@ class Controller:
         self.turn_settle=0.
 
     def transition(self, state):
+        previous=self.state
         self.events.append(dict(time=self.age, source=self.state, target=state,
                                 distance=self.odometry.distance))
         self.state, self.state_age = state, 0.
@@ -125,7 +128,8 @@ class Controller:
             self.contact_points = []
             self.arc_start = self.heading
         self.lost = 0.
-        if self.control.bounded_navigation:
+        maneuvers=('BACKOFF','RETRACT_LEFT','RETRACT_RIGHT','TURN','EXTEND')
+        if self.control.bounded_navigation or (self.control.turn_safety and (state in maneuvers or previous in maneuvers)):
             self.heading_integral=0.
             self.velocity_integral[:]=0.
             self.turn_settle=0.
@@ -179,7 +183,7 @@ class Controller:
             # Fixed long delay destroys the causal alignment without reading truth.
             sensed = self.force_history[max(0, len(self.force_history)-171)]
         front = max(0., -sensed[0, 0])
-        if self.control.bounded_navigation:
+        if self.control.snag_detection:
             # A snag on the right forearm/hand also opposes forward motion.
             front=max(front,-.8*sensed[1,0])
         right = max(0., sensed[1, 1])
@@ -202,7 +206,7 @@ class Controller:
             cmd[1] = -.07
             if self.seek_forward:
                 cmd[0] = .08
-            if self.control.bounded_navigation and front>self.parameters.front_threshold+1:
+            if self.control.snag_detection and front>self.parameters.front_threshold+1:
                 self.transition('BACKOFF')
             elif right > 3.:
                 self.transition('FOLLOW')
@@ -261,7 +265,7 @@ class Controller:
                 self.heading = wrap(self.heading + direction*np.pi/2)
                 self.transition('TURN')
         elif self.state == 'TURN':
-            if self.control.bounded_navigation:
+            if self.control.bounded_navigation or self.control.turn_safety:
                 settled=abs(wrap(self.heading-yaw))<.09 and abs(self.gyro_average[2])<.15
                 self.turn_settle=self.turn_settle+.02 if settled else 0.
                 finished=self.turn_settle>.25
@@ -280,13 +284,16 @@ class Controller:
             cmd[:2] = np.clip((R.T@(self.turn_anchor-self.odometry.position))[:2]*.8, -.15, .15)
         if self.state not in ('ARMING', 'STOP') and self.mode != 'neutral':
             err = wrap(self.heading-yaw)
-            if not self.control.bounded_navigation or abs(2*err+.5*self.heading_integral)<self.parameters.turn_rate or err*self.heading_integral<0:
+            if not (self.control.bounded_navigation or self.control.turn_safety) or abs(2*err+.5*self.heading_integral)<self.parameters.turn_rate or err*self.heading_integral<0:
                 self.heading_integral = np.clip(self.heading_integral+err*.02, -.8, .8)
             cmd[2] = np.clip(2.*err + .5*self.heading_integral, -self.parameters.turn_rate, self.parameters.turn_rate)
             if self.state == 'ARC':
                 cmd[2] = -self.parameters.arc_rate
-            if self.control.bounded_navigation:
-                hold=self.state.startswith('RETRACT_') or self.state in ('TURN','EXTEND')
+            hold=self.state.startswith('RETRACT_') or self.state in ('TURN','EXTEND')
+            if self.control.turn_safety and hold:
+                self.velocity_integral[:]=0
+                cmd[:2]=np.clip(cmd[:2]+.4*(cmd[:2]-velocity[:2]),-.06,.06)
+            elif self.control.bounded_navigation:
                 if hold or self.state=='BACKOFF':
                     self.velocity_integral[:]=0
                     limit=.06 if hold else .10
@@ -308,7 +315,9 @@ class Controller:
         if self.state in ('ARMING', 'STOP', 'GUARD') or self.mode == 'neutral':
             cmd[:] = 0
             self.velocity_integral *= .95
-        self.velocity_command += np.clip(cmd-self.velocity_command, [-.003,-.003,-.006], [.003,.003,.006])
+        braking=self.control.turn_safety and (self.state=='BACKOFF' or self.state.startswith('RETRACT_'))
+        slew=.009 if braking else .003
+        self.velocity_command += np.clip(cmd-self.velocity_command, [-slew,-slew,-.006], [slew,slew,.006])
         prediction=self.control.walker_prediction
         future_q=q+prediction*dq
         w,x,y,z=quat

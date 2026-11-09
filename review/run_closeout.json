@@ -1,0 +1,150 @@
+{
+  "turn_safety_pilot": {
+    "planned": 24,
+    "complete": 16,
+    "interrupted": 4,
+    "not_started": 4,
+    "rows": [
+      {
+        "case": "c0-s0-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c0-s0-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c0-s4-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c0-s4-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c0-s5-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c0-s5-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c1-s0-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c1-s0-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c1-s4-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c1-s4-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c1-s5-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c1-s5-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c2-s0-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c2-s0-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c2-s4-d0",
+        "state": "complete"
+      },
+      {
+        "case": "c2-s4-d2",
+        "state": "complete"
+      },
+      {
+        "case": "c2-s5-d0",
+        "state": "interrupted"
+      },
+      {
+        "case": "c2-s5-d2",
+        "state": "interrupted"
+      },
+      {
+        "case": "c3-s0-d0",
+        "state": "interrupted"
+      },
+      {
+        "case": "c3-s0-d2",
+        "state": "interrupted"
+      },
+      {
+        "case": "c3-s4-d0",
+        "state": "not_started"
+      },
+      {
+        "case": "c3-s4-d2",
+        "state": "not_started"
+      },
+      {
+        "case": "c3-s5-d0",
+        "state": "not_started"
+      },
+      {
+        "case": "c3-s5-d2",
+        "state": "not_started"
+      }
+    ]
+  },
+  "retired_v1_failures": {
+    "planned": 6,
+    "complete": 5,
+    "interrupted": 1,
+    "not_started": 0,
+    "rows": [
+      {
+        "case": "navigate-26111503",
+        "state": "complete"
+      },
+      {
+        "case": "navigate-26111551",
+        "state": "complete"
+      },
+      {
+        "case": "navigate-26111559",
+        "state": "complete"
+      },
+      {
+        "case": "navigate-26111569",
+        "state": "complete"
+      },
+      {
+        "case": "navigate-26111590",
+        "state": "complete"
+      },
+      {
+        "case": "navigate-26111594",
+        "state": "interrupted"
+      }
+    ]
+  },
+  "development_tests": {
+    "passed": 37,
+    "command": "python -m pytest -q tests",
+    "scope": "Current v2 development source; not native-image qualification"
+  },
+  "holdout": {
+    "layouts": 100,
+    "opened": 0,
+    "freeze_created": false
+  },
+  "current_controller_sha256": "1e4efff4fe0e8702e8dd6ad6a1811635d1340e65b864e88108b8ec3aa5b44582",
+  "retired_failure_reports_match_current_source": true
+}

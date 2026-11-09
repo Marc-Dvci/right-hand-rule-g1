@@ -1,6 +1,6 @@
 {
-  "files": 348,
-  "bytes": 83032992,
+  "files": 357,
+  "bytes": 83114431,
   "blocked": [],
   "inventory": [
     {
@@ -169,6 +169,16 @@
       "sha256": "459c1314fd31d0f766839bb9b91ca6e7b947669d4f6fac6d693d688c09a21a9b"
     },
     {
+      "path": "harness/catalog_cohort.py",
+      "bytes": 3862,
+      "sha256": "1e000dfbba0926f0f2a70418652537cb627e33a20f284ffcca5354ba9c2a1e2b"
+    },
+    {
+      "path": "harness/catalog_evaluate.py",
+      "bytes": 2379,
+      "sha256": "28c4f3f23be72adcaf6a34deffb3efa7ef12ff5f7086f6af13ebd97eacdbfa15"
+    },
+    {
       "path": "harness/cohort.py",
       "bytes": 3917,
       "sha256": "c6e17db5899dcbb4c72775f6ea79f951a12f2f8bffb16df0aed13aff796256a6"
@@ -220,8 +230,8 @@
     },
     {
       "path": "harness/maze_catalog.py",
-      "bytes": 1951,
-      "sha256": "c1d8e1cdbd9520ffa8b4c2611b72642d0335f02d1721ea8d4df061de7c153c0c"
+      "bytes": 2621,
+      "sha256": "90350be5c78dfcb2c9991799ff18bd49379e5bff3fde1591bedc96ca405cfedf"
     },
     {
       "path": "harness/prediction_sweep.py",
@@ -254,14 +264,19 @@
       "sha256": "de567323797bbdc813a4ed6c531afa0c93df5a77fe7bf0fa99a0e22fb83248d8"
     },
     {
+      "path": "harness/turn_sweep.py",
+      "bytes": 2076,
+      "sha256": "19c02c444147bd9fe74aed25b2bbf5a2e751d083cfe956760ded6615452bdc97"
+    },
+    {
       "path": "policy/__init__.py",
       "bytes": 74,
       "sha256": "5106daa5c3295c8f7264c2bd026212b67898bb5883fc4cba921616d13c8dd74d"
     },
     {
       "path": "policy/controller.py",
-      "bytes": 16970,
-      "sha256": "73ec9ed508fb28018258397d7a3b3f5035f9d5fbcbbc41000ce3587a57b78be2"
+      "bytes": 17644,
+      "sha256": "caeac5f9781e318f4c318dfaa2fb988bc58637dbb1a061e58736b2e50930275d"
     },
     {
       "path": "policy/kinematics.py",
@@ -334,9 +349,34 @@
       "sha256": "b96c944caaf2b8be69f4954174370ca8ac1fc85903dbeb979baaf74b9cc9735b"
     },
     {
+      "path": "review/HANDOFF.md",
+      "bytes": 13278,
+      "sha256": "5622700fb1f8e1827ae2de2ab1db3abb9038309c9f319948305749817bddac47"
+    },
+    {
+      "path": "review/candidates/gravity-predictor20ms.json",
+      "bytes": 255,
+      "sha256": "dc445c890d68bf263164f1782c9ab35843746ace31b41da54686b3be3d9d99d9"
+    },
+    {
+      "path": "review/candidates/turn-only.json",
+      "bytes": 258,
+      "sha256": "d273cb2bf7355d50d795b40f5cc8f466d2c4f4de9b261b6ed53834a07496d751"
+    },
+    {
       "path": "review/evaluation_v2_protocol.json",
       "bytes": 4267,
       "sha256": "188e1e12f8d99428bb3097140dea505f076f0cba890068ce3ad45164ac3db639"
+    },
+    {
+      "path": "review/review_snapshot.json",
+      "bytes": 52634,
+      "sha256": "4455274481a0e68a30c5b0340a34d6221648d225871b6ac8f0121e8067a81ded"
+    },
+    {
+      "path": "review/run_closeout.json",
+      "bytes": 2947,
+      "sha256": "4774e1319ebce6f49b3f272d3d2aa0fddfb78224cbee3993f246b4aec72c6991"
     },
     {
       "path": "run.sh",
@@ -885,8 +925,8 @@
     },
     {
       "path": "tests/test_maze_catalog.py",
-      "bytes": 1050,
-      "sha256": "7d6b8a4684cd53cd98edaa1e1604fedfa8bf1759f4771e0eb7cb1a135baa82c5"
+      "bytes": 1423,
+      "sha256": "1ff98573d4abc53afe1afb99d0327546d8847e821e58813ca5b4e5652ac8bec3"
     },
     {
       "path": "tests/test_physics_contract.py",
@@ -997,6 +1037,11 @@
       "path": "tools/freeze_evaluation.py",
       "bytes": 1653,
       "sha256": "8a281c9f97ade4b8866164f0a8099c908125e91748677b9bcfa532ff70b6a2d4"
+    },
+    {
+      "path": "tools/freeze_v2.py",
+      "bytes": 2033,
+      "sha256": "e4e0a9b4f34b0c16ac6c62fde72a902be44c922cd7418553671e1332173b0692"
     },
     {
       "path": "tools/inspect_episode.py",
