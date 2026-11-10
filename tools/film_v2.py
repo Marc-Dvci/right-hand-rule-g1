@@ -24,8 +24,10 @@ def build(audit_path,native_path,output,frames_only=False):
         raise ValueError('Four nominal successful traces are needed for the disclosed demonstration selection')
     grids=[Replay((ROOT/r['report_path']).parent) for r in rows[:4]]
     hero=grids[0]
-    follow=next(e for e in hero.report['controller_events'] if e['target']=='FOLLOW')
-    intro_start=max(7.,follow['time']+hero.report['policy_handoff_at_secs']-1.)
+    contact=np.flatnonzero(np.linalg.norm(hero.data['true_force_filtered'][:,1],axis=1)>3.)
+    if not len(contact):
+        raise ValueError('No measured right-hand contact for the opening clip')
+    intro_start=max(7.,float(hero.data['time'][contact[0]])-1.)
     corner_times={}
     for state in ('ARC','BACKOFF'):
         events=[e for e in hero.report['controller_events'] if e['target']==state]
@@ -33,6 +35,7 @@ def build(audit_path,native_path,output,frames_only=False):
             raise ValueError('Selected hero has no actual '+state+' event; do not label an unrelated clip')
         corner_times[state]=events[0]['time']+hero.report['policy_handoff_at_secs']
     primary=sorted((s for s in audit['strata'] if s['mode']=='navigate'),key=lambda s:s['delay_ms'])
+    matched_seeds=set(sorted({r['seed'] for r in audit['rows'] if r['mode']=='navigate'})[:20])
     fps=24
     samples=[0,12,32,44,56,65,73,79]
     sample_dir=output.parent/(output.stem+'-frames')
@@ -63,7 +66,7 @@ def build(audit_path,native_path,output,frames_only=False):
         elif t<52:
             if t<40:
                 stamp=7+(hero.end-7)*(t-8)/32
-                caption=f'Complete run / {(hero.end-7)/32:.1f}x speed / seed {hero.report["seed"]}'
+                caption=f'Complete navigation / {(hero.end-7)/32:.1f}x speed / seed {hero.report["seed"]}'
                 close=False
                 title='FOLLOW THE WALL'
             else:
@@ -91,9 +94,12 @@ def build(audit_path,native_path,output,frames_only=False):
             label(d,(45,130),'DOES TOUCH CAUSE THE RESULT?',30,GREEN,True)
             label(d,(45,195),'Matched first 20 seeds / each command-delay stratum',22,MUTED)
             for i,mode in enumerate(('navigate','neutral','touch_off','touch_shuffled')):
-                strata=sorted((s for s in audit['strata'] if s['mode']==mode),key=lambda s:s['delay_ms'])
-                title={'navigate':'Complete controller (all 100 seeds)','neutral':'Neutral / stand','touch_off':'Touch removed','touch_shuffled':'Touch delayed by 3.4 seconds'}[mode]
-                values='    '.join(f'{s["delay_ms"]} ms: {s["exits"]}/{s["episodes"]}' for s in strata)
+                title={'navigate':'Complete controller','neutral':'Neutral / stand','touch_off':'Touch removed','touch_shuffled':'Touch delayed by 3.4 seconds'}[mode]
+                values=[]
+                for delay in (0,20,40):
+                    subset=[r for r in audit['rows'] if r['mode']==mode and r['delay_ms']==delay and r['seed'] in matched_seeds]
+                    values.append(f'{delay} ms: {sum(r["exited"] for r in subset)}/{len(subset)}')
+                values='    '.join(values)
                 label(d,(45,275+i*80),title,20,WHITE,True)
                 label(d,(45,306+i*80),values,20,MUTED)
             label(d,(45,658),'Other than the stated intervention, settings and randomization remain matched.',16,MUTED)
@@ -109,9 +115,9 @@ def build(audit_path,native_path,output,frames_only=False):
             label(d,(45,120),'100 DISTINCT UNSEEN TOPOLOGIES',30,GREEN,True)
             for i,s in enumerate(primary):
                 label(d,(45,205+i*72),f'{s["delay_ms"]:2d} ms command delay:  {s["exits"]}/{s["episodes"]} exits',32,WHITE,True)
-            label(d,(45,445),'600 simulated seconds per trial. Every failure retained.',21,MUTED)
-            label(d,(45,493),'Excessive contact impulses remain a physical-transfer limitation.',20,WHITE)
-            label(d,(45,535),'Simulation evidence; no hardware approval or universal ranking.',19,MUTED)
+            label(d,(45,445),'600-second limit per trial. Every failure retained.',21,MUTED)
+            label(d,(45,493),'Excessive contact impulses remain a limit before hardware.',20,WHITE)
+            label(d,(45,535),'Simulation evidence. Hardware qualification is still required.',19,MUTED)
             label(d,(45,605),'github.com/Marc-Dvci/right-hand-rule-g1',24,GREEN,True)
         if n in {int(s*fps) for s in samples}:
             frame.save(sample_dir/f'{n:05d}.png')
@@ -125,8 +131,8 @@ def build(audit_path,native_path,output,frames_only=False):
         replay.renderer.close()
     provenance=dict(duration_seconds=82,fps=fps,hero=str(hero.path.relative_to(ROOT)),
         grid=[str(r.path.relative_to(ROOT)) for r in grids],
-        selection='First four successful nominal held-out episodes in seed order. Failures remain in all aggregate denominators.',
-        rendering='Recorded qpos, mj_forward only, no physics stepping. Wall transparency is rendering only.',
+        selection='First four successful nominal held-out episodes in seed order. Opening: first filtered right-hand contact above 3 N. Corners: first recorded ARC/BACKOFF events. Failures remain in all aggregate denominators.',
+        rendering='Recorded qpos, mj_forward only, no physics stepping. Wall transparency is rendering only. The complete navigation clip starts at 7 s, after startup/calibration.',
         source_traces={str(r.path.relative_to(ROOT)):hashlib.sha256(r.trace.read_bytes()).hexdigest() for r in grids},
         audit_sha256=hashlib.sha256(audit_path.read_bytes()).hexdigest(),
         native_summary_sha256=hashlib.sha256(native_path.read_bytes()).hexdigest())

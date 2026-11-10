@@ -2,6 +2,7 @@
 import os
 os.environ['OPENBLAS_NUM_THREADS']='1'
 import json
+import inspect
 from pathlib import Path
 import sys
 import numpy as np
@@ -11,6 +12,7 @@ from tools.audit_v2 import source_digest,sha256
 from harness.scoring import score_trajectory
 from harness.maze_catalog import wall_segments
 from tools.check_native_episode import REQUIRED_CHECKS
+from container.timing import TimedPolicy
 
 
 def record(path):
@@ -18,7 +20,12 @@ def record(path):
     if report['controller_sha256']!=source_digest():
         raise ValueError('Mixed development policy versions')
     for field,name in (('controller_parameters','navigation'),('control_parameters','control'),('transport_config','deployment')):
-        if report[field]!=json.loads((ROOT/f'config/{name}.json').read_text()):
+        actual=report[field]
+        if field=='transport_config' and actual is None and report['transport_adapter']:
+            # The stress CLI omitted overrides; TimedPolicy applies its frozen
+            # constructor defaults. Preserve the original report unchanged.
+            actual={k:v.default for k,v in inspect.signature(TimedPolicy).parameters.items() if k!='controller'}
+        if actual!=json.loads((ROOT/f'config/{name}.json').read_text()):
             raise ValueError('Development settings differ from selected configuration')
     if report.get('control_path')!='submission' or report.get('safety_checks') is not True or any(report['checks'].get(c) is not True for c in REQUIRED_CHECKS):
         raise ValueError('Required checks disabled')

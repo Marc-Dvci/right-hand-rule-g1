@@ -12,6 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.freeze_v2 import check
 from tools.sensor_replay import replay
+from tools.source_git import read as git_read
 
 
 def digest(path):
@@ -39,7 +40,7 @@ def main():
         raise ValueError('Film results differ from packaged audit')
     if digest(dist/'submission.tar')!=native['image_sha256']:
         raise ValueError('Image archive changed')
-    tracked=subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode().split('\0')
+    tracked=git_read('ls-files','-z').decode().split('\0')
     files={ROOT/name for name in tracked if name}
     files.update(p for p in (ROOT/'reports/v2').rglob('*') if p.is_file() and p.suffix=='.json')
     files.update((dist/name) for name in ('image-provenance.json','result.json'))
@@ -49,6 +50,14 @@ def main():
         raise ValueError('Sensor-only replay failed')
     files.add(bundle)
     files.add(ROOT/'review/results/sensor-replay-v2-selected.json')
+    incident_path=ROOT/'review/results/v2-infrastructure-incidents.json'
+    incidents=json.loads(incident_path.read_text())
+    files.add(incident_path)
+    for incident in incidents['incidents']:
+        path=ROOT/incident['original_log']
+        if digest(path)!=incident['original_log_sha256']:
+            raise ValueError('Original infrastructure failure log changed')
+        files.add(path)
     virtual={}
     motion_artifacts=[]
     for delay in (0,20,40):
@@ -97,6 +106,23 @@ def main():
                 archive.write(p,p.relative_to(ROOT).as_posix())
                 if p.suffix in ('.json','.log'):
                     files.add(p)
+    primitives=json.loads((ROOT/'reports/v2/primitive-summary.json').read_text())
+    if primitives['episodes']!=150 or len(primitives['rows'])!=150:
+        raise ValueError('Incomplete supplemental primitive evidence')
+    primitive_base=ROOT/'evidence/primitives/selected-v2-50-each-20261110'
+    primitive_archive=dist/'v2-primitives-evidence.zip'
+    for row in primitives['rows']:
+        report=ROOT/row['report_path']
+        if digest(report)!=row['report_sha256'] or digest(report.parent/'trace.npz')!=row['trace_sha256']:
+            raise ValueError('Primitive evidence changed')
+    with zipfile.ZipFile(primitive_archive,'w',compression=zipfile.ZIP_STORED,allowZip64=True) as archive:
+        for p in sorted(primitive_base.rglob('*')):
+            if p.is_file():
+                archive.write(p,p.relative_to(ROOT).as_posix())
+                if p.suffix in ('.json','.log'):
+                    files.add(p)
+    if primitive_archive.stat().st_size>1_900_000_000:
+        raise ValueError('Supplemental primitive archive needs smaller release chunks')
     package=dist/'RightHandRule.zip'
     inventory=[]
     with zipfile.ZipFile(package,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9,allowZip64=True) as archive:
@@ -122,9 +148,9 @@ def main():
     if video.stat().st_size>50_000_000 or package.stat().st_size+video.stat().st_size>100_000_000:
         raise ValueError('Contest upload size limit exceeded')
     artifacts=[]
-    for p in (package,video,dist/'submission.tar',*motion_artifacts,native_archive):
+    for p in (package,video,dist/'submission.tar',*motion_artifacts,native_archive,primitive_archive):
         artifacts.append(dict(name=p.name,bytes=p.stat().st_size,sha256=digest(p)))
-    manifest=dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT).decode().strip(),
+    manifest=dict(source_commit=git_read('rev-parse','HEAD').decode().strip(),
         artifacts=artifacts,contest_combined_bytes=package.stat().st_size+video.stat().st_size,
         primary_gate_passed=audit['primary_gate_passed'],native_gate_passed=True,hardware_authorization=False)
     (dist/'artifacts.json').write_text(json.dumps(manifest,indent=2)+'\n')

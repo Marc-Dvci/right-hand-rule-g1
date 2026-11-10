@@ -42,7 +42,7 @@ python harness/catalog_cohort.py --final --name reproduce-v2-primary --control-c
 for mode in neutral touch_off touch_shuffled; do
   python harness/catalog_cohort.py --final --name "reproduce-v2-$mode" --mode "$mode" --control-config config/control.json --workers 4
 done
-python tools/audit_v2.py evidence/catalog/reproduce-v2-primary evidence/catalog/reproduce-v2-neutral evidence/catalog/reproduce-v2-touch_off evidence/catalog/reproduce-v2-touch_shuffled --output reports/v2/reproduction-audit.json
+python tools/qualify_v2.py evidence/catalog/reproduce-v2-primary evidence/catalog/reproduce-v2-neutral evidence/catalog/reproduce-v2-touch_off evidence/catalog/reproduce-v2-touch_shuffled --output reports/v2/reproduction-audit.json
 ```
 
 For native ARM64, obtain the image referenced by `g1-runner.json`, verify its

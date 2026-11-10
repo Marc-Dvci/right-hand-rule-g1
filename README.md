@@ -14,10 +14,19 @@ exported to equivalent NumPy inference; we did not train those weights.
 [Judge's guide](JUDGES_GUIDE_V2.md) ? [V2 results](evaluation/results/v2/RESULTS.md) ?
 [Plan audit](PROJECT_AUDIT_V2.md) ? [Competitive assessment](review/COMPETITIVE_V2.md)
 
-**Qualification status:** the selected V2 controller is undergoing final
-qualification. The complete results and release package will be generated only
-from the version-matched audit. V1 remains preserved under the v1.0.0 release;
-its scores do not qualify V2. No Arena submission has been made.
+**V2's declared simulation gate passed.** On 100 distinct held-out layouts per
+delay, exits were **100/100 at 0 ms, 100/100 at 20 ms, and 95/100 at 40 ms**, with
+zero primary checker stops or actual limit findings. The limit was 600 seconds.
+All five navigation failures remain reported. Neutral and touch-off each exited
+0/20 matched seeds at every delay; touch delayed by 3.4 s exited 3/20, 8/20 and
+9/20. Delayed controls' findings are reported separately.
+
+The exact released ARM64 image passed **3/3 standard and 3/3 actual-maze runs**,
+with three designated exits. Supplemental straight/inner/outer primitives each
+exited **50/50**, and the separate damping/push set exited **16/16**. The original
+low-force and force-accuracy goals remain unmet. See the measured tables for
+scope, all start outcomes and original-plan departures. V1 remains preserved
+under v1.0.0. **No Arena submission or physical robot attempt has been made.**
 
 ## Run a development maze
 

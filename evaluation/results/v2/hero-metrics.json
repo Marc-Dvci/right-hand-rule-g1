@@ -1,0 +1,18 @@
+{
+  "seed": 26120000,
+  "episode": "evidence/catalog/frozen-v2-primary-20261110/navigate-layout41-s26120000-d0/report.json",
+  "scope": "Disclosed film hero only; not an aggregate estimator guarantee.",
+  "component_rmse_n": 1.6327377230253712,
+  "mean_hand_vector_rmse_n": 2.827984691714264,
+  "per_hand_vector_rmse_n": [
+    2.5766986814304493,
+    3.058695594245204
+  ],
+  "force_target_n": 7.236372114406157,
+  "mean_hand_vector_rmse_fraction_of_target": 0.39080144677528633,
+  "raw_500hz_peak_hand_resultant_n": 84.85140093785819,
+  "maximum_odometry_error_m": 1.32668855852494,
+  "endpoint_odometry_error_m": 1.3248501617437598,
+  "alignment": "Estimator at observation_time[1:] against the physical interval ending at that observation, true_force_filtered[:-1]; only times >7 s. Odometry is compared with qpos[:-1], not the later end-of-step state.",
+  "definition": "Component RMSE averages squared errors over time, hands and xyz. Vector RMSE first sums xyz squared errors, then averages over time/hands. Per-hand values average over time only. Historical fields named force_vector_rmse_n in the frozen evaluator are component RMSE, not vector-norm RMSE. No metric definition or controller changed during final evaluation."
+}

@@ -17,6 +17,9 @@ def main():
     proof=json.loads((ROOT/'review/results/sensor-replay-v2-selected.json').read_text())
     development=json.loads((ROOT/'reports/v2/development-summary.json').read_text())
     stress=json.loads((ROOT/'reports/v2/stress-summary.json').read_text())
+    hero=json.loads((ROOT/'reports/v2/hero-metrics.json').read_text())
+    primitive_path=ROOT/'reports/v2/primitive-summary.json'
+    primitives=json.loads(primitive_path.read_text()) if primitive_path.exists() else None
     primary=sorted((s for s in audit['strata'] if s['mode']=='navigate'),key=lambda s:s['delay_ms'])
     target=ROOT/'evaluation/results/v2'
     target.mkdir(parents=True,exist_ok=True)
@@ -69,13 +72,15 @@ def main():
         '## Matched controls','',
         'First 20 seeds, identical geometry/settings/randomization at each delay. '
         '`touch_shuffled` is the historical name for a fixed 3.4-second delay, not random shuffling.','',
-        '| Intervention | 0 ms | 20 ms | 40 ms |','|---|---:|---:|---:|']
+        '| Intervention | 0 ms | 20 ms | 40 ms | Limit findings (0/20/40 ms) |','|---|---:|---:|---:|---:|']
     for mode,title in zip(modes,titles):
         values=[]
+        findings=[]
         for delay in (0,20,40):
             rows=[r for r in audit['rows'] if r['mode']==mode and r['delay_ms']==delay and r['seed'] in seeds]
             values.append(f'{sum(r["exited"] for r in rows)}/{len(rows)}')
-        lines.append('| '+title+' | '+' | '.join(values)+' |')
+            findings.append(str(sum(r['hard_findings'] for r in rows)))
+        lines.append('| '+title+' | '+' | '.join(values)+' | '+' / '.join(findings)+' |')
     lines+=['','## Exact-image native ARM64 evidence','',
         f'Standard: **{native["standard_passes"]}/{native["repeats"]}** clean; '
         f'actual maze: **{native["task_passes"]}/{native["repeats"]}** clean, '
@@ -88,12 +93,28 @@ def main():
         'All six starts were attempted on both scenes; startup failures and invalid '
         'penetrations remain recorded. Both suites require review; this is not an all-pose pass.','',
         '## Version-matched supporting evidence','',
+        f'- Constant command age identified correctly in **{sum(r["calibration"]["selected_frames"]==r["delay_ms"]//20 and not r["calibration"].get("error") for r in audit["rows"] if r["mode"]=="navigate")}/300** held-out primary trials. The controller receives no evaluator delay label; fit confidence remains a relative residual heuristic.',
         f'- Fresh development qualification: {development["episodes"]} episodes across all 92 development layouts and all three delays; see `reports/v2/development-summary.json`.',
         f'- Separate damping/push stresses: {stress["exits"]}/{stress["episodes"]} exits, {stress["checker_stops"]} checker stops and {stress["actual_limit_findings"]} actual limit findings.',
         f'- Sensor-only command proof: **{proof["policy_calls"]:,} calls**, maximum target/feedforward difference **{proof["maximum_absolute_command_difference"]}**, MuJoCo imported: **{proof["simulator_imported"]}**. '
         'The bundle contains only joint/IMU observations, host readiness, sequence IDs and expected outputs compared after inference.',
         '- Original locomotion export parity: 10,000 recorded histories per network, maximum action difference 3.58e-6. This validates the pretrained network export, not hardware transfer.',
         '- Independent final audit checks exact source, config, dependencies, seeds, walls, randomization, active checks and geometric crossing scores. Portable motions can be rescored without a physics engine.','',
+        'A neutral-control process failed before model/policy initialization because its generated scene was unavailable on the shared Windows-mounted path. '
+        'The original log is retained; only that missing trial was rerun on a byte-identical frozen Linux copy. '
+        'The remaining controls used that copy as well. No policy, physics, settings, seed or outcome was changed; '
+        'see `review/results/v2-infrastructure-incidents.json`.','',
+        '## Force-estimator and odometry audit','',
+        f'The disclosed film hero has **{hero["component_rmse_n"]:.3f} N component RMSE** and '
+        f'**{hero["mean_hand_vector_rmse_n"]:.3f} N mean-hand vector RMSE**, '
+        f'{100*hero["mean_hand_vector_rmse_fraction_of_target"]:.1f}% of the {hero["force_target_n"]:.3f} N target. '
+        'These use causally aligned, bandwidth-matched evaluator forces after startup. '
+        'Historical fields named `force_vector_rmse_n` average components; the new analysis explicitly distinguishes vector-norm RMSE. '
+        'The original 25% force-error goal is not passed under the vector definition.',
+        '',f'Its aligned endpoint odometry error is **{hero["endpoint_odometry_error_m"]:.3f} m**. '
+        'This is one disclosed demonstration, not a cohort-wide estimator guarantee. '
+        'The trajectory/map remains logging-only.',
+        '', '![Force and aligned odometry errors](force-and-odometry.svg)','',
         '## Material limits and improvements still needed','',
         f'- Peak final hand load: **{max(s["peak_hand_load_n"] for s in primary):.2f} N**; '
         f'peak nonhand wall load: **{max(s["peak_nonhand_wall_load_n"] for s in primary):.2f} N**. '
@@ -101,19 +122,42 @@ def main():
         '- Instrumented compliant-wall qualification and improved collision avoidance/compliance are the highest priorities before hardware. Inferred-force thresholds do not bound transient load.',
         '- Calibration assumes a free-space start and a constant 0/20/40 ms command age. Arbitrary varying delays, hardware actuator filtering and model mismatch remain unqualified.',
         '- Foot odometry drifts. The touch map and wall-heading fit remain logging-only; no memory traversal or guided-hand mode is implemented.',
-        '- The full planned 50-run straight/inner/outer corner gates and broader geometry/dynamic-obstacle qualification remain unexecuted. This is a 3x3 perfect-maze task.',
+        ('- The supplemental 50-run wall/inner/outer sets are reported below. The original full low-force goal remains unmet.' if primitives else '- The supplemental 50-run wall/inner/outer sets are still running.')+' Broader geometry and dynamic-obstacle qualification remain unexecuted. This is a 3x3 perfect-maze task.',
         '- Physical G1 results, all-pose recovery and hardware authorization are absent. Simulation reliability does not establish universal superiority over competitors on different tasks.','',
         '## All primary failures','']
     failures=sorted((r for r in audit['rows'] if r['mode']=='navigate' and not r['exited']),key=lambda r:(r['delay_ms'],r['seed']))
     if failures:
-        lines+=['| Delay | Seed | Layout | Seconds | Checker reason |','|---|---:|---:|---:|---|']
-        lines += [f'| {r["delay_ms"]} ms | {r["seed"]} | {r["layout"]} | {r["seconds"]:.2f} | {r["reason"] or "navigation failure / see report"} |' for r in failures]
+        lines+=['| Delay | Seed | Layout | Seconds | Outcome / last state |','|---|---:|---:|---:|---|']
+        for r in failures:
+            report=json.loads((ROOT/r['report_path']).read_text())
+            state=report['controller_events'][-1]['target'] if report['controller_events'] else 'ARMING'
+            outcome=r['reason'] or ('wrong entrance' if report['wrong_exit'] else
+                ('navigation hold' if state in ('STOP','GUARD') and r['seconds']<599.99 else 'time budget'))
+            lines.append(f'| {r["delay_ms"]} ms | {r["seed"]} | {r["layout"]} | {r["seconds"]:.2f} | {outcome} / {state} |')
     else:
         lines.append('No primary navigation failures in this declared cohort.')
+    if primitives:
+        lines+=['','## Supplemental original-plan primitives','',
+            'These 150 nominal-delay trials were declared and executed after the frozen geometry holdout, with the same unchanged controller. '
+            'Each primitive uses 50 fresh randomized seeds and a 150-second budget. Corner scores below are geometric exit crossings in the authored L-wall scenes; '
+            'they do not establish a physical low-force corner envelope.','',
+            '| Primitive | Exits | Checker stops | Limit findings | Peak hand load | Peak body-wall load |',
+            '|---|---:|---:|---:|---:|---:|']
+        for s in primitives['strata']:
+            lines.append(f'| {s["scene"]} | {s["exits"]}/50 | {s["checker_stops"]} | {s["actual_limit_findings"]} | {s["peak_hand_load_n"]:.2f} N | {s["peak_nonhand_wall_load_n"]:.2f} N |')
+        lines+=['',f'Straight-wall runs meeting the complete exit/contact-distance/20 N condition: **{primitives["strata"][0]["straight_full_gate_passes"]}/50**. '
+            f'Wall contact onsets detected within 200 ms: {100*primitives["wall_detection_fraction_200ms"]:.2f}%; '
+            f'false-contact sample fraction: {100*primitives["wall_false_contact_fraction"]:.2f}%; '
+            f'wall runs meeting the vector-RMSE goal: {primitives["wall_runs_meeting_vector_error_goal"]}/50. '
+            'The instantaneous false-contact comparison includes short gait-contact gaps while the filtered navigation signal remains positive; the declared 1% criterion is unmet. '
+            'The exact thresholds, sample definitions and per-run values are in the declared protocol and `reports/v2/primitive-summary.json`. '
+            'This supplemental set is not the 100-topology holdout and was not used to retune V2.','']
     lines+=['','Full per-episode reports, hashes, controls and native outcomes are included in the source ZIP and release evidence. '
         'The film uses measured states only; hero/grid selection is the first four successful nominal seeds, disclosed in `dist/result.json`.','']
     (target/'RESULTS.md').write_text('\n'.join(lines))
-    (ROOT/'review/V2_RESULTS.md').write_text('\n'.join(lines).replace('(cohort.svg)','(../evaluation/results/v2/cohort.svg)'))
+    (ROOT/'review/V2_RESULTS.md').write_text('\n'.join(lines)
+        .replace('(cohort.svg)','(../evaluation/results/v2/cohort.svg)')
+        .replace('(force-and-odometry.svg)','(../evaluation/results/v2/force-and-odometry.svg)'))
     print('Wrote audited V2 tables, complete failure list and results figure')
 
 

@@ -1,6 +1,6 @@
 {
-  "files": 410,
-  "bytes": 83784219,
+  "files": 430,
+  "bytes": 85573932,
   "blocked": [],
   "inventory": [
     {
@@ -15,8 +15,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 326,
-      "sha256": "ee65454ed7a03925f225dadccd463c9cc900276112172a40b2c2f5c39722ff6d"
+      "bytes": 363,
+      "sha256": "effa8aee1c69c2bbf243aad298dc92e8f66cd576cd23b276960ba7725e723065"
     },
     {
       "path": "HARDWARE_ATTEMPT.md",
@@ -25,13 +25,13 @@
     },
     {
       "path": "JUDGES_GUIDE_V2.md",
-      "bytes": 3299,
-      "sha256": "9fb3459604542ac511d37fc339bc6fd80e8f398e64487e4c27a6bd4452c7be1e"
+      "bytes": 3301,
+      "sha256": "2486779de5e8f33d0203451dd4aaf9cc31c6774675aeec48bed29d8893aadb90"
     },
     {
       "path": "NEXT_IDEAS.md",
-      "bytes": 1371,
-      "sha256": "fae7435ccf93d1b89e2cbc618baa21b334d09ca5ed9291ecc94f74f2ea4caf2a"
+      "bytes": 1585,
+      "sha256": "adb5b7bdb5b484ab3cf1a1e1a7a166bdb00e60a412c36fe97af6192a3bb730f6"
     },
     {
       "path": "PROJECT_AUDIT.md",
@@ -40,13 +40,13 @@
     },
     {
       "path": "PROJECT_AUDIT_V2.md",
-      "bytes": 5290,
-      "sha256": "13958c826cc948cad2b69ef5566332c940ca6584404d20231100d071a5779ce8"
+      "bytes": 5550,
+      "sha256": "89c3abcf316921e40d153390ffcaa0a3c9d40d8c87967b796caaaacc68d5c9aa"
     },
     {
       "path": "README.md",
-      "bytes": 4996,
-      "sha256": "9172d8600125cf0c33b661cfdedea2d9822d2833584f026796a47c987cbc9d8d"
+      "bytes": 5637,
+      "sha256": "86e928dbb4a9da7e21cd3095fedcc7a5d27e5a2f795a75a00a17f5db26019800"
     },
     {
       "path": "RELEASE_NOTES.md",
@@ -172,6 +172,61 @@
       "path": "evaluation/results/summary.json",
       "bytes": 204813,
       "sha256": "704f8da12c1e1f16562ed5103029d2d9d9ec62039da87647e579afb988069d33"
+    },
+    {
+      "path": "evaluation/results/v2/RESULTS.md",
+      "bytes": 7452,
+      "sha256": "3eba45c4eefa15d00cdb5879d0e458bd01f7e6e0370e984ed2871d2957fe6172"
+    },
+    {
+      "path": "evaluation/results/v2/cohort.png",
+      "bytes": 96553,
+      "sha256": "10b0c524b1c33e73c9ede393d95c7c239557fc53608957cddeddaa7fed258b99"
+    },
+    {
+      "path": "evaluation/results/v2/cohort.svg",
+      "bytes": 60323,
+      "sha256": "3c9d87e2056a9a892633a95ee37eb948363a900a4b499ef238c6d9171f26e301"
+    },
+    {
+      "path": "evaluation/results/v2/final-audit.json",
+      "bytes": 615139,
+      "sha256": "3665569c9d1ed62d6f70d906aa8195aa61ff3e9c1baa482723577f251aae46be"
+    },
+    {
+      "path": "evaluation/results/v2/force-and-odometry.pdf",
+      "bytes": 118653,
+      "sha256": "fc19dfd083835952029dd1e67bfdcbc0be30655cbb36994935e0c34ea89e94c3"
+    },
+    {
+      "path": "evaluation/results/v2/force-and-odometry.png",
+      "bytes": 247168,
+      "sha256": "d5747ffa7a73c1ca602a4d8e5e0a79942606ca2c8ab1182753e345ab99e6de5c"
+    },
+    {
+      "path": "evaluation/results/v2/force-and-odometry.svg",
+      "bytes": 320741,
+      "sha256": "c0173deedf4124eac1b7d0e0bbed3ddb77b1ca106da2732b14cec5c2006af4b7"
+    },
+    {
+      "path": "evaluation/results/v2/hero-metrics.json",
+      "bytes": 1235,
+      "sha256": "c15c674c127b9164ea76451b940561187b89c9176ad9537b7df90216bf35ac8d"
+    },
+    {
+      "path": "evaluation/results/v2/native-summary.json",
+      "bytes": 48543,
+      "sha256": "1639934ee3729bcb2737d15fafe86959f56cd80d01df708ce74fc821e96c9433"
+    },
+    {
+      "path": "evaluation/results/v2/primitive-summary.json",
+      "bytes": 201916,
+      "sha256": "dfcb613b3cce1a9b5a592fb9aca7ee12b4c9808149837ed4e2c9ec3f132518ec"
+    },
+    {
+      "path": "evaluation/results/v2/stress-summary.json",
+      "bytes": 31971,
+      "sha256": "bf20f3e1c21d6bb412e89e552172bb45a30ccb32373190f611b159b035e32e6a"
     },
     {
       "path": "evaluation_protocol.json",
@@ -465,8 +520,18 @@
     },
     {
       "path": "review/V2_BUILD_RECORD.md",
-      "bytes": 6233,
-      "sha256": "8a42b201051051ad6098326ea306ee13f48171beb60fd7dddd7f3281dd7e6867"
+      "bytes": 6123,
+      "sha256": "36d4282d3700f62bfab92e1dfeab320821b3ba13bc3cc8970ebd99f8837881ab"
+    },
+    {
+      "path": "review/V2_RESULTS.md",
+      "bytes": 7502,
+      "sha256": "a446577e5b465a689a1689ccfcdb6f0cd27903df9eb168e9c87e9f95bfbe12f2"
+    },
+    {
+      "path": "review/V2_SOURCE_AUDIT.md",
+      "bytes": 4870,
+      "sha256": "630badf474cc919e103190c2eb87a15e4068780884898ab40d61b3e0f2d75faf"
     },
     {
       "path": "review/candidates/calibrated-yaw-development.json",
@@ -527,6 +592,11 @@
       "path": "review/results/turn-only-paired.json",
       "bytes": 426931,
       "sha256": "fb0ce4afbe409d08c4586142a67cae3bc113c8a8df3e7c3aee73939966bccdaf"
+    },
+    {
+      "path": "review/results/v2-infrastructure-incidents.json",
+      "bytes": 894,
+      "sha256": "3fb47f9676ad25b5bd1356fe2467cabf94085f9754abe82f9487369f666dcc49"
     },
     {
       "path": "review/review_snapshot.json",
@@ -1174,9 +1244,14 @@
       "sha256": "e671919d6a66072966c2cc9a5a8b092ca7885664d839f13d4945f6f076285295"
     },
     {
+      "path": "tools/analyze_v2_touch.py",
+      "bytes": 4190,
+      "sha256": "3d9918aedf42b1967b11a086180bd05b4f5ba785b2f11ad5b83792ef7c0ad39e"
+    },
+    {
       "path": "tools/audit_development_v2.py",
-      "bytes": 5502,
-      "sha256": "a5c545e96a157144be89eda3bc2b555dcbe6a490b202f2c643cb38a5a07e0fe1"
+      "bytes": 5937,
+      "sha256": "348f77466059e0db44e72e923570373d8c88a7ec89392c8ef1527b42b6fbf8f9"
     },
     {
       "path": "tools/audit_final.py",
@@ -1265,8 +1340,8 @@
     },
     {
       "path": "tools/film_v2.py",
-      "bytes": 8485,
-      "sha256": "8d47632c84debf96c38759d82b32bdb85b2b9d2fe68cb9f2be53e79fc42e9e36"
+      "bytes": 8950,
+      "sha256": "6014bc2bb46df2851131dd43477b12b3ee534b622bb5277e9a64453819d5d930"
     },
     {
       "path": "tools/fit_arms.py",
@@ -1315,8 +1390,8 @@
     },
     {
       "path": "tools/package_v2.py",
-      "bytes": 7798,
-      "sha256": "1663a6d100419a042db6434e10eff7fa50c0aefeec7502c41a2b2028cb113ad3"
+      "bytes": 9265,
+      "sha256": "f2a81ff409e4e214d0195d56e5fc737ba74d79b39b01ae1c100d2d124853febb"
     },
     {
       "path": "tools/paired_regression.py",
@@ -1344,9 +1419,24 @@
       "sha256": "2ffe126e2e77f1d1aad9508fa8ab141879a547b9e88b19ad95a7255305d99da8"
     },
     {
+      "path": "tools/primitive_gate_v2.py",
+      "bytes": 7260,
+      "sha256": "d4304208f049cff45899c320db9a10636b77b695b9869900be683ce4ea0017d0"
+    },
+    {
+      "path": "tools/progress_v2.py",
+      "bytes": 1460,
+      "sha256": "933b47a84c258c470c61473085468d0e2545c7076e87ebf05855449e17eccbf0"
+    },
+    {
       "path": "tools/publish_results.py",
       "bytes": 5099,
       "sha256": "10ed441138979aef50e9ac4f2e377e5aa9d034bfac48d6a382f769717163928f"
+    },
+    {
+      "path": "tools/qualify_v2.py",
+      "bytes": 770,
+      "sha256": "b7e2d6bdcaef84616db51ad08724f3bd51bcdad31c1b76692301a6b45c03d0b2"
     },
     {
       "path": "tools/render.py",
@@ -1399,6 +1489,11 @@
       "sha256": "04425bec8e24ccfc07db6914f8e853b0801da81ad121ac5080597d2c97abb98a"
     },
     {
+      "path": "tools/source_git.py",
+      "bytes": 843,
+      "sha256": "2ee1333fdb418f1fd36f0efaaf6dcde06148fe604fd19469ffaf033c22729af4"
+    },
+    {
       "path": "tools/trace_events.py",
       "bytes": 538,
       "sha256": "5d34b37a41ccd899e5e6f6c801759580839851948f32d898ecb212e8a681c1c3"
@@ -1409,14 +1504,19 @@
       "sha256": "277003dd1bdc2021b2c9f495089e1abba116d717f146b6823deaf05a48a13aeb"
     },
     {
+      "path": "tools/verify_v2_package.py",
+      "bytes": 4273,
+      "sha256": "a45296f097cecca891bf259f48809cc2d3f075cc2565100cab09a91eec4091ed"
+    },
+    {
       "path": "tools/wall_heading_audit.py",
       "bytes": 1873,
       "sha256": "72c55cf2e2abb654be44e0243182bbbea4d80d99d44111aaff11241de55f9541"
     },
     {
       "path": "tools/writeup_v2.py",
-      "bytes": 9224,
-      "sha256": "053400b1ed19fac377c216bbce4bf1842caf74f8dbf3fbfbb521333ff9338ae7"
+      "bytes": 13770,
+      "sha256": "34cfb8893b2d32f781c5db9d6ff09ed1f52952c0f460a8cebd04ca335861511c"
     },
     {
       "path": "vendor/builder-kit/BASKETBALL_START.md",

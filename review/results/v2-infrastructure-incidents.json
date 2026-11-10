@@ -1,0 +1,15 @@
+{
+  "incidents": [
+    {
+      "mode": "neutral",
+      "seed": 26120003,
+      "layout": 124,
+      "delay_ms": 20,
+      "stage": "Scene unavailable before model or policy initialization; no episode report or commands",
+      "original_log": "evidence/catalog/frozen-v2-control-neutral-20261110/neutral-layout124-s26120003-d1/run.log",
+      "original_log_sha256": "c24c1e91f5fa500b53666f23341c802e19dbc76025caacfc053ae3848cb55658",
+      "rerun_report": "evidence/catalog/frozen-v2-control-neutral-infrastructure-retry-20261110/neutral-layout124-s26120003-d1/report.json"
+    }
+  ],
+  "handling": "Original failed process logs retained. Missing pre-initialization cases rerun once on an identical frozen source copy in Linux /tmp. Later controls use that POSIX filesystem to avoid shared Windows scene-file replacement races. No policy, physics, settings, seeds, checks or score changes."
+}
