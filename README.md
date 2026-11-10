@@ -26,7 +26,7 @@ with three designated exits. Supplemental straight/inner/outer primitives each
 exited **50/50**, and the separate damping/push set exited **16/16**. The original
 low-force and force-accuracy goals remain unmet. See the measured tables for
 scope, all start outcomes and original-plan departures. V1 remains preserved
-under v1.0.0. **No Arena submission or physical robot attempt has been made.**
+under v1.0.0. **Submitted to the Open Build Challenge:** [RIGHT HAND RULE V2](https://arena.himrobotics.com/uploads/source_eff93321574256f23c9d). No physical robot attempt has been made.
 
 ## Run a development maze
 

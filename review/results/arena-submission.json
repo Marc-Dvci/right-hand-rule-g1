@@ -1,0 +1,19 @@
+{
+  "url": "https://arena.himrobotics.com/uploads/source_eff93321574256f23c9d",
+  "submission_id": "source_eff93321574256f23c9d",
+  "published": true,
+  "visibility": "public",
+  "readiness": "ready",
+  "challenge": "open-build-challenge",
+  "archive_digest_matches": true,
+  "video_digest_matches": true,
+  "run_command": "./run.sh",
+  "public_page_http_status": 200,
+  "title_present": true,
+  "open_build_link_present": true,
+  "archive_digest_in_page": true,
+  "archive_sha256": "905a7cfe582cadb84f43386adba4941073c994150f70a7862fbf3aa1383f0ed7",
+  "video_sha256": "7c812cdaa63ebad6cc084546191ebd3b7e3e4b9a814e18f78d30535cdaba7265",
+  "created_at": "2026-11-10T16:31:14.765Z",
+  "hardware_authorization": false
+}
