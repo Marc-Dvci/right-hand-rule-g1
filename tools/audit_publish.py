@@ -22,7 +22,7 @@ for name in filter(None,files):
     inventory.append(dict(path=name,bytes=len(data),sha256=hashlib.sha256(data).hexdigest()))
 report = dict(files=len(inventory),bytes=sum(row['bytes'] for row in inventory),blocked=blocked,inventory=inventory)
 output = ROOT/'research/publication-audit.json'
-output.write_text(json.dumps(report,indent=2)+'\n')
+output.write_bytes((json.dumps(report,indent=2)+'\n').encode('utf-8'))
 print(json.dumps({k:v for k,v in report.items() if k!='inventory'},indent=2))
 if blocked:
     raise SystemExit('Do not publish: blocked inventory')

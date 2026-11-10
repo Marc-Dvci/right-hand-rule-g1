@@ -1,6 +1,6 @@
 {
   "files": 386,
-  "bytes": 83605264,
+  "bytes": 83605283,
   "blocked": [],
   "inventory": [
     {
@@ -1110,8 +1110,8 @@
     },
     {
       "path": "tools/audit_publish.py",
-      "bytes": 1370,
-      "sha256": "3d5eff50547e0e59613152246c1f4473eec42d5eb940c5f1989c3cec8c3ea580"
+      "bytes": 1389,
+      "sha256": "dba46487559f728d210e04c9e87e95244c4924e68a08f05e2ab5ebd3eafceb14"
     },
     {
       "path": "tools/bootstrap.py",
