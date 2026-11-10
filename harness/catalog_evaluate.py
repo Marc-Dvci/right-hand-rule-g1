@@ -11,6 +11,7 @@ sys.path.insert(0,str(ROOT))
 from harness import evaluate
 from harness.maze_catalog import wall_segments
 from harness.scenes import write_scene
+from harness.protocol import validate_episode
 
 
 def make_scene(layout,seed,width):
@@ -31,13 +32,13 @@ if __name__=='__main__':
     p.add_argument('--final',action='store_true')
     a=p.parse_args()
     protocol=json.loads((ROOT/'review/evaluation_v2_protocol.json').read_text())
-    if not a.final and a.layout_id not in protocol['development_topologies']:
-        raise SystemExit('Refusing to open a held-out geometry during development')
+    validate_episode(protocol,layout=a.layout_id,seed=a.seed,seconds=a.seconds,mode=a.mode,
+        delay=a.delay,final=a.final,root=ROOT,parameters=a.parameters,control=a.control_config)
+    if a.output.exists() and any(p.name!='run.log' for p in a.output.iterdir()):
+        raise SystemExit('Refusing to replace existing episode evidence')
     if a.final:
         from tools.freeze_v2 import check
         freeze=check()
-        index=protocol['holdout_seeds'].index(a.seed)
-        assert protocol['holdout_topologies'][index]==a.layout_id
     evaluate.make=lambda kind,seed,width:make_scene(a.layout_id,seed,width)
     report=evaluate.run('maze',a.seed,a.seconds,a.mode,None,a.output,
         parameters=json.loads(a.parameters.read_text()),randomize=True,transport=True,
@@ -47,4 +48,8 @@ if __name__=='__main__':
     report['split']='geometry_holdout' if a.final else 'development_geometry'
     report['scene_generator_sha256']={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
         for name in ('harness/catalog_evaluate.py','harness/maze_catalog.py')}
+    report['protocol_sha256']=hashlib.sha256((ROOT/'review/evaluation_v2_protocol.json').read_bytes()).hexdigest()
+    if a.final:
+        check()
+        report['freeze_sha256']=hashlib.sha256((ROOT/'evaluation/frozen-v2.json').read_bytes()).hexdigest()
     (a.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')

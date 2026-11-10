@@ -7,6 +7,8 @@ import random
 import subprocess
 import sys
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from harness.protocol import validate_cohort
 p=argparse.ArgumentParser()
 p.add_argument('--name',required=True)
 p.add_argument('--control-config',type=Path,required=True)
@@ -36,9 +38,8 @@ if a.final:
         ids,seeds=ids[:protocol['controls']['matched_first_n_seeds']],seeds[:protocol['controls']['matched_first_n_seeds']]
 else:
     ids=a.layouts or random.Random(119021).sample(protocol['development_topologies'],a.count)
-    if any(index not in protocol['development_topologies'] for index in ids):
-        raise ValueError('Development cannot open held-out geometries')
     seeds=[12000+index for index in ids]
+validate_cohort(protocol,layouts=ids,delays=a.delays,mode=a.mode,final=a.final)
 output.mkdir(parents=True)
 manifest=dict(final=a.final,mode=a.mode,layouts=ids,seeds=seeds,delays=a.delays,
     parameters=json.loads(a.parameters.read_text()),control=json.loads(a.control_config.read_text()))
