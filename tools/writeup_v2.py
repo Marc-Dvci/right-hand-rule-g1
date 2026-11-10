@@ -52,6 +52,8 @@ def main():
     axes[1].legend(loc='lower left',frameon=False,fontsize=8)
     fig.suptitle('RIGHT HAND RULE V2 / 600-second limit / all failures retained',fontsize=13)
     fig.savefig(target/'cohort.svg')
+    svg=target/'cohort.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     fig.savefig(target/'cohort.png',dpi=160)
     plt.close(fig)
     lines=['# RIGHT HAND RULE V2: measured results','',

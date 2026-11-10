@@ -64,6 +64,8 @@ def main():
     target_dir.mkdir(parents=True,exist_ok=True)
     for extension in ('svg','png','pdf'):
         fig.savefig(target_dir/f'force-and-odometry.{extension}',dpi=160)
+    svg=target_dir/'force-and-odometry.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     plt.close(fig)
     print(json.dumps(result,indent=2))
 

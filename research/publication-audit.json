@@ -1,6 +1,6 @@
 {
   "files": 430,
-  "bytes": 85573932,
+  "bytes": 85562515,
   "blocked": [],
   "inventory": [
     {
@@ -185,8 +185,8 @@
     },
     {
       "path": "evaluation/results/v2/cohort.svg",
-      "bytes": 60323,
-      "sha256": "3c9d87e2056a9a892633a95ee37eb948363a900a4b499ef238c6d9171f26e301"
+      "bytes": 59275,
+      "sha256": "2a581883828c6fe0ce4c3ca72678f8d15052bb6707b1a90446878040fae96382"
     },
     {
       "path": "evaluation/results/v2/final-audit.json",
@@ -205,8 +205,8 @@
     },
     {
       "path": "evaluation/results/v2/force-and-odometry.svg",
-      "bytes": 320741,
-      "sha256": "c0173deedf4124eac1b7d0e0bbed3ddb77b1ca106da2732b14cec5c2006af4b7"
+      "bytes": 310118,
+      "sha256": "361aa3f45b8481605d3dc2a31ef846ba902519bb74e37cdddd87eb5c6939d7cc"
     },
     {
       "path": "evaluation/results/v2/hero-metrics.json",
@@ -1245,8 +1245,8 @@
     },
     {
       "path": "tools/analyze_v2_touch.py",
-      "bytes": 4190,
-      "sha256": "3d9918aedf42b1967b11a086180bd05b4f5ba785b2f11ad5b83792ef7c0ad39e"
+      "bytes": 4325,
+      "sha256": "93873489b1c8647439222d2e5a610a8dce43869f79ec81b734547de6be24fbad"
     },
     {
       "path": "tools/audit_development_v2.py",
@@ -1515,8 +1515,8 @@
     },
     {
       "path": "tools/writeup_v2.py",
-      "bytes": 13770,
-      "sha256": "34cfb8893b2d32f781c5db9d6ff09ed1f52952c0f460a8cebd04ca335861511c"
+      "bytes": 13889,
+      "sha256": "8d045f1b4e9689be67a179a7210694e0c5cab95d902057d367c72020395a726d"
     },
     {
       "path": "vendor/builder-kit/BASKETBALL_START.md",
