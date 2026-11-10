@@ -13,6 +13,7 @@ from std_msgs.msg import String
 from std_srvs.srv import Trigger
 from him_safety_interfaces.msg import RobotFeedback, JointCommand, Abort
 from policy.controller import Controller
+from policy.settings import load_settings
 from timing import TimedPolicy
 
 
@@ -25,6 +26,7 @@ class TouchNode(Node):
         self.sequence = 0
         self.sent = -1
         self.done = False
+        self.calibration_reported=False
         self.feedback, self.imu = {}, {}
         qos = QoSProfile(depth=16, reliability=ReliabilityPolicy.BEST_EFFORT)
         self.publisher = self.create_publisher(JointCommand, '/safety/precheck',
@@ -72,6 +74,14 @@ class TouchNode(Node):
             if not hasattr(self,'timed_policy'):
                 self.timed_policy = TimedPolicy(self.controller)
             result = self.timed_policy.act(dict(q=q, dq=dq, quat=quat, gyro=gyro), key, ready)
+            identified=getattr(self.controller,'identified_command_age',None)
+            calibration_error=getattr(self.controller,'calibration_error',None)
+            if not self.calibration_reported and (identified is not None or calibration_error):
+                self.calibration_reported=True
+                if calibration_error:
+                    self.get_logger().warning('Navigation stopped: '+calibration_error)
+                else:
+                    self.get_logger().info('Command-age calibration: '+json.dumps(self.controller.calibration.report()))
             message = JointCommand()
             message.session_id = self.session
             message.sequence = self.sequence
@@ -105,11 +115,8 @@ class TouchNode(Node):
 
 def main():
     print('RIGHT HAND RULE: loading verified networks',flush=True)
-    config = Path(__file__).parent/'navigation.json'
-    parameters = json.loads(config.read_text()) if config.exists() else None
-    controller = Controller(parameters=parameters)
-    deployment = Path(__file__).parent/'deployment.json'
-    transport_config = json.loads(deployment.read_text()) if deployment.exists() else None
+    controller = Controller()
+    transport_config = load_settings('deployment')
     rclpy.init()
     node = TouchNode(controller,transport_config)
     print('RIGHT HAND RULE: ROS node initialized',flush=True)

@@ -1,11 +1,14 @@
 """Touch-only wall following over the attributed NVIDIA locomotion policy."""
 import json
+from collections import deque
 from dataclasses import dataclass
 from pathlib import Path
 import numpy as np
 from .networks import Walker, rotation
 from .kinematics import ArmModel
 from .odometry import Odometry
+from .settings import load_settings
+from .calibration import CommandAgeCalibration
 
 
 def wrap(a):
@@ -43,17 +46,26 @@ class ControlParameters:
     turn_safety: bool = False
     snag_detection: bool = False
     arm_stiffness: float = 20.
+    waist_yaw_scale: float = 1.
+    force_command_age_steps: int = 0
+    robust_touch: bool = False
+    stagnation_recovery: bool = False
+    measured_turn_heading: bool = False
+    calibrate_command_age: bool = False
 
     def __post_init__(self):
         for key,high in (('waist_kp',190.),('waist_kd',15.),('waist_gravity',1.2),
-                         ('walker_prediction',.06),('action_filter',1.),('walk_blend',.1)):
+                         ('walker_prediction',.06),('action_filter',1.),('walk_blend',.1),('waist_yaw_scale',1.)):
             value=getattr(self,key)
             if not np.isfinite(value) or not 0<=value<=high:
                 raise ValueError('Invalid control parameter: '+key)
         if self.action_filter<.1:
             raise ValueError('Action filter must retain control authority')
-        if any(type(value) is not bool for value in (self.bounded_navigation,self.turn_safety,self.snag_detection)) or not 8<=self.arm_stiffness<=40:
+        if any(type(value) is not bool for value in (self.bounded_navigation,self.turn_safety,self.snag_detection,
+                self.robust_touch,self.stagnation_recovery,self.measured_turn_heading,self.calibrate_command_age)) or not 8<=self.arm_stiffness<=40:
             raise ValueError('Invalid navigation/compliance control parameter')
+        if type(self.force_command_age_steps) is not int or not 0<=self.force_command_age_steps<=2:
+            raise ValueError('Force estimation supports 0 to 2 declared command-delay frames')
 
 
 class Controller:
@@ -66,13 +78,11 @@ class Controller:
         if mode not in ('navigate', 'neutral', 'touch_off', 'touch_shuffled', 'walk_test'):
             raise ValueError('Unknown controller mode')
         self.mode = mode
-        default_path = Path(__file__).parent/'models/navigation.json'
         if parameters is None:
-            parameters = json.loads(default_path.read_text()) if default_path.exists() else {}
+            parameters = load_settings('navigation')
         self.parameters = Parameters(**parameters)
-        control_path=Path(__file__).parent/'models/control.json'
         if control is None:
-            control=json.loads(control_path.read_text()) if control_path.exists() else {}
+            control=load_settings('control')
         self.control=ControlParameters(**control)
         self.speed = self.parameters.speed if speed is None else speed
         self.walker = Walker()
@@ -102,6 +112,7 @@ class Controller:
         self.velocity_command = np.zeros(3)
         self.navigation_velocity = np.zeros(3)
         self.last_command = None
+        self.command_history = deque(maxlen=3)
         self.initial_arms = None
         self.force = np.zeros((2, 3))
         self.navigation_force = np.zeros((2, 3))
@@ -114,6 +125,17 @@ class Controller:
         self.telemetry = {}
         self.gyro_average=np.zeros(3)
         self.turn_settle=0.
+        self.stagnant=0.
+        self.recoveries=0
+        self.force_age=np.zeros(2,dtype=int)
+        self.force_ambiguity=np.zeros(2)
+        self.progress_samples=deque(maxlen=251)
+        self.current_yaw=0.
+        self.calibration=CommandAgeCalibration()
+        self.calibration_actual=True
+        self.calibration_start=None
+        self.calibration_error=None
+        self.identified_command_age=None
 
     def transition(self, state):
         previous=self.state
@@ -128,6 +150,10 @@ class Controller:
             self.contact_points = []
             self.arc_start = self.heading
         self.lost = 0.
+        self.stagnant=0.
+        self.progress_samples.clear()
+        if state=='BACKOFF' and self.control.measured_turn_heading:
+            self.heading=self.current_yaw
         maneuvers=('BACKOFF','RETRACT_LEFT','RETRACT_RIGHT','TURN','EXTEND')
         if self.control.bounded_navigation or (self.control.turn_safety and (state in maneuvers or previous in maneuvers)):
             self.heading_integral=0.
@@ -149,6 +175,7 @@ class Controller:
         self.gyro_average+=.12*(gyro-self.gyro_average)
         R = rotation(quat)
         yaw = np.arctan2(R[1, 0], R[0, 0])
+        self.current_yaw=yaw
         kin = self.model.evaluate(q, quat)
         velocity = self.odometry.update(kin['feet'], quat, foot_rotations=kin['foot_rotations'])
         if self.initial_arms is None:
@@ -161,14 +188,35 @@ class Controller:
         if self.started:
             self.age += .02
             self.state_age += .02
+        calibrating=self.control.calibrate_command_age and self.started and self.age>=3.
+        if calibrating and self.identified_command_age is None and self.calibration_error is None:
+            self.calibration.observe(q[19],dq[19],actual=self.calibration_actual)
         raw = np.zeros((2, 3))
         if self.last_command is not None:
+            applied = self.last_command
+            force_age=self.control.force_command_age_steps if self.identified_command_age is None else self.identified_command_age
+            self.force_age[:]=force_age
+            if force_age and self.command_history:
+                applied = self.command_history[-min(len(self.command_history),force_age+1)]
             for n, (side, i) in enumerate((('left', 15), ('right', 22))):
-                motor = self.kp[i:i+7]*(self.last_command['q'][i:i+7]-q[i:i+7]) - self.kd[i:i+7]*dq[i:i+7] + self.last_command['tau'][i:i+7]
+                motor = self.kp[i:i+7]*(applied['q'][i:i+7]-q[i:i+7]) - self.kd[i:i+7]*dq[i:i+7] + applied['tau'][i:i+7]
                 residual = kin[side]['gravity'] - motor
                 J = kin[side]['jacobian'][:, :4]
                 force_world = np.linalg.solve(J@J.T+np.eye(3)*.0002, J@residual[:4])
                 raw[n] = R.T @ force_world
+                if self.control.robust_touch and self.command_history:
+                    hypotheses=[]
+                    for previous in reversed(self.command_history):
+                        motor=self.kp[i:i+7]*(previous['q'][i:i+7]-q[i:i+7])-self.kd[i:i+7]*dq[i:i+7]+previous['tau'][i:i+7]
+                        residual=kin[side]['gravity']-motor
+                        hypotheses.append(R.T@np.linalg.solve(J@J.T+np.eye(3)*.0002,J@residual[:4]))
+                    hypotheses=np.asarray(hypotheses)
+                    # External contact is sparse. Use the least residual among
+                    # plausible *past issued* commands, and expose ambiguity.
+                    selected=int(np.argmin(np.linalg.norm(hypotheses-self.bias[n],axis=1)))
+                    raw[n]=hypotheses[selected]
+                    self.force_age[n]=selected
+                    self.force_ambiguity[n]=np.linalg.norm(hypotheses-raw[n],axis=1).max()
             if 3.5 < self.age < 5.:
                 self.bias += .04*(raw-self.bias)
             self.force += .22*(raw-self.bias-self.force)
@@ -190,7 +238,20 @@ class Controller:
         cmd = np.zeros(3)
         travelled = np.linalg.norm((self.odometry.position-self.state_position)[:2])
         if self.state == 'ARMING' and self.age >= 5.:
-            self.transition('FOLLOW' if right > 2.5 else 'FIND')
+            if self.control.calibrate_command_age and self.identified_command_age is None:
+                try:
+                    # The observation just appended has not issued an input yet.
+                    # Fit the preceding complete input/output records only.
+                    latest=(self.calibration.q.pop(),self.calibration.dq.pop(),self.calibration.actual.pop())
+                    self.identified_command_age=self.calibration.fit()
+                    self.calibration.observe(latest[0],latest[1],actual=latest[2])
+                    self.force[:]=0
+                    self.navigation_force[:]=0
+                except ValueError as error:
+                    self.calibration_error=str(error)
+                    self.transition('STOP')
+            if self.calibration_error is None:
+                self.transition('FOLLOW' if right > 2.5 else 'FIND')
         if self.mode == 'walk_test' and self.age >= 5.:
             self.state = 'WALK_TEST'
             phase = self.age-5
@@ -216,11 +277,20 @@ class Controller:
         elif self.state == 'FOLLOW':
             cmd[0] = self.speed
             cmd[1] = np.clip(.012*(right-self.parameters.force_target), -.07, .07)
+            if self.control.stagnation_recovery:
+                self.progress_samples.append(self.odometry.position[:2].copy())
+                stopped=len(self.progress_samples)==251 and np.linalg.norm(self.progress_samples[-1]-self.progress_samples[0])<.08
+                self.stagnant=4. if stopped else 0.
             self.lost = self.lost+.02 if right < self.parameters.lost_threshold else max(0., self.lost-.04)
             if front > self.parameters.front_threshold:
                 self.transition('BACKOFF')
             elif self.lost > self.parameters.lost_seconds:
                 self.transition('ARC')
+            elif self.stagnant>3.:
+                self.recoveries+=1
+                self.heading=yaw
+                self.transition('BACKOFF' if self.recoveries<=8 else 'STOP')
+                self.events[-1].update(cause='joint_odometry_stagnation',recovery=self.recoveries)
             if right > 3.5:
                 point = self.odometry.position + kin['right']['position']
                 self.contact_points.append(point.copy())
@@ -326,6 +396,10 @@ class Controller:
         future_quat/=np.linalg.norm(future_quat)
         lower = self.walker.update(future_q,dq,future_quat,gyro,self.velocity_command,
                                   action_filter=self.control.action_filter,blend_width=self.control.walk_blend)
+        if self.control.waist_yaw_scale!=1.:
+            lower[12]*=self.control.waist_yaw_scale
+            # The next history frame must describe the target actually sent.
+            self.walker.action[12]=lower[12]/.25
         target_alpha = 0. if self.state.startswith('RETRACT_') or self.state in ('TURN', 'GUARD', 'STOP') else min(1., self.age/3.)
         self.arm_alpha += np.clip(target_alpha-self.arm_alpha, -.012, .012)
         targets = np.r_[lower, self.initial_arms+self.arm_alpha*(self.arm_pose-self.initial_arms)]
@@ -341,14 +415,22 @@ class Controller:
         tau[12:15] = np.clip(self.control.waist_kp*(targets[12:15]-q[12:15])-
             self.control.waist_kd*dq[12:15]+self.control.waist_gravity*kin['waist_gravity'],
             [-25,-20,-20],[25,20,20])
+        tau[12]*=self.control.waist_yaw_scale
         for side, i in (('left', 15), ('right', 22)):
             tau[i:i+7] = kin[side]['gravity']*self.arm_alpha
             tau[i:i+7] -= (60-self.control.arm_stiffness)*self.arm_alpha*(targets[i:i+7]-q[i:i+7])
             tau[i:i+7] = np.clip(tau[i:i+7], [-20,-20,-20,-20,-20,-4,-4], [20,20,20,20,20,4,4])
+        if self.control.calibrate_command_age and 3.2<=self.age<4.8:
+            tau[19]+=self.calibration.excitation(int(round((self.age-3.2)/.02)))
         command = dict(q=targets, dq=np.zeros(29), kp=self.kp.copy(), kd=self.kd.copy(), tau=tau)
         self.last_command = command
+        self.command_history.append({k:command[k].copy() for k in ('q','tau')})
+        if calibrating and len(self.calibration.inputs)<len(self.calibration.q):
+            self.calibration.issued(targets[19],tau[19])
         self.telemetry = dict(state=self.state, age=self.age, right_force=right, front_force=front,
                               force=self.force.copy(), velocity=velocity, command=self.velocity_command.copy(),
                               odometry=self.odometry.position.copy(), hands=np.stack([kin[s]['position'] for s in ('left','right')]),
                               heading=self.heading, yaw=yaw)
+        self.telemetry.update(force_command_age=self.force_age.copy(),force_ambiguity_n=self.force_ambiguity.copy(),
+                              recoveries=self.recoveries)
         return command

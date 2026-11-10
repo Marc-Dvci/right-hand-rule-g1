@@ -1,0 +1,13 @@
+{
+  "waist_kp": 40.0,
+  "waist_kd": 3.5,
+  "waist_gravity": 1.0,
+  "walker_prediction": 0.02,
+  "action_filter": 1.0,
+  "walk_blend": 0.04,
+  "bounded_navigation": false,
+  "turn_safety": true,
+  "snag_detection": false,
+  "arm_stiffness": 20.0,
+  "waist_yaw_scale": 0.0
+}

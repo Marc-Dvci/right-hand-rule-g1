@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 from harness.kit import Runner
 from harness.scenes import make
 from policy.controller import Controller
+from harness.contact_metrics import ContactAudit
 
 
 def contact_truth(plant):
@@ -39,7 +40,7 @@ def contact_truth(plant):
     return f
 
 
-def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, parameters=None, randomize=False, transport=False, transport_config=None, latency_steps=None, control=None):
+def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, parameters=None, randomize=False, transport=False, transport_config=None, latency_steps=None, control=None, robustness=None):
     output.mkdir(parents=True, exist_ok=True)
     source_files = sorted((ROOT/'policy').glob('*.py'))+sorted((ROOT/'policy/models').glob('*.json'))+sorted((ROOT/'policy/models').glob('*.npz'))
     source_digest = hashlib.sha256()
@@ -61,6 +62,8 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
     runner = Runner(scene=scene, pose=pose, record_trace=False)
     if perturbations:
         apply(runner.plant,perturbations)
+    from harness.robustness import configure
+    stress=configure(runner.plant,robustness)
     controller = Controller(mode, speed, parameters,**({'control':control} if control is not None else {}))
     adapter = None
     if transport:
@@ -74,10 +77,11 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
     peaks = dict(thrash=0.,torque_fraction=0.,demand_fraction=0.,hand_force_500hz=0.)
     force_samples = dict(total=np.zeros((2,3)),count=0)
     original_step = runner.plant.step_physics
+    contact_audit = ContactAudit(runner.plant)
     def recorded_step():
         result = original_step()
         plant = runner.plant
-        force = contact_truth(plant)
+        force = contact_audit.sample()
         force_samples['total'] += force
         force_samples['count'] += 1
         peaks['hand_force_500hz'] = max(peaks['hand_force_500hz'],float(np.linalg.norm(force,axis=-1).max()))
@@ -95,7 +99,7 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
         return result
     runner.thrash_detector.observe = recorded_observe
     start = time.monotonic()
-    records = {k: [] for k in ('qpos', 'q', 'dq', 'features', 'time', 'observation_time', 'command', 'estimated_force', 'navigation_force', 'true_force', 'true_force_instant', 'true_force_filtered', 'velocity', 'odometry', 'state', 'thrash', 'joint_targets', 'feedforward', 'applied_torque')}
+    records = {k: [] for k in ('qpos', 'q', 'dq', 'observation_quat', 'observation_gyro', 'features', 'time', 'observation_time', 'command', 'estimated_force', 'navigation_force', 'true_force', 'true_force_instant', 'true_force_filtered', 'velocity', 'odometry', 'state', 'thrash', 'joint_targets', 'feedforward', 'issued_targets', 'issued_feedforward', 'applied_torque', 'force_command_age', 'force_ambiguity_n')}
     filtered_truth = np.zeros((2,3))
     peak_thrash = 0.
     exited = False
@@ -129,11 +133,13 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
         instant_truth = contact_truth(runner.plant)@rotation(obs['quat'])
         truth = (force_samples['total']/max(1,force_samples['count']))@rotation(obs['quat'])
         filtered_truth += .22*(truth-filtered_truth)
-        for k, v in dict(qpos=runner.plant.data.qpos, q=obs['q'], dq=obs['dq'], features=controller.walker.last_features,
+        for k, v in dict(qpos=runner.plant.data.qpos, q=obs['q'], dq=obs['dq'], observation_quat=obs['quat'],observation_gyro=obs['gyro'],features=controller.walker.last_features,
                          time=runner.sim_time,observation_time=t, command=telemetry['command'], estimated_force=telemetry['force'], true_force=truth,
                          true_force_instant=instant_truth,true_force_filtered=filtered_truth,
                          navigation_force=controller.navigation_force,velocity=telemetry['velocity'], odometry=telemetry['odometry'],
                          state=telemetry['state'], thrash=thrash,joint_targets=frame['q'],feedforward=frame['tau'],
+                         issued_targets=controller.last_command['q'],issued_feedforward=controller.last_command['tau'],
+                         force_command_age=telemetry.get('force_command_age',np.zeros(2)),force_ambiguity_n=telemetry.get('force_ambiguity_n',np.zeros(2)),
                          applied_torque=runner.plant.data.qfrc_actuator[runner.plant.vadr]).items():
             records[k].append(np.array(v).copy())
         position = runner.plant.state()['position']
@@ -164,7 +170,10 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
     report['corridor_width'] = width
     report['controller_parameters'] = asdict(controller.parameters)
     report['control_parameters'] = asdict(controller.control) if hasattr(controller,'control') else None
+    if hasattr(controller,'calibration'):
+        report['command_age_calibration']=dict(**controller.calibration.report(),error=controller.calibration_error)
     report['randomized_parameters'] = perturbations
+    report['robustness_stress']=stress
     report['transport_adapter'] = transport
     report['transport_config'] = transport_config
     report['nominal_command_latency_ms'] = (perturbations['command_latency_steps'] if perturbations else (int(transport) if latency_steps is None else latency_steps))*20
@@ -183,6 +192,7 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
     report['touch_metrics']['peak_mean_control_step_force_n'] = report['touch_metrics']['peak_hand_force_n']
     report['touch_metrics']['peak_hand_force_n'] = float(np.linalg.norm(np.asarray(records['true_force_instant']),axis=-1).max())
     report['touch_metrics']['peak_500hz_hand_force_n'] = peaks['hand_force_500hz']
+    report['contact_loads'] = contact_audit.report()
     aligned = np.asarray(records['observation_time'])[1:]>7
     filtered = np.asarray(records['true_force_filtered'])
     report['touch_metrics']['bandwidth_matched_rmse_n'] = float(np.sqrt(np.mean((estimates[1:][aligned]-filtered[:-1][aligned])**2))) if aligned.any() else None
@@ -202,6 +212,7 @@ if __name__ == '__main__':
     p.add_argument('--speed', type=float)
     p.add_argument('--parameters', type=Path)
     p.add_argument('--control-config',type=Path)
+    p.add_argument('--robustness-config',type=Path)
     p.add_argument('--randomize', action='store_true')
     p.add_argument('--transport', action='store_true')
     p.add_argument('--transport-config',type=Path)
@@ -213,4 +224,5 @@ if __name__ == '__main__':
     params = json.loads(args.parameters.read_text()) if args.parameters else None
     transport_config = json.loads(args.transport_config.read_text()) if args.transport_config else None
     control=json.loads(args.control_config.read_text()) if args.control_config else None
-    run(args.scene, args.seed, args.seconds, args.mode, args.speed, args.output, args.pose, args.width, params, args.randomize, args.transport, transport_config,args.latency_steps,control)
+    robustness=json.loads(args.robustness_config.read_text()) if args.robustness_config else None
+    run(args.scene, args.seed, args.seconds, args.mode, args.speed, args.output, args.pose, args.width, params, args.randomize, args.transport, transport_config,args.latency_steps,control,robustness)

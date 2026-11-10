@@ -20,8 +20,8 @@ try:
                    if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.onnx'}
         for name in ('ros_node.py','timing.py','entrypoint.sh'):
             sources[ROOT/'container'/name] = name
-        for name in ('navigation','deployment'):
-            sources[ROOT/f'config/{name}.json'] = name+'.json'
+        for name in ('navigation','control','deployment'):
+            sources[ROOT/f'config/{name}.json'] = 'config/'+name+'.json'
         for source,destination in sorted(sources.items()):
             expected = hashlib.sha256(source.read_bytes()).hexdigest()
             actual = hashlib.sha256((target/destination).read_bytes()).hexdigest()

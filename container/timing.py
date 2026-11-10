@@ -32,12 +32,19 @@ class TimedPolicy:
                     new_quat = -new_quat
                 quat = old_quat+alpha*(new_quat-old_quat)
                 intermediate['quat'] = quat/np.linalg.norm(quat)
+            self.controller.calibration_actual=step==gap
             result = self.controller.act(intermediate,ready=ready)
             if step<gap:
                 # The motor held the last transmitted command during the gap.
                 # Estimation and network history must reflect that actual hold.
                 if held_command is not None:
                     self.controller.last_command = held_command
+                    history=getattr(self.controller,'command_history',None)
+                    if history:
+                        history[-1]={k:held_command[k].copy() for k in ('q','tau')}
+                    calibration=getattr(self.controller,'calibration',None)
+                    if calibration is not None and calibration.inputs:
+                        calibration.inputs[-1]=60*held_command['q'][19]+held_command['tau'][19]
                 if walker is not None:
                     walker.action = held_action.copy()
         self.reconstructed_frames += gap-1
