@@ -14,5 +14,6 @@
   "robust_touch": false,
   "stagnation_recovery": true,
   "measured_turn_heading": true,
-  "calibrate_command_age": true
+  "calibrate_command_age": true,
+  "arc_reacquire": true
 }

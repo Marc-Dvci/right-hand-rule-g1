@@ -15,6 +15,7 @@ import imageio_ffmpeg
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from harness.kit import Plant
+from harness.scenes import write_scene
 from policy.kinematics import ArmModel
 
 GREEN = (61,224,174)
@@ -36,9 +37,8 @@ def label(draw, xy, text, size=22, fill=WHITE, bold=False):
 
 def render(episode, output, duration=75, fps=24):
     report = json.loads((episode/'report.json').read_text())
-    scene = Path(report['scene'])
-    if not scene.exists():
-        scene = ROOT/'scene'/scene.name
+    spec = report['scene_specification']
+    scene = write_scene('replay-development',spec['walls'],spec['exit'])
     plant = Plant(scene=scene)
     with np.load(episode/'trace.npz') as z:
         data = {k:z[k].copy() for k in z.files}

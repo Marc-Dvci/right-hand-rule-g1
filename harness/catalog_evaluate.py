@@ -42,7 +42,7 @@ if __name__=='__main__':
     evaluate.make=lambda kind,seed,width:make_scene(a.layout_id,seed,width)
     report=evaluate.run('maze',a.seed,a.seconds,a.mode,None,a.output,
         parameters=json.loads(a.parameters.read_text()),randomize=True,transport=True,
-        transport_config={'max_gap_frames':5},latency_steps=a.delay,
+        transport_config=json.loads((ROOT/'config/deployment.json').read_text()),latency_steps=a.delay,
         control=json.loads(a.control_config.read_text()))
     report['layout_id']=a.layout_id
     report['split']='geometry_holdout' if a.final else 'development_geometry'

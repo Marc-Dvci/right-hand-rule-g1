@@ -1,6 +1,6 @@
 {
-  "files": 387,
-  "bytes": 83610023,
+  "files": 398,
+  "bytes": 83677907,
   "blocked": [],
   "inventory": [
     {
@@ -60,8 +60,8 @@
     },
     {
       "path": "config/control.json",
-      "bytes": 427,
-      "sha256": "f5f8a9c57d72c0d067b266d9f0ec84ea654237ac7b337b1d9cb07727737d42cd"
+      "bytes": 452,
+      "sha256": "a6fd34b703b6e9afbaf04ae3aa02e9a821f0de69590fb2b502f2ec9d6a75a10b"
     },
     {
       "path": "config/deployment.json",
@@ -160,8 +160,8 @@
     },
     {
       "path": "g1-runner.json",
-      "bytes": 348,
-      "sha256": "87806918f5bc69d91e91f8f44c950fc5c27ddcd3eafe87b8cefcb40192529276"
+      "bytes": 352,
+      "sha256": "091b9043f15d972d626bb62de73c72eb485032b8fbb637a12c8833de09d05740"
     },
     {
       "path": "harness/__init__.py",
@@ -186,12 +186,12 @@
     {
       "path": "harness/catalog_cohort.py",
       "bytes": 3866,
-      "sha256": "abedb4b7fa182fc0ebcbca8d463405e7c2f677d455e8cfaedc9f53ce52841ebc"
+      "sha256": "225147f5fa06760d4db1dc39782cf982e9fc49e595e5ec1a3e361518dfb64d40"
     },
     {
       "path": "harness/catalog_evaluate.py",
-      "bytes": 2741,
-      "sha256": "747a85b77796449e4a226ea7dd935b002f37978e0708b0a0d6cfbcd4a9ea0780"
+      "bytes": 2776,
+      "sha256": "e8043b835f252932b9be698bb1e3e390da417a4a8e18bbaa5fd61a2f00587aee"
     },
     {
       "path": "harness/cohort.py",
@@ -225,8 +225,8 @@
     },
     {
       "path": "harness/evaluate.py",
-      "bytes": 14432,
-      "sha256": "d22654b8122b43d1605c5d78d3e993161db2a446713075285a9c5d984f1e1c18"
+      "bytes": 14802,
+      "sha256": "d5f0d30f5479e1802a23a185977f05bebafd96d42a47e8e151edaf2cadc3d99a"
     },
     {
       "path": "harness/experimental_transport.py",
@@ -284,6 +284,16 @@
       "sha256": "0e52bce04da37c88edadcf33f420c8ed6c03263919f3757d205625767367c87f"
     },
     {
+      "path": "harness/reacquisition_regression.py",
+      "bytes": 2144,
+      "sha256": "42f8409617951812e10f7d1316409b2b10de422b9c2e765b70d7794e34a22c26"
+    },
+    {
+      "path": "harness/reacquisition_remaining.py",
+      "bytes": 1451,
+      "sha256": "59dcb67612efca1aec4ac6045227fb306e0f33a273aa42fb1e8bee12fae38090"
+    },
+    {
       "path": "harness/robust_touch_sweep.py",
       "bytes": 2115,
       "sha256": "83eb4a9c7e8573f72456930fc7384061108ff0c0b35e6deb486bab23814a8187"
@@ -335,13 +345,13 @@
     },
     {
       "path": "policy/calibration.py",
-      "bytes": 2941,
-      "sha256": "82f6da797f19bb824a8064d858b82751edde6b28691425cf41519e3511fef60c"
+      "bytes": 2938,
+      "sha256": "119a8a8e422e19ba220ef319dd5ff1c412c3cca022a70ea9fc27c5116f0c52ac"
     },
     {
       "path": "policy/controller.py",
-      "bytes": 22510,
-      "sha256": "852ebd194acb2b3c28f76049644cdc9d472a641d3ee04a5349e4f2c55ddf92e2"
+      "bytes": 23427,
+      "sha256": "eafed8aeda12e1ea6d60fec8dab5f2d2a840272736a2a21d5221d90d2a944777"
     },
     {
       "path": "policy/kinematics.py",
@@ -424,6 +434,11 @@
       "sha256": "5622700fb1f8e1827ae2de2ab1db3abb9038309c9f319948305749817bddac47"
     },
     {
+      "path": "review/RC2_RELEASE_NOTES.md",
+      "bytes": 783,
+      "sha256": "b1fec9a4c1c90d230626cad2bc62513c873dbc60c746f8933750f8f063854327"
+    },
+    {
       "path": "review/V2_BUILD_RECORD.md",
       "bytes": 5711,
       "sha256": "1726425a44127c84b2ab136159790f81f00b4c4723aa2b6091f58bf864e46dd4"
@@ -464,6 +479,16 @@
       "sha256": "188e1e12f8d99428bb3097140dea505f076f0cba890068ce3ad45164ac3db639"
     },
     {
+      "path": "review/results/reacquisition-nonregression.json",
+      "bytes": 36117,
+      "sha256": "3b7276d671eb19d75b2f1eb3dd8ada87ce5a0f4b435a8224b0be7a4fa904ed1e"
+    },
+    {
+      "path": "review/results/sensor-replay-development-maze0.json",
+      "bytes": 490,
+      "sha256": "614c338a47b56124f911a7244bf594f46adf3f7b11d2d27a66e576ad0037ebc7"
+    },
+    {
       "path": "review/results/turn-only-paired.json",
       "bytes": 426931,
       "sha256": "fb0ce4afbe409d08c4586142a67cae3bc113c8a8df3e7c3aee73939966bccdaf"
@@ -480,8 +505,8 @@
     },
     {
       "path": "run.sh",
-      "bytes": 444,
-      "sha256": "d9fafe4829290d04b39d50e19e49141e095e039c634db0e5415a17a73df073fa"
+      "bytes": 657,
+      "sha256": "0ee1b0467358e310cf9080c96d13e2e0ba34579bad1bcab7c20559eaeeb2937f"
     },
     {
       "path": "scene/flat.xml",
@@ -1014,6 +1039,11 @@
       "sha256": "c6a5b99e11ce520d9020d25f311b11089bcc19a643c517789b3f544db9963d1a"
     },
     {
+      "path": "tests/test_arc_reacquisition.py",
+      "bytes": 1143,
+      "sha256": "fb3e1c1c34d12909442a3dc6f7c69fde92e2bd0c28beb4400b33f1c49495797f"
+    },
+    {
       "path": "tests/test_calibration.py",
       "bytes": 1028,
       "sha256": "99e15d05bd5f6ebf07866b9f3daf7f5fa671ecb2cce75b14d3fc06a947945c0e"
@@ -1032,6 +1062,11 @@
       "path": "tests/test_evaluation_protocol.py",
       "bytes": 2128,
       "sha256": "8207794cc75668301f7c92d0cad0c59b92efacdc0f05bda136185f6b50425e8b"
+    },
+    {
+      "path": "tests/test_evaluator_exit.py",
+      "bytes": 582,
+      "sha256": "7fa553b2aba75fd9d55f7feea02a6262b0cb75799a93f01afb3d96c5c2b0e193"
     },
     {
       "path": "tests/test_map_baseline.py",
@@ -1094,6 +1129,11 @@
       "sha256": "663e20d498bb070b93c25b08907ff0d92abb33408319a921e169371662909367"
     },
     {
+      "path": "tests/test_v2_audit.py",
+      "bytes": 4593,
+      "sha256": "adce77f07f687a7d9faff5b2d5f7478d5246ce2dbfa7bc9a097ad0dda6b7a7c9"
+    },
+    {
       "path": "tools/analyze_episode.py",
       "bytes": 3536,
       "sha256": "e671919d6a66072966c2cc9a5a8b092ca7885664d839f13d4945f6f076285295"
@@ -1117,6 +1157,11 @@
       "path": "tools/audit_publish.py",
       "bytes": 1389,
       "sha256": "dba46487559f728d210e04c9e87e95244c4924e68a08f05e2ab5ebd3eafceb14"
+    },
+    {
+      "path": "tools/audit_v2.py",
+      "bytes": 9630,
+      "sha256": "0e3c92bfa119ffee85707347c3f4ea29bf4eed7dc87a98032e0acd4bc567e50c"
     },
     {
       "path": "tools/bootstrap.py",
@@ -1144,6 +1189,11 @@
       "sha256": "8f868b7a6a45f4d28339eabf18514ec17b951d444f74c83c5a03746f2642bc55"
     },
     {
+      "path": "tools/check_reacquisition_nonregression.py",
+      "bytes": 3424,
+      "sha256": "9e7c5c948f50fe4cb0e8e9d74dfc79278a26d543b3efc9003798fe056f84ad4e"
+    },
+    {
       "path": "tools/contact_audit.py",
       "bytes": 1530,
       "sha256": "70cc8c40f283493307e9b61713ccc6aaa0743108d31d51cd38858382fc95120d"
@@ -1165,8 +1215,8 @@
     },
     {
       "path": "tools/film.py",
-      "bytes": 13062,
-      "sha256": "9558cdca230e6b0158dc02857fbce716da314fa9b244654c26a14a1102da39f1"
+      "bytes": 13238,
+      "sha256": "e2e8613b19743ce5ce5d03a7c3d268e492b98187a066caf6e09348d6570199f8"
     },
     {
       "path": "tools/fit_arms.py",
@@ -1185,8 +1235,8 @@
     },
     {
       "path": "tools/freeze_v2.py",
-      "bytes": 2033,
-      "sha256": "e4e0a9b4f34b0c16ac6c62fde72a902be44c922cd7418553671e1332173b0692"
+      "bytes": 2289,
+      "sha256": "1964fe59fed893bb740d49bfa2fedd520d00a3f7aab7c59624608274a264fb94"
     },
     {
       "path": "tools/inspect_episode.py",
@@ -1245,8 +1295,8 @@
     },
     {
       "path": "tools/render.py",
-      "bytes": 8669,
-      "sha256": "5c694da66cc813c8abdb608b08bb97083c5a6ea717e2f72da63e9d62d536aab1"
+      "bytes": 8721,
+      "sha256": "59b0611df69c7b106362bc195af958233afaedd1f8d3287db64c2a0f4a8afcb1"
     },
     {
       "path": "tools/report.py",
@@ -1277,6 +1327,11 @@
       "path": "tools/score_container.py",
       "bytes": 1149,
       "sha256": "47d3c2b3c366301e9f52c8e1e32e2bc86d0356d2c7cd413bd562129786d0aa45"
+    },
+    {
+      "path": "tools/sensor_replay.py",
+      "bytes": 5482,
+      "sha256": "a5ac2b7bbe23256acbcdd9a926820ede1b4ff388e6bb2e090e9a02afcc0fed04"
     },
     {
       "path": "tools/setup_linux.sh",

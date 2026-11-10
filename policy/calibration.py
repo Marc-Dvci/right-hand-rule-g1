@@ -31,7 +31,7 @@ class CommandAgeCalibration:
         state=0x5D
         for _ in range((frame//3)%127):
             state=((state<<1)|(((state>>6)^(state>>5))&1))&127
-        return .35 if state&1 else -.35
+        return .5 if state&1 else -.5
 
     def fit(self, *, start=0):
         q,dq,u = np.asarray(self.q),np.asarray(self.dq),np.asarray(self.inputs)
@@ -66,5 +66,5 @@ class CommandAgeCalibration:
 
     def report(self):
         return dict(selected_frames=self.selected,scores=self.scores,confidence=self.confidence,
-            samples=len(self.q),excitation_peak_nm=.35,joint='left_wrist_roll',
+            samples=len(self.q),excitation_peak_nm=.5,joint='left_wrist_roll',
             definition='Free-space local input/output regression; 0/20/40 ms hypotheses. No timing label enters the policy.')

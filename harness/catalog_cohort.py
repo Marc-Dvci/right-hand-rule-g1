@@ -24,8 +24,8 @@ protocol=json.loads((ROOT/'review/evaluation_v2_protocol.json').read_text())
 output=ROOT/'evidence/catalog'/a.name
 if output.exists():
     raise SystemExit('Refusing to replace existing cohort evidence')
-if not 1<=a.workers<=4:
-    raise ValueError('Use 1 to 4 isolated single-threaded workers')
+if not 1<=a.workers<=6:
+    raise ValueError('Use 1 to 6 isolated single-threaded workers')
 if a.final:
     sys.path.insert(0,str(ROOT))
     from tools.freeze_v2 import check

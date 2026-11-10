@@ -40,12 +40,23 @@ def contact_truth(plant):
     return f
 
 
+def crossed_exit(previous,position,spec):
+    axis,line,sign=spec['axis'],spec['value'],spec['sign']
+    if not (previous[axis]-line)*sign<=0<(position[axis]-line)*sign:
+        return False
+    alpha=(line-previous[axis])/(position[axis]-previous[axis])
+    crossing_y=previous[1]+alpha*(position[1]-previous[1])
+    return bool(spec.get('min_y',-1e9)<crossing_y<spec.get('max_y',1e9))
+
+
 def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, parameters=None, randomize=False, transport=False, transport_config=None, latency_steps=None, control=None, robustness=None):
+    if (output/'report.json').exists() or (output/'trace.npz').exists():
+        raise ValueError('Refusing to replace completed or interrupted episode evidence')
     output.mkdir(parents=True, exist_ok=True)
     source_files = sorted((ROOT/'policy').glob('*.py'))+sorted((ROOT/'policy/models').glob('*.json'))+sorted((ROOT/'policy/models').glob('*.npz'))
     source_digest = hashlib.sha256()
     for path in source_files:
-        source_digest.update(str(path.relative_to(ROOT)).encode())
+        source_digest.update(path.relative_to(ROOT).as_posix().encode())
         source_digest.update(path.read_bytes())
     controller_digest = source_digest.hexdigest()
     perturbations = None
@@ -99,7 +110,7 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
         return result
     runner.thrash_detector.observe = recorded_observe
     start = time.monotonic()
-    records = {k: [] for k in ('qpos', 'q', 'dq', 'observation_quat', 'observation_gyro', 'features', 'time', 'observation_time', 'command', 'estimated_force', 'navigation_force', 'true_force', 'true_force_instant', 'true_force_filtered', 'velocity', 'odometry', 'state', 'thrash', 'joint_targets', 'feedforward', 'issued_targets', 'issued_feedforward', 'applied_torque', 'force_command_age', 'force_ambiguity_n')}
+    records = {k: [] for k in ('qpos', 'q', 'dq', 'observation_quat', 'observation_gyro', 'host_ready', 'features', 'time', 'observation_time', 'command', 'estimated_force', 'navigation_force', 'true_force', 'true_force_instant', 'true_force_filtered', 'velocity', 'odometry', 'state', 'thrash', 'joint_targets', 'feedforward', 'issued_targets', 'issued_feedforward', 'applied_torque', 'force_command_age', 'force_ambiguity_n')}
     filtered_truth = np.zeros((2,3))
     peak_thrash = 0.
     exited = False
@@ -133,7 +144,7 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
         instant_truth = contact_truth(runner.plant)@rotation(obs['quat'])
         truth = (force_samples['total']/max(1,force_samples['count']))@rotation(obs['quat'])
         filtered_truth += .22*(truth-filtered_truth)
-        for k, v in dict(qpos=runner.plant.data.qpos, q=obs['q'], dq=obs['dq'], observation_quat=obs['quat'],observation_gyro=obs['gyro'],features=controller.walker.last_features,
+        for k, v in dict(qpos=runner.plant.data.qpos, q=obs['q'], dq=obs['dq'], observation_quat=obs['quat'],observation_gyro=obs['gyro'],host_ready=s['control_ready'],features=controller.walker.last_features,
                          time=runner.sim_time,observation_time=t, command=telemetry['command'], estimated_force=telemetry['force'], true_force=truth,
                          true_force_instant=instant_truth,true_force_filtered=filtered_truth,
                          navigation_force=controller.navigation_force,velocity=telemetry['velocity'], odometry=telemetry['odometry'],
@@ -145,10 +156,7 @@ def run(kind, seed, seconds, mode, speed, output, pose='standing', width=1.25, p
         position = runner.plant.state()['position']
         exit_spec = spec.get('exit')
         if exit_spec:
-            axis, line, sign = exit_spec['axis'], exit_spec['value'], exit_spec['sign']
-            crossed = (previous_position[axis]-line)*sign <= 0 < (position[axis]-line)*sign
-            if crossed:
-                exited = exit_spec.get('min_y', -1e9) < position[1] < exit_spec.get('max_y', 1e9)
+            exited=crossed_exit(previous_position,position,exit_spec)
         if kind == 'maze' and position[0] < -width/2-.15:
             wrong_exit = True
         previous_position = np.asarray(position)

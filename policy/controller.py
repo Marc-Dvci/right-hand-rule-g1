@@ -52,6 +52,7 @@ class ControlParameters:
     stagnation_recovery: bool = False
     measured_turn_heading: bool = False
     calibrate_command_age: bool = False
+    arc_reacquire: bool = False
 
     def __post_init__(self):
         for key,high in (('waist_kp',190.),('waist_kd',15.),('waist_gravity',1.2),
@@ -62,7 +63,7 @@ class ControlParameters:
         if self.action_filter<.1:
             raise ValueError('Action filter must retain control authority')
         if any(type(value) is not bool for value in (self.bounded_navigation,self.turn_safety,self.snag_detection,
-                self.robust_touch,self.stagnation_recovery,self.measured_turn_heading,self.calibrate_command_age)) or not 8<=self.arm_stiffness<=40:
+                self.robust_touch,self.stagnation_recovery,self.measured_turn_heading,self.calibrate_command_age,self.arc_reacquire)) or not 8<=self.arm_stiffness<=40:
             raise ValueError('Invalid navigation/compliance control parameter')
         if type(self.force_command_age_steps) is not int or not 0<=self.force_command_age_steps<=2:
             raise ValueError('Force estimation supports 0 to 2 declared command-delay frames')
@@ -267,13 +268,19 @@ class Controller:
             cmd[1] = -.07
             if self.seek_forward:
                 cmd[0] = .08
-            if self.control.snag_detection and front>self.parameters.front_threshold+1:
+            if (self.control.snag_detection or self.seek_forward) and front>self.parameters.front_threshold+1:
                 self.transition('BACKOFF')
             elif right > 3.:
                 self.transition('FOLLOW')
                 self.seek_forward = False
             elif travelled > 1.5 or self.state_age > 25:
-                self.transition('STOP')
+                if self.control.arc_reacquire and 0<self.recoveries<8:
+                    self.recoveries+=1
+                    self.heading=yaw
+                    self.transition('RETRACT_LEFT')
+                    self.events[-1].update(cause='find_wall_reorientation',recovery=self.recoveries)
+                else:
+                    self.transition('STOP')
         elif self.state == 'FOLLOW':
             cmd[0] = self.speed
             cmd[1] = np.clip(.012*(right-self.parameters.force_target), -.07, .07)
@@ -315,7 +322,16 @@ class Controller:
             elif front > self.parameters.front_threshold+1.:
                 self.transition('BACKOFF')
             elif self.state_age > 35:
-                self.transition('STOP')
+                if self.control.arc_reacquire and self.recoveries<8:
+                    self.recoveries+=1
+                    self.heading=wrap((self.arc_start if self.arc_start is not None else yaw)-np.pi/2)
+                    self.seek_forward=True
+                    self.velocity_integral[:]=0
+                    self.heading_integral=0.
+                    self.transition('FIND')
+                    self.events[-1].update(cause='arc_wall_reacquisition',recovery=self.recoveries)
+                else:
+                    self.transition('STOP')
         elif self.state == 'CLEAR':
             cmd[0] = self.speed
             if front > 5.:

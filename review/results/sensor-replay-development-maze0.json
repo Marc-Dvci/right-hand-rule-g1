@@ -1,0 +1,19 @@
+{
+  "policy_calls": 7363,
+  "source_matches": true,
+  "maximum_absolute_command_difference": 0.0,
+  "bitwise_numeric_match": true,
+  "tolerance": 0.0,
+  "bundle_sha256": "14ede549828faa4a5c99de190461159efb2f00d8c95adbdd5d3e4ad9cffd948d",
+  "simulator_imported": false,
+  "inputs": [
+    "q",
+    "dq",
+    "quat",
+    "gyro",
+    "host_ready",
+    "observation_id"
+  ],
+  "numpy_version": "2.5.2",
+  "controller_sha256": "6ae2a949b9e4474267840cc6542fe2ce6b6095d74d8ba61daf20f83ce3cef4ee"
+}
