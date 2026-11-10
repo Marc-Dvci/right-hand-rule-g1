@@ -1,5 +1,13 @@
 # V2 development record — 10 November 2026
 
+> The sections below preserve the earlier RC1 development record. The selected
+> RC2 now uses 0.5 Nm calibration and bounded wall reacquisition. All 64 source
+> tests and 16 separate selected-controller damping/push stresses pass. A
+> 7,797-call sensor-only replay matches every command exactly. Full fresh
+> development and native checks are in progress; the topology-disjoint final
+> cohort remains unopened. Current scope is in `PROJECT_AUDIT_V2.md`, and the
+> final measured tables will be in `review/V2_RESULTS.md`.
+
 V1.0.0 remains the qualified release. This branch contains the selected V2
 candidate, which is still undergoing geometry, perturbation and exact-image
 qualification. No Arena upload or robot attempt has been made.

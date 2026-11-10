@@ -4,8 +4,15 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import argparse
 ROOT=Path(__file__).resolve().parents[1]
-target=ROOT/'evidence/robustness/development-20261110'
+p=argparse.ArgumentParser()
+p.add_argument('--name',default='development-20261110')
+p.add_argument('--workers',type=int,default=2,choices=range(1,5))
+a=p.parse_args()
+if not a.name or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-' for c in a.name):
+    raise ValueError('Use a simple unique evidence name')
+target=ROOT/'evidence/robustness'/a.name
 target.mkdir(parents=True,exist_ok=False)
 profiles={'damping08':{'velocity_damping_scale':.8},'damping12':{'velocity_damping_scale':1.2},
     'push_left':{'push':dict(start=15.,duration=.25,body='pelvis',force=[0.,10.,0.])},
@@ -37,7 +44,7 @@ def episode(case):
 
 
 rows=[]
-with ThreadPoolExecutor(max_workers=2) as pool:
+with ThreadPoolExecutor(max_workers=a.workers) as pool:
     for future in as_completed([pool.submit(episode,c) for c in cases]):
         row=future.result()
         rows.append(row)

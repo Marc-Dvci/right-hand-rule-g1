@@ -12,7 +12,9 @@ def inventory():
         'config/*.json','harness/*.py','scene/flat.xml','scene/robot/**/*','requirements.txt',
         'review/evaluation_v2_protocol.json','tools/freeze_v2.py','tools/audit_v2.py','run.sh','screen_maze.py',
         'tests/*.py','tests/fixtures/*','scene/maze-0-w1.250.xml','scene/maze-0-w1.250.json',
-        'tools/audit_image.py','tools/check_native_episode.py','tools/score_container.py','tools/native_report.py']
+        'tools/audit_image.py','tools/check_native_episode.py','tools/score_container.py','tools/native_report.py',
+        'tools/run_kit.py','tools/prepare_kit.py','tools/preflight.py','g1-runner.json',
+        '.github/workflows/native-arm64.yml']
     paths={p for pattern in patterns for p in ROOT.glob(pattern) if p.is_file() and '__pycache__' not in p.parts}
     manifest=ROOT/'vendor/builder-kit/UPSTREAM_FILES.json'
     paths.add(manifest)

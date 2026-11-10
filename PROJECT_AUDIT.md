@@ -1,5 +1,8 @@
 # Implementation and contest audit
 
+> Historical V1 audit. Current V2 implementation and remaining gates are in
+> [PROJECT_AUDIT_V2.md](PROJECT_AUDIT_V2.md). V1 measurements do not qualify V2.
+
 The project implements RIGHT HAND RULE from the supplied plan. Its strongest distinction is a complete contact-navigation task using only the runner's joint state and pelvis IMU, with the same ARM64 image tested in the actual ROS kit. Navigation is scripted; the locomotion networks are NVIDIA's pretrained weights, not our training result.
 
 ## What changed from the plan

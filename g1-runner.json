@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository_commit": "e93c49267a7b6b905c6666c8c70668f8ee7ac397",
   "image": {
-    "archive_url": "https://github.com/Marc-Dvci/right-hand-rule-g1/releases/download/v2.0.0-rc2/submission.tar",
+    "archive_url": "https://github.com/Marc-Dvci/right-hand-rule-g1/releases/download/v2.0.0/submission.tar",
     "sha256": "db0ed1194f03a71d706f161e2ee1fbf368a09f3632dd5ff36329f9d303d00051"
   },
   "required_sensors": ["joint_state", "imu"]

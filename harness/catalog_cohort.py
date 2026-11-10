@@ -20,6 +20,8 @@ p.add_argument('--mode',default='navigate')
 p.add_argument('--workers',type=int,default=4)
 p.add_argument('--final',action='store_true')
 a=p.parse_args()
+if not a.name or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-' for c in a.name):
+    raise ValueError('Use a simple unique evidence name')
 protocol=json.loads((ROOT/'review/evaluation_v2_protocol.json').read_text())
 output=ROOT/'evidence/catalog'/a.name
 if output.exists():

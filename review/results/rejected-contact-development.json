@@ -1,0 +1,683 @@
+{
+  "status": "Rejected development variants; not the selected V2 controller",
+  "source_branch": "review/v2-force",
+  "source_commit": "da8db3c",
+  "scope": "Small nominal-timing development pilots only. Do not compare their counts with the complete held-out qualification.",
+  "reason": "Caps and contact-transfer resets did not establish consistent reductions of both hand/body loads while preserving broader navigation. Slower gentle navigation failed the wider delayed-geometry study.",
+  "studies": [
+    {
+      "study": "impedance-20261110",
+      "episodes": 12,
+      "exits": 12,
+      "outcomes": [
+        {
+          "case": [
+            "cap12",
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.440000000018124,
+          "hard": 0,
+          "thrash": 0.5821847237402857,
+          "hand_peak_n": 34.74342927273453,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "cap12",
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.92000000002238,
+          "hard": 0,
+          "thrash": 0.5909350768565101,
+          "hand_peak_n": 49.08243947433949,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "cap18",
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.400000000018075,
+          "hard": 0,
+          "thrash": 0.5827599706055742,
+          "hand_peak_n": 33.75163188452319,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "cap18",
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.9400000000224,
+          "hard": 0,
+          "thrash": 0.5843726070157931,
+          "hand_peak_n": 45.65263348089921,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "cap12",
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 147.05999999997408,
+          "hard": 0,
+          "thrash": 0.6491245809291147,
+          "hand_peak_n": 86.3813475672941,
+          "nonhand_peak_n": 303.25828912319196
+        },
+        {
+          "case": [
+            "cap12fast",
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.440000000018124,
+          "hard": 0,
+          "thrash": 0.5821847237402857,
+          "hand_peak_n": 34.74342927273453,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "cap12",
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 250.4600000004678,
+          "hard": 0,
+          "thrash": 0.6835887740106722,
+          "hand_peak_n": 83.14252060230059,
+          "nonhand_peak_n": 145.00726326170835
+        },
+        {
+          "case": [
+            "cap18",
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 147.8399999999778,
+          "hard": 0,
+          "thrash": 0.620039714337136,
+          "hand_peak_n": 87.96423995040958,
+          "nonhand_peak_n": 263.06242487873106
+        },
+        {
+          "case": [
+            "cap12fast",
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.9400000000224,
+          "hard": 0,
+          "thrash": 0.5860721168824885,
+          "hand_peak_n": 49.08243947433949,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "cap18",
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 236.50000000040114,
+          "hard": 0,
+          "thrash": 0.6676413860286993,
+          "hand_peak_n": 83.97901610508238,
+          "nonhand_peak_n": 56.40852713442517
+        },
+        {
+          "case": [
+            "cap12fast",
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 148.719999999982,
+          "hard": 0,
+          "thrash": 0.6061811421476884,
+          "hand_peak_n": 85.09244582536385,
+          "nonhand_peak_n": 124.81929613584082
+        },
+        {
+          "case": [
+            "cap12fast",
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 236.88000000040296,
+          "hard": 0,
+          "thrash": 0.6603832499915901,
+          "hand_peak_n": 86.29638617679484,
+          "nonhand_peak_n": 101.46839490079867
+        }
+      ]
+    },
+    {
+      "study": "fast-probe-20261110",
+      "episodes": 8,
+      "exits": 8,
+      "outcomes": [
+        {
+          "case": [
+            5,
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.440000000018124,
+          "hard": 0,
+          "thrash": 0.5827599706045459,
+          "hand_peak_n": 33.751631884522475,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            5,
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.820000000022254,
+          "hard": 0,
+          "thrash": 0.5847949372210686,
+          "hand_peak_n": 45.650551867927646,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            7,
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.440000000018124,
+          "hard": 0,
+          "thrash": 0.5827599706045459,
+          "hand_peak_n": 33.751631884522475,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            7,
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 56.04000000002252,
+          "hard": 0,
+          "thrash": 0.5919190485665179,
+          "hand_peak_n": 45.650551867927646,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            5,
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 146.43999999997112,
+          "hard": 0,
+          "thrash": 0.6322687625808873,
+          "hand_peak_n": 87.9642399317709,
+          "nonhand_peak_n": 218.08134207049332
+        },
+        {
+          "case": [
+            5,
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 234.28000000039054,
+          "hard": 0,
+          "thrash": 0.6818534110292623,
+          "hand_peak_n": 89.31513354978267,
+          "nonhand_peak_n": 116.30095151961022
+        },
+        {
+          "case": [
+            7,
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 147.8399999999778,
+          "hard": 0,
+          "thrash": 0.6241701626134739,
+          "hand_peak_n": 87.9642399317709,
+          "nonhand_peak_n": 263.3107591070096
+        },
+        {
+          "case": [
+            7,
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 232.78000000038338,
+          "hard": 0,
+          "thrash": 0.6833505121210329,
+          "hand_peak_n": 89.31513354978267,
+          "nonhand_peak_n": 116.30095151961022
+        }
+      ]
+    },
+    {
+      "study": "contact-transfer-20261110",
+      "episodes": 15,
+      "exits": 15,
+      "outcomes": [
+        {
+          "case": [
+            "reset",
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.360000000018026,
+          "hard": 0,
+          "thrash": 0.5793251952361345,
+          "hand_peak_n": 34.56806995131818,
+          "nonhand_peak_n": 0.0,
+          "hand_100ms_n": 17.849535616524154
+        },
+        {
+          "case": [
+            "reset",
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.44000000002179,
+          "hard": 0,
+          "thrash": 0.5793251952361346,
+          "hand_peak_n": 44.35462896883934,
+          "nonhand_peak_n": 0.0,
+          "hand_100ms_n": 17.84952259129858
+        },
+        {
+          "case": [
+            "reset",
+            "outer",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 80.15999999999458,
+          "hard": 0,
+          "thrash": 0.5955102412335854,
+          "hand_peak_n": 110.85117710155978,
+          "nonhand_peak_n": 106.707043280456,
+          "hand_100ms_n": 28.55600774707974
+        },
+        {
+          "case": [
+            "reset_slow",
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.5000000000182,
+          "hard": 0,
+          "thrash": 0.5760930496439524,
+          "hand_peak_n": 34.43373544011982,
+          "nonhand_peak_n": 0.0,
+          "hand_100ms_n": 17.593575281789814
+        },
+        {
+          "case": [
+            "reset_slow",
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.640000000022034,
+          "hard": 0,
+          "thrash": 0.5766191095301754,
+          "hand_peak_n": 48.52380077616915,
+          "nonhand_peak_n": 0.0,
+          "hand_100ms_n": 17.59357528176331
+        },
+        {
+          "case": [
+            "reset",
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 163.68000000005344,
+          "hard": 0,
+          "thrash": 0.5812088624344155,
+          "hand_peak_n": 99.04864724682415,
+          "nonhand_peak_n": 186.6294389073688,
+          "hand_100ms_n": 27.79810655630693
+        },
+        {
+          "case": [
+            "reset_slow",
+            "outer",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 65.70000000002828,
+          "hard": 0,
+          "thrash": 0.5760930496439516,
+          "hand_peak_n": 55.342663498149435,
+          "nonhand_peak_n": 60.59732164388148,
+          "hand_100ms_n": 23.96250414567932
+        },
+        {
+          "case": [
+            "reset_slow_fast",
+            "wall",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 52.5000000000182,
+          "hard": 0,
+          "thrash": 0.5760930496439524,
+          "hand_peak_n": 34.43373544011982,
+          "nonhand_peak_n": 0.0,
+          "hand_100ms_n": 17.593575281789814
+        },
+        {
+          "case": [
+            "reset",
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 250.8600000004697,
+          "hard": 0,
+          "thrash": 0.652570659496365,
+          "hand_peak_n": 89.43947822500144,
+          "nonhand_peak_n": 170.2813498813318,
+          "hand_100ms_n": 31.81017448954826
+        },
+        {
+          "case": [
+            "reset_slow_fast",
+            "inner",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.58000000002196,
+          "hard": 0,
+          "thrash": 0.5760930496439516,
+          "hand_peak_n": 48.52380077616915,
+          "nonhand_peak_n": 0.0,
+          "hand_100ms_n": 17.59357528176331
+        },
+        {
+          "case": [
+            "reset_slow",
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 164.90000000005926,
+          "hard": 0,
+          "thrash": 0.5917349432493801,
+          "hand_peak_n": 101.68911758536929,
+          "nonhand_peak_n": 281.13016361185095,
+          "hand_100ms_n": 27.965730747136924
+        },
+        {
+          "case": [
+            "reset_slow_fast",
+            "outer",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 65.58000000002856,
+          "hard": 0,
+          "thrash": 0.5827550944680784,
+          "hand_peak_n": 57.03206139785684,
+          "nonhand_peak_n": 60.59732164388148,
+          "hand_100ms_n": 24.7922058936163
+        },
+        {
+          "case": [
+            "reset_slow",
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 287.18000000064313,
+          "hard": 0,
+          "thrash": 0.6579348942691474,
+          "hand_peak_n": 102.80873191715108,
+          "nonhand_peak_n": 140.35234000392737,
+          "hand_100ms_n": 35.33162441537535
+        },
+        {
+          "case": [
+            "reset_slow_fast",
+            "maze",
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 164.2400000000561,
+          "hard": 0,
+          "thrash": 0.6537839658751784,
+          "hand_peak_n": 103.93372342034304,
+          "nonhand_peak_n": 288.36185297670454,
+          "hand_100ms_n": 29.633951240345827
+        },
+        {
+          "case": [
+            "reset_slow_fast",
+            "maze",
+            13
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 269.40000000055824,
+          "hard": 0,
+          "thrash": 0.6550335413420613,
+          "hand_peak_n": 79.87664913582043,
+          "nonhand_peak_n": 161.45456572587045,
+          "hand_100ms_n": 33.29210111851271
+        }
+      ]
+    },
+    {
+      "study": "snag-only-20261110",
+      "source_commit": "1a42365",
+      "episodes": 10,
+      "exits": 7,
+      "outcomes": [
+        {
+          "case": [
+            "wall",
+            0,
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 72.14000000001327,
+          "hard": 0,
+          "thrash": 0.5827599706045459,
+          "hand_peak_n": 33.751631884522475,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "wall",
+            0,
+            2
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 133.95999999991153,
+          "hard": 0,
+          "thrash": 0.4432804957084223,
+          "hand_peak_n": 47.750432643055596,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "inner",
+            0,
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 55.90000000002235,
+          "hard": 0,
+          "thrash": 0.5827599706045418,
+          "hand_peak_n": 45.650551867927646,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "inner",
+            0,
+            2
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 67.60000000002385,
+          "hard": 0,
+          "thrash": 0.42502890879452254,
+          "hand_peak_n": 64.33711154844727,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "outer",
+            0,
+            2
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 79.0799999999971,
+          "hard": 0,
+          "thrash": 0.44780129466429053,
+          "hand_peak_n": 39.862813508087825,
+          "nonhand_peak_n": 72.04140526175806
+        },
+        {
+          "case": [
+            "outer",
+            0,
+            0
+          ],
+          "exited": false,
+          "reason": null,
+          "seconds": 150.01999999998822,
+          "hard": 0,
+          "thrash": 0.5827599706045418,
+          "hand_peak_n": 33.75163188452251,
+          "nonhand_peak_n": 66.91614575513611
+        },
+        {
+          "case": [
+            "maze",
+            0,
+            0
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 187.3600000001665,
+          "hard": 0,
+          "thrash": 0.5994052700486511,
+          "hand_peak_n": 87.9642399317709,
+          "nonhand_peak_n": 266.02488991729484
+        },
+        {
+          "case": [
+            "maze",
+            0,
+            2
+          ],
+          "exited": true,
+          "reason": null,
+          "seconds": 194.42000000020022,
+          "hard": 0,
+          "thrash": 0.41725419900462674,
+          "hand_peak_n": 75.8736279655918,
+          "nonhand_peak_n": 63.98629617253834
+        },
+        {
+          "case": [
+            "maze",
+            13,
+            0
+          ],
+          "exited": false,
+          "reason": null,
+          "seconds": 60.3600000000278,
+          "hard": 0,
+          "thrash": 0.6531304246164723,
+          "hand_peak_n": 64.02478149474501,
+          "nonhand_peak_n": 0.0
+        },
+        {
+          "case": [
+            "maze",
+            13,
+            2
+          ],
+          "exited": false,
+          "reason": null,
+          "seconds": 74.20000000000847,
+          "hard": 0,
+          "thrash": 0.5462292539357634,
+          "hand_peak_n": 74.0342769028911,
+          "nonhand_peak_n": 201.80001751778715
+        }
+      ]
+    }
+  ]
+}

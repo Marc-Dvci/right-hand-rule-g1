@@ -32,7 +32,7 @@ class Replay:
         if not self.trace.exists():
             self.trace=path/'replay.npz'
         with np.load(self.trace,allow_pickle=False) as z:
-            self.data={k:z[k].copy() for k in ('time','qpos','state','estimated_force','true_force_filtered') if k in z}
+            self.data={k:z[k].copy() for k in ('time','qpos','q','state','true_force','estimated_force','true_force_filtered') if k in z}
         spec=self.report['scene_specification']
         scene=write_scene('replay-'+hashlib.sha256(json.dumps(spec,sort_keys=True).encode()).hexdigest()[:16],spec['walls'],spec['exit'])
         self.plant=Plant(scene=scene)

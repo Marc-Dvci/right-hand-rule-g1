@@ -1,6 +1,6 @@
 {
-  "files": 398,
-  "bytes": 83677907,
+  "files": 410,
+  "bytes": 83784219,
   "blocked": [],
   "inventory": [
     {
@@ -20,18 +20,33 @@
     },
     {
       "path": "HARDWARE_ATTEMPT.md",
-      "bytes": 2406,
-      "sha256": "ae60f414ef1650f6e81c876df92dcbbc403073cb4dc282b9d9cb85a071400965"
+      "bytes": 2627,
+      "sha256": "34458f837723420e205117e6ebe9579b5c1cc40e9cc4b5ccd9820467f5e8c84b"
+    },
+    {
+      "path": "JUDGES_GUIDE_V2.md",
+      "bytes": 3299,
+      "sha256": "9fb3459604542ac511d37fc339bc6fd80e8f398e64487e4c27a6bd4452c7be1e"
+    },
+    {
+      "path": "NEXT_IDEAS.md",
+      "bytes": 1371,
+      "sha256": "fae7435ccf93d1b89e2cbc618baa21b334d09ca5ed9291ecc94f74f2ea4caf2a"
     },
     {
       "path": "PROJECT_AUDIT.md",
-      "bytes": 5531,
-      "sha256": "09fa6db154226d7317864688eeb255ae9ef7cff4b304b3ed52daa82187081fc6"
+      "bytes": 5689,
+      "sha256": "87f1ab3101539619b16c05535d15f0e4436850284f500ea2210dc858e53d2022"
+    },
+    {
+      "path": "PROJECT_AUDIT_V2.md",
+      "bytes": 5290,
+      "sha256": "13958c826cc948cad2b69ef5566332c940ca6584404d20231100d071a5779ce8"
     },
     {
       "path": "README.md",
-      "bytes": 8416,
-      "sha256": "6b664387edbdf2208c04cbd22b012e90b85c7081c3bae3b7f7ccb61ff804b833"
+      "bytes": 4996,
+      "sha256": "9172d8600125cf0c33b661cfdedea2d9822d2833584f026796a47c987cbc9d8d"
     },
     {
       "path": "RELEASE_NOTES.md",
@@ -40,8 +55,8 @@
     },
     {
       "path": "SENSOR_CONTRACT.md",
-      "bytes": 3056,
-      "sha256": "2fa1e0b27cb5d627c56103bdb09e4216173a3c8be57ca5d2072c007eea04cd31"
+      "bytes": 3513,
+      "sha256": "83fe3a7939197154488126f219b1a5c145dac0e64c5d08fb181cb4f0c3af5673"
     },
     {
       "path": "SUBMISSION.md",
@@ -109,6 +124,11 @@
       "sha256": "b0275dcff295d4e8b29a8caacc7f6620affbd3011f38e38ce04f46796fafc0ee"
     },
     {
+      "path": "evaluation/frozen-v2.json",
+      "bytes": 39963,
+      "sha256": "25211a5e793fc166368d950a434f52882e4359ec3aa39222a790d108aec93513"
+    },
+    {
       "path": "evaluation/frozen.json",
       "bytes": 14163,
       "sha256": "a3c733b6dd14b5e46c094aa1d7dce9e9f9b9cd8a30806c62f3db1791cfcc0c00"
@@ -160,8 +180,8 @@
     },
     {
       "path": "g1-runner.json",
-      "bytes": 352,
-      "sha256": "091b9043f15d972d626bb62de73c72eb485032b8fbb637a12c8833de09d05740"
+      "bytes": 348,
+      "sha256": "9ceca37a628c5b84445256ef58d0113763d5949a3d0c2dbbbac17b9bc073d721"
     },
     {
       "path": "harness/__init__.py",
@@ -185,8 +205,8 @@
     },
     {
       "path": "harness/catalog_cohort.py",
-      "bytes": 3866,
-      "sha256": "225147f5fa06760d4db1dc39782cf982e9fc49e595e5ec1a3e361518dfb64d40"
+      "bytes": 4039,
+      "sha256": "7a6eb26c945964e5fac92054724a092e0cbeb01c54150983168ff184308c329a"
     },
     {
       "path": "harness/catalog_evaluate.py",
@@ -305,8 +325,8 @@
     },
     {
       "path": "harness/robustness_suite.py",
-      "bytes": 2485,
-      "sha256": "18ac27dbb2f900f4f783cc5f2b4721152f99ce3fdeff0de67bc49f1a8a87362a"
+      "bytes": 2835,
+      "sha256": "c7b8808087aa436c74a8a8e6bd937980873a8354d3b530074c73e6cd1787c7d6"
     },
     {
       "path": "harness/scenes.py",
@@ -429,6 +449,11 @@
       "sha256": "b96c944caaf2b8be69f4954174370ca8ac1fc85903dbeb979baaf74b9cc9735b"
     },
     {
+      "path": "review/COMPETITIVE_V2.md",
+      "bytes": 5640,
+      "sha256": "b35be52d59a3ae2cb1bc93eb13527a5c55fcc38a3611c5fc510a2a67c3f229ee"
+    },
+    {
       "path": "review/HANDOFF.md",
       "bytes": 13278,
       "sha256": "5622700fb1f8e1827ae2de2ab1db3abb9038309c9f319948305749817bddac47"
@@ -440,8 +465,8 @@
     },
     {
       "path": "review/V2_BUILD_RECORD.md",
-      "bytes": 5711,
-      "sha256": "1726425a44127c84b2ab136159790f81f00b4c4723aa2b6091f58bf864e46dd4"
+      "bytes": 6233,
+      "sha256": "8a42b201051051ad6098326ea306ee13f48171beb60fd7dddd7f3281dd7e6867"
     },
     {
       "path": "review/candidates/calibrated-yaw-development.json",
@@ -484,9 +509,19 @@
       "sha256": "3b7276d671eb19d75b2f1eb3dd8ada87ce5a0f4b435a8224b0be7a4fa904ed1e"
     },
     {
+      "path": "review/results/rejected-contact-development.json",
+      "bytes": 17294,
+      "sha256": "1d23ad8798eb9417bee65f3ed2cbfee0a57330a8c65140c159eafb75279406bc"
+    },
+    {
       "path": "review/results/sensor-replay-development-maze0.json",
       "bytes": 490,
       "sha256": "614c338a47b56124f911a7244bf594f46adf3f7b11d2d27a66e576ad0037ebc7"
+    },
+    {
+      "path": "review/results/sensor-replay-v2-selected.json",
+      "bytes": 490,
+      "sha256": "cc780c2c7e7ea6325cbcaf11d78641079cdffc0c5c55854916624ae8ed7208ec"
     },
     {
       "path": "review/results/turn-only-paired.json",
@@ -1139,6 +1174,11 @@
       "sha256": "e671919d6a66072966c2cc9a5a8b092ca7885664d839f13d4945f6f076285295"
     },
     {
+      "path": "tools/audit_development_v2.py",
+      "bytes": 5502,
+      "sha256": "a5c545e96a157144be89eda3bc2b555dcbe6a490b202f2c643cb38a5a07e0fe1"
+    },
+    {
       "path": "tools/audit_final.py",
       "bytes": 3191,
       "sha256": "ff15aeb827fd7dc8d1b77d88a6e7cf69b23c3a8b9bb68fbe4b74bd59a1198fc2"
@@ -1184,6 +1224,11 @@
       "sha256": "c9d4e1e222ed879d14ca0c3cb3b077dfb26799078d23e53b1249d5f4a1d7c432"
     },
     {
+      "path": "tools/check_motion_v2.py",
+      "bytes": 3039,
+      "sha256": "1716798142c180a28fbbb312b6efe7796215c0e16a2a40996ebd4fc3b2937959"
+    },
+    {
       "path": "tools/check_native_episode.py",
       "bytes": 1930,
       "sha256": "8f868b7a6a45f4d28339eabf18514ec17b951d444f74c83c5a03746f2642bc55"
@@ -1215,8 +1260,13 @@
     },
     {
       "path": "tools/film.py",
-      "bytes": 13238,
-      "sha256": "e2e8613b19743ce5ce5d03a7c3d268e492b98187a066caf6e09348d6570199f8"
+      "bytes": 13255,
+      "sha256": "c2a4fe69f9dcc19a6ea9a99f6a9f862c53147ed2e9964b9c5744ad893bc6cb7f"
+    },
+    {
+      "path": "tools/film_v2.py",
+      "bytes": 8485,
+      "sha256": "8d47632c84debf96c38759d82b32bdb85b2b9d2fe68cb9f2be53e79fc42e9e36"
     },
     {
       "path": "tools/fit_arms.py",
@@ -1235,8 +1285,8 @@
     },
     {
       "path": "tools/freeze_v2.py",
-      "bytes": 2289,
-      "sha256": "1964fe59fed893bb740d49bfa2fedd520d00a3f7aab7c59624608274a264fb94"
+      "bytes": 2424,
+      "sha256": "cc35d7cd316ba494560e3c310af73eef82ed9ba76d92987076f51fca25bdcae6"
     },
     {
       "path": "tools/inspect_episode.py",
@@ -1262,6 +1312,11 @@
       "path": "tools/package.py",
       "bytes": 6010,
       "sha256": "16d65d0f9d7a2e8bcf63c65c051b7ad645164ebb87c4bac569480fc443b80cc9"
+    },
+    {
+      "path": "tools/package_v2.py",
+      "bytes": 7798,
+      "sha256": "1663a6d100419a042db6434e10eff7fa50c0aefeec7502c41a2b2028cb113ad3"
     },
     {
       "path": "tools/paired_regression.py",
@@ -1315,8 +1370,8 @@
     },
     {
       "path": "tools/run_kit.py",
-      "bytes": 2668,
-      "sha256": "37a19d51a0e36b2131e6adfaf5b00e293a91dbe7c97d4d40e1a610ce7adfde51"
+      "bytes": 2976,
+      "sha256": "cb7904b5f8554400d0e344f41fad0eaff56a8f018a5f976538d97635371b8a88"
     },
     {
       "path": "tools/run_with_qemu.py",
@@ -1357,6 +1412,11 @@
       "path": "tools/wall_heading_audit.py",
       "bytes": 1873,
       "sha256": "72c55cf2e2abb654be44e0243182bbbea4d80d99d44111aaff11241de55f9541"
+    },
+    {
+      "path": "tools/writeup_v2.py",
+      "bytes": 9224,
+      "sha256": "053400b1ed19fac377c216bbce4bf1842caf74f8dbf3fbfbb521333ff9338ae7"
     },
     {
       "path": "vendor/builder-kit/BASKETBALL_START.md",

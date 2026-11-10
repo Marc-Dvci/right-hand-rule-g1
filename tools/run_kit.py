@@ -17,12 +17,16 @@ p.add_argument('--name', default='standard-001')
 p.add_argument('--counterfactuals', action='store_true')
 p.add_argument('--report-timeout-fix',action='store_true')
 args = p.parse_args()
+if not args.name or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-' for c in args.name):
+    raise ValueError('Use a simple unique evidence name')
+native = platform.machine().lower() in ('aarch64','arm64')
+output = ROOT/'evidence'/('container-native' if native else 'container-qemu')/args.name
+if output.exists() and any(output.iterdir()):
+    raise SystemExit('Refusing to replace existing native evidence: '+str(output))
 from prepare_kit import prepare
 KIT,patch = prepare(ROOT,args.report_timeout_fix)
 environment = KIT/'containers/upload/environment'
 shutil.copytree(ROOT/'scene', environment, dirs_exist_ok=True)
-native = platform.machine().lower() in ('aarch64','arm64')
-output = ROOT/'evidence'/('container-native' if native else 'container-qemu')/args.name
 output.mkdir(parents=True, exist_ok=True)
 command = ['bash','sim.sh','--image','right-hand-rule:local','--seconds',str(args.seconds),'--output',str(output)]
 if args.scene != 'standard':
