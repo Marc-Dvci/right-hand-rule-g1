@@ -48,10 +48,12 @@ class ContactAudit:
             for name in [f'{side}_touch_hand', *[f'{side}_palm{i}' for i in (1, 2, 3)]]}
         self.walls = {g for g in range(m.ngeom) if (m.geom(g).name or '').startswith('wall_')}
         self.loads = LoadMetrics(float(m.opt.timestep))
+        self.nonhand_loads=LoadMetrics(float(m.opt.timestep))
         self.nonhand_wall_peak = 0.
         self.nonhand_wall_seconds = 0.
         self.peak_single_hand_contact = 0.
         self.nonhand_wall_peak_contacts=[]
+        self.nonhand_wall_peak_time=None
 
     def sample(self):
         p = self.plant
@@ -79,11 +81,14 @@ class ContactAudit:
                     loads[self.hand_geoms[b]] += magnitude
             elif wall_robot:
                 nonhand_wall_load += magnitude
-                nonhand_contacts.append(dict(geoms=[p.model.geom(a).name,p.model.geom(b).name],force_n=magnitude))
+                nonhand_contacts.append(dict(geoms=[p.model.geom(a).name,p.model.geom(b).name],
+                    geom_ids=[a,b],bodies=[p.model.body(int(p.model.geom_bodyid[g])).name for g in (a,b)],force_n=magnitude))
         self.loads.observe(loads)
+        self.nonhand_loads.observe([nonhand_wall_load,0.])
         if nonhand_wall_load>self.nonhand_wall_peak:
             self.nonhand_wall_peak=nonhand_wall_load
             self.nonhand_wall_peak_contacts=nonhand_contacts
+            self.nonhand_wall_peak_time=float(p.data.time)
         self.nonhand_wall_seconds += (nonhand_wall_load > .1) * self.loads.dt
         return force
 
@@ -92,6 +97,8 @@ class ContactAudit:
             peak_nonhand_wall_sum_n=self.nonhand_wall_peak,
             nonhand_wall_contact_seconds=self.nonhand_wall_seconds,
             peak_nonhand_wall_contacts=self.nonhand_wall_peak_contacts,
+            peak_nonhand_wall_time=self.nonhand_wall_peak_time,
+            nonhand_wall_load_metrics={**self.nonhand_loads.report(),'side_order':['nonhand_total','unused']},
             definition='500 Hz; sums of individual contact force magnitudes per hand, including tangential loads. '
                        'These cannot cancel like a resultant. Impulse is accumulated load over the entire episode; '
                        'window means use trailing 100/250 ms (available samples during startup). '

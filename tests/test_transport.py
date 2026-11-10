@@ -28,10 +28,14 @@ def adapter(monkeypatch):
     monkeypatch.setattr(module.time,'monotonic',lambda:clock[0])
     node = module.TouchNode.__new__(module.TouchNode)
     node.session,node.sequence,node.sent,node.done = 'session-123',0,-1,False
+    node.calibration_reported=False
     node.feedback,node.imu = {},{}
     sent,calls = [],[]
     node.publisher = types.SimpleNamespace(publish=sent.append)
-    node.get_logger = lambda:types.SimpleNamespace(error=lambda _:None)
+    node.test_errors=[]
+    node.test_logs=[]
+    node.get_logger = lambda:types.SimpleNamespace(error=node.test_errors.append,
+        info=node.test_logs.append,warning=node.test_logs.append)
     def act(obs,ready):
         calls.append((obs,ready))
         return {k:np.zeros(29) for k in ('q','dq','kp','kd','tau')}
@@ -54,7 +58,7 @@ def test_pairs_matching_ids_and_discards_privileged_fields(adapter):
     node.on_feedback(joints())
     assert not sent
     node.on_state(state())
-    assert len(sent) == 1
+    assert len(sent) == 1,node.test_errors
     assert sent[0].session_id == 'session-123'
     assert sent[0].observation_id == 4
     assert sent[0].sequence == 0
@@ -102,3 +106,17 @@ def test_excessive_observation_gap_stops_publication(adapter):
     node.on_state(state(11))
     assert node.done
     assert len(sent)==1
+
+
+@pytest.mark.parametrize('error',[None,'ambiguous command-age fit'])
+def test_calibration_diagnostic_does_not_interrupt_balance_publication(adapter,error):
+    node,sent,_,_=adapter
+    node.controller.identified_command_age=0 if error is None else None
+    node.controller.calibration_error=error
+    node.controller.calibration=types.SimpleNamespace(report=lambda:dict(selected_frames=0))
+    for key in (4,5):
+        node.on_feedback(joints(key))
+        node.on_state(state(key))
+    assert len(sent)==2,node.test_errors
+    assert not node.done
+    assert len(node.test_logs)==1

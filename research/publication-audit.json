@@ -1,6 +1,6 @@
 {
-  "files": 386,
-  "bytes": 83605283,
+  "files": 387,
+  "bytes": 83610023,
   "blocked": [],
   "inventory": [
     {
@@ -10,8 +10,8 @@
     },
     {
       "path": ".github/workflows/native-arm64.yml",
-      "bytes": 3936,
-      "sha256": "03982e44208d94831c8d1ccc9ce1b7903fd42f3f084d1a688760eeb6c2ca2854"
+      "bytes": 4692,
+      "sha256": "6afe778c42eab23e48174b66929a6aebb04e0e6353f64a1f560374d215f409b2"
     },
     {
       "path": ".gitignore",
@@ -200,8 +200,8 @@
     },
     {
       "path": "harness/contact_metrics.py",
-      "bytes": 4939,
-      "sha256": "b6fbeb8d3f9060e2cfe3b990ba4108793ffbed1624c6d47acb5f21672d803933"
+      "bytes": 5442,
+      "sha256": "d46bff9d789c825bb24cc50ac5df861bd9ef97a79c909f96221f8e63dea56abf"
     },
     {
       "path": "harness/contact_sweep.py",
@@ -242,6 +242,11 @@
       "path": "harness/gate0.py",
       "bytes": 4222,
       "sha256": "b87781bbe083e5ec2d58898334d62559279d5ffd76e8673b0518730e6484dfa3"
+    },
+    {
+      "path": "harness/gentle_sweep.py",
+      "bytes": 2719,
+      "sha256": "40b8f659dc1baa2c1efcb5c7ce5a459560b53f8c542efb88d95b345f2b5c8763"
     },
     {
       "path": "harness/gravity_sweep.py",
@@ -1085,8 +1090,8 @@
     },
     {
       "path": "tests/test_transport.py",
-      "bytes": 3646,
-      "sha256": "a50c7ae4e17136768376fb7a5a013461f0aa87d97fe68dfa53e8ea1db03272d9"
+      "bytes": 4408,
+      "sha256": "663e20d498bb070b93c25b08907ff0d92abb33408319a921e169371662909367"
     },
     {
       "path": "tools/analyze_episode.py",
